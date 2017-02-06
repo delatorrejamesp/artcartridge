@@ -3,7 +3,6 @@
     <head>
         <title>Artcartridge</title>
         <%= csrf_meta_tags %>
-
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
@@ -11,7 +10,7 @@
         <header>
         <%= render 'layouts/navigation' %>
         </header>
-        <main role="main">
+        <main role="main" id="main">
            <%= render 'layouts/messages' %>
            <%= yield %>
         </main>

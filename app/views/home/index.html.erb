@@ -1,39 +1,11 @@
-<br><br>
-
 <div class="container">
-  <h1>Grid Image view sample</h1>
-  <div class="rowitem">
+  <div class="row rowitem">
+    <%@photos.each do |photo|%>
     <div class="item well">
-      <img class="imageclass" src="https://instagram.fmnl4-3.fna.fbcdn.net/t51.2885-15/e35/16229231_179809762503704_6362055912202436608_n.jpg" alt="">
-      <p>Sample 1 Text. Sample 1 Text. Sample 1 Text. Sample 1 Text. Sample 1 Text. Sample 1 Text. Sample 1 Text. Sample 1 Text. Sample 1 Text. Sample 1 Text. Sample 1 Text. Sample 1 Text. Sample 1 Text. Sample 1 Text. </p>
+      <!-- <img class="imageclass" src="https://instagram.fmnl4-3.fna.fbcdn.net/t51.2885-15/e35/16229231_179809762503704_6362055912202436608_n.jpg" alt=""> -->
+      <%=image_tag photo.image.url, class: "imageclass"%>
+      <p><%=photo.description%></p>
     </div>
-    <div class="item well">
-      <img class="imageclass" src="https://instagram.fmnl4-3.fna.fbcdn.net/t51.2885-15/e35/16123720_1845432235726325_4288215981072842752_n.jpg" alt="">
-      <p>Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. Sample 2 Text. </p>
-    </div>
-    <div class="item well">
-      <img class="imageclass" src="https://instagram.fmnl4-3.fna.fbcdn.net/t51.2885-15/e35/16229087_1116274388501490_5350404755363463168_n.jpg" alt="">
-      <p>Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. Sample 3 Text. </p>
-    </div>
-    <div class="item well">
-      <img class="imageclass" src="https://instagram.fmnl4-3.fna.fbcdn.net/t51.2885-15/e35/16465211_371257116593158_2377845241123176448_n.jpg" alt="">
-      <p>Sample 4 Text. Sample 4 Text. Sample 4 Text. Sample 4 Text. Sample 4 Text. Sample 4 Text. Sample 4 Text. Sample 4 Text. </p>
-    </div>
-    <div class="item well">
-      <img class="imageclass" src="https://instagram.fmnl4-3.fna.fbcdn.net/t51.2885-15/e35/16229318_157968848039387_3541947267156017152_n.jpg" alt="">
-      <p>Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. Sample 5 Text. </p>
-    </div>
-    <div class="item well">
-      <img class="imageclass" src="https://instagram.fmnl4-3.fna.fbcdn.net/t51.2885-15/e35/16464531_226735534400099_3831126607741845504_n.jpg" alt="">
-      <p>Sample 6 Text. Sample 6 Text. Sample 6 Text. Sample 6 Text. Sample 6 Text. Sample 6 Text. Sample 6 Text. Sample 6 Text. Sample 6 Text. Sample 6 Text. Sample 6 Text. Sample 6 Text. Sample 6 Text. Sample 6 Text. Sample 6 Text. Sample 6 Text. Sample 6 Text. </p>
-    </div>
-    <div class="item well">
-      <img class="imageclass" src="https://instagram.fmnl4-3.fna.fbcdn.net/t51.2885-15/e35/16230159_1083809061746272_5158168380041068544_n.jpg" alt="">
-      <p>Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. Sample 7 Text. </p>
-    </div>
-    <div class="item well">
-      <img class="imageclass" src="https://instagram.fmnl4-3.fna.fbcdn.net/t51.2885-15/e35/16464278_738943389614019_1571953490555568128_n.jpg" alt="">
-      <p>Sample 8 Text. Sample 8 Text. Sample 8 Text. Sample 8 Text. Sample 8 Text. Sample 8 Text. Sample 8 Text. Sample 8 Text. Sample 8 Text. Sample 8 Text. Sample 8 Text. Sample 8 Text. Sample 8 Text. Sample 8 Text. Sample 8 Text. Sample 8 Text. Sample 8 Text. Sample 8 Text. Sample 8 Text. Sample 8 Text. </p>
-    </div>
+    <%end%>
   </div>
 </div>
