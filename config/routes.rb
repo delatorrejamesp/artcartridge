@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
   resources :categories
-  get 'pages/about'
 
-  get 'pages/contact'
+  get 'pages/about', as: :about
+
+  get 'pages/contact', as: :contact
 
   devise_for :users
 
