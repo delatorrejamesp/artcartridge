@@ -14,12 +14,13 @@ class PhotosController < ApplicationController
   def create
       @photo = Photo.new(photo_params)
       @photo.save
+      redirect_to photos_url
   end
 
   private
 
   def photo_params
-    params.require(:photo).permit(:user_id,:image)
+    params.require(:photo).permit(:user_id,:image, :description)
 
   end
 
