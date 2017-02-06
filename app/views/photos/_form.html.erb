@@ -1,16 +1,17 @@
 <h3>Upload Photo</h3>
+<br>
 <%= form_for @photo, url: photos_path, html: { multipart: true, role: "form", class: "form-horizontal" } do |f| %>
   <%=f.hidden_field :user_id %>
   <div class="form-group">
-    <%=f.label :image, class: "col-sm-1"%>
-   <div class="col-sm-5"><%= f.file_field :image, class: "form-control"%></div>
+    <%=f.label :image, class: "col-sm-3"%>
+   <div class="col-sm-9"><%= f.file_field :image, class: "form-control"%></div>
  </div>
  <div class="form-group">
   <%=f.label :description, class: "col-sm-12"%>
-  <div class="col-sm-6"><%=f.text_area :description, class: "form-control"%></textarea></div>
+  <div class="col-sm-12"><%=f.text_area :description, class: "form-control", rows: 5 %></textarea></div>
 </div>
 <div class="form-group">
-  <div class="col-sm-6">
+  <div class="pull-right">
     <%=f.submit class: "btn btn-primary"%>
   </div>
 </div>
