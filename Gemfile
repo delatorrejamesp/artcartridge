@@ -55,4 +55,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise-bootstrap-views'
+
+gem 'aws-sdk', '~> 2.3'
 gem "paperclip", "~> 5.0.0"
+gem 'paperclip-av-transcoder'
+gem "paperclip-ffmpeg"
+gem "delayed_paperclip"
+
+gem 'dotenv-rails', :groups => [:development, :test]
