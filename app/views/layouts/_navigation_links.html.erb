@@ -1,0 +1,14 @@
+
+<%if user_signed_in?%>
+  <li><a href="#">Geri bildirim</a></li>
+  <li><a href="#">Yardım</a></li>
+  <li class="divider"></li>
+  <li><a href="#">Ayarlar</a></li>
+  <li><%=link_to "Logout", destroy_user_session_path, method: :delete %></li>
+<%else%>
+  <li><a href="#">Home</a></li>
+  <li><a href="#">About Us</a></li>
+  <li class="divider"></li>
+  <li><a href="#">Contact Us</a></li>
+  <li><a href="#exit">Çıkış yap</a></li>
+<%end%>
