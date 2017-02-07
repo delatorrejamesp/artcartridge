@@ -6,7 +6,7 @@
      <%else%>
       <%bg = 'http://lorempixel.com/850/280/nature/4/'%>
     <%end%>
-    <div class="cardheader" style="background: url(<%=bg%>)"></div>
+    <div class="cardheader" style="background: url(<%=bg%>);background-size:cover;height:135px;"></div>
     <div class="avatar">
         <!-- <img alt="" src="http://lorempixel.com/100/100/people/9/"> -->
         <%=image_tag current_user.avatar.url(:medium)%>

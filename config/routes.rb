@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  match ":id" => "users#show",  via: [ :get ]
+
 
   resources :categories
 
@@ -26,5 +26,7 @@ Rails.application.routes.draw do
   end
   resources :photos, only: [:index, :show]
 
+  match ":id" => "users#show",  via: [ :get ]
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

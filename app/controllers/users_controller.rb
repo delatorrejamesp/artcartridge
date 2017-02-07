@@ -23,6 +23,9 @@ class UsersController < ApplicationController
       user[:about_me] = user_params[:about_me]
       user[:avatar] = user_params[:avatar]
       @user.update(user)
+      if !@user.errors.any?
+        redirect_to user_url(@user)
+      end
   end
 
   private
