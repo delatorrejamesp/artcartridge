@@ -7,15 +7,16 @@ class User < ApplicationRecord
     has_many :photos
 
     extend FriendlyId
+
     friendly_id :username, use: :slugged
 
     def should_generate_new_friendly_id?
         username_changed?
     end
 
-    def should_generate_new_friendly_id?
-        new_record? || slug.nil? || slug.blank? # you can add more condition here
-    end
+    # def should_generate_new_friendly_id?
+    #     new_record? || slug.nil? || slug.blank? # you can add more condition here
+    # end
 
     validates :username,
         length: {  in: 0..24, allow_blank: false,
@@ -62,6 +63,7 @@ class User < ApplicationRecord
     end
 
     def set_username
-        self.username = "#{email.split('@')[0]}#{SecureRandom.urlsafe_base64(5)}"
+        self.username = "#{email.split('@')[0]}#{SecureRandom.urlsafe_base64(5)}".downcase
+        self.slug = self.username.downcase
     end
 end

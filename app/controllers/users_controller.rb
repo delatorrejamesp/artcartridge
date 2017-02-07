@@ -10,11 +10,15 @@ class UsersController < ApplicationController
 
   end
 
+  def show
+
+  end
+
   def update
       user = Hash.new
       user[:first_name] = user_params[:first_name]
       user[:last_name] = user_params[:last_name]
-      user[:username] = user_params[:username]
+      user[:username] = user_params[:username].downcase
       if user_params["birthday(1i)"] && user_params["birthday(2i)"] && user_params["birthday(3i)"]
         user[:birthday] =  Date.civil( user_params["birthday(1i)"].to_i, user_params["birthday(2i)"].to_i, user_params["birthday(3i)"].to_i)
       end
