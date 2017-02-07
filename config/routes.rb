@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+
+  match ":id" => "users#show",  via: [ :get ]
+
   resources :categories
 
   get 'pages/about', as: :about
@@ -18,7 +21,7 @@ Rails.application.routes.draw do
 
     match "users/:id/profile" => "users#edit", as: "user_profile", via: [ :get ]
     resources :users do
-      
+
     end
   end
   resources :photos, only: [:index, :show]

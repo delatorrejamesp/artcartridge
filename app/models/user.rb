@@ -5,8 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :photos
 
-  attr_accessor :full_name, :random_picked_photo
+  extend FriendlyId
+  friendly_id :username, use: :slugged
 
+  validates :username, uniqueness: true
+
+  attr_accessor :full_name, :random_picked_photo
 
   def full_name
     "#{self.first_name} #{self.last_name}"

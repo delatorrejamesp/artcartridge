@@ -14,6 +14,7 @@ class UsersController < ApplicationController
       user = Hash.new
       user[:first_name] = user_params[:first_name]
       user[:last_name] = user_params[:last_name]
+      user[:username] = user_params[:username]
       if user_params["birthday(1i)"] && user_params["birthday(2i)"] && user_params["birthday(3i)"]
         user[:birthday] =  Date.civil( user_params["birthday(1i)"].to_i, user_params["birthday(2i)"].to_i, user_params["birthday(3i)"].to_i)
       end
@@ -27,11 +28,11 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :about_me, :birthday, :address, :avatar)
+    params.require(:user).permit(:first_name, :last_name, :about_me, :birthday, :address, :avatar, :username)
   end
 
   def set_user
-    @user=User.find(params[:id])
+    @user=User.friendly.find(params[:id])
   end
 
 
