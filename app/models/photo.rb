@@ -1,8 +1,7 @@
 class Photo < ApplicationRecord
 
-
   belongs_to :user
-  
+
   has_attached_file :image,
     styles: {
        medium: "300x300>",
@@ -11,8 +10,8 @@ class Photo < ApplicationRecord
     :storage => :s3,
     :s3_credentials => Proc.new{|a| a.instance.s3_credentials },
     :s3_protocol => :https,
-    default_url: "https://i.imgur.com/pqpsxlQ.png",
-    url: "/users/:attachment/:id/:style/:filename"
+    default_url: "http://lorempixel.com/100/100/people/9/",
+    url: "/photos/:attachment/:id/:style/:filename"
     validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
     def s3_credentials

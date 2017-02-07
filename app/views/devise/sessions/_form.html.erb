@@ -1,0 +1,32 @@
+<%= form_for(:user, :url => user_session_path) do |f| %>
+<li>
+    <div class="control-group">
+        <%= f.label :email, :class => "control-label" %>
+        <div class="controls">
+            <%= f.text_field :email, class: "form-control" %>
+        </div>
+    </div>
+</li>
+<li>
+    <div class="control-group">
+        <%= f.label :password, :class => "control-label" %>
+        <div class="controls">
+            <%= f.password_field :password, class: "form-control" %>
+        </div>
+    </div>
+</li>
+<li>
+    <div class="control-group">
+      <br>
+        <div class="controls">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me, :class => "control-label" %>
+
+        </div>
+    </div>
+</li>
+<li>
+    <%= f.submit "Sign in", :class => "btn btn-primary form-control" %>
+    <br>
+</li>
+<% end %>

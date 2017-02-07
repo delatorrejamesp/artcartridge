@@ -15,6 +15,11 @@ Rails.application.routes.draw do
 
   authenticate :user do
     resources :photos, only: [:new, :create, :edit, :update, :destroy]
+
+    match "users/:id/profile" => "users#edit", as: "user_profile", via: [ :get ]
+    resources :users do
+      
+    end
   end
   resources :photos, only: [:index, :show]
 

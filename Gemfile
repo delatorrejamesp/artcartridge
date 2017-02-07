@@ -63,3 +63,6 @@ gem "paperclip-ffmpeg"
 gem "delayed_paperclip"
 
 gem 'dotenv-rails', :groups => [:development, :test]
+
+gem 'cancan'
+gem 'friendly_id'
