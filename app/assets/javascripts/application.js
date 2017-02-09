@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require bootstrap-sprockets
+//= require unitegallery/dist/js/unitegallery.js
+//= require unitegallery/dist/themes/tiles/ug-theme-tiles.js
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .

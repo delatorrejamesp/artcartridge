@@ -1,0 +1,14 @@
+{
+  "name": "artcartridge",
+  "homepage": "https://github.com/codeofsolomon/artcartridge",
+  "authors": [
+    "Ashley <ash20solomon@gmail.com>"
+  ],
+  "directory": "vendor/assets/components",
+  "description": "",
+  "main": "",
+  "dependencies": {
+    "unitegallery": "~1.7.40"
+  },
+  "license": "MIT"
+}
