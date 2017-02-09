@@ -1,11 +1,9 @@
 <div id="myCarouselWrapper" class="container-fluid">
-
-       <div id="myCarousel" class="carousel slide">
-
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
+  <div id="myCarousel" class="carousel slide">
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
       
-    </div>
+      </div>
     <%@photos.each do |photo|%>
       <div class="item">
         <%=image_tag photo.image.url(:medium), class: "imagecarousel"%>    
@@ -22,21 +20,17 @@
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>   
-
+  </div>   
 </div>
 
 
 
 
-<div class="container">
-  <div class="row rowitem">
-    <%@photos.each do |photo|%>
-    <div class="item well">
-      <!-- <img class="imageclass" src="https://instagram.fmnl4-3.fna.fbcdn.net/t51.2885-15/e35/16229231_179809762503704_6362055912202436608_n.jpg" alt=""> -->
-      <%=image_tag photo.image.url(:medium), class: "imageclass"%>
-      <p><%=photo.description%></p>
-    </div>
-    <%end%>
+  <div id="gallery" style="display:none;">
+
+      <%@photos.each do |photo|%>
+          <%=image_tag photo.image.url(:medium), data: { image: photo.image.url, description: photo.description } %>
+
+        <%end%>
   </div>
-</div>
+
