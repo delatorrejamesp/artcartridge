@@ -1,0 +1,7 @@
+<div id="gallery" style="display:none;">
+
+    <%@photos.each do |photo|%>
+        <%=image_tag photo.image.url(:medium), data: { image: photo.image.url, description: photo.description } %>
+
+      <%end%>
+</div>
