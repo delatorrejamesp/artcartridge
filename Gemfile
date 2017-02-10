@@ -66,3 +66,5 @@ gem 'dotenv-rails', :groups => [:development, :test]
 
 gem 'cancan'
 gem 'friendly_id'
+
+gem 'country_select'
