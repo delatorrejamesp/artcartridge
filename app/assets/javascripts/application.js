@@ -36,4 +36,9 @@ $(document).ready(function () {
             $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
         }
     });
+
+     $('#quote-carousel').carousel({
+    pauseOnHover: true,
+    interval: 4000,
+  });
 });
