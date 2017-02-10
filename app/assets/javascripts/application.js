@@ -13,11 +13,13 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require unitegallery/dist/js/unitegallery.js
+//= require unitegallery/dist/js/carousel.js
 //= require unitegallery/dist/themes/tiles/ug-theme-tiles.js
 //= require justifiedGallery/dist/js/jquery.justifiedGallery.js
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
 
 // $(document).ready(function () {
 //     $('#myCarousel').carousel({
