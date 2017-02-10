@@ -1,30 +1,3 @@
-    <div class="container">
-        <div class="row">
-            <div class="span12">
-                <div class="well">
-                    <div id="myCarousel" class="carousel fdi-Carousel slide">
-                     <!-- Carousel items -->
-                        <div class="carousel fdi-Carousel slide" id="eventCarousel" data-interval="0">
-                            <div class="carousel-inner onebyone-carosel">
-                            <%@photos.each do |photo|%>
-                                <div class="item active">
-                                </div>                             
-                                <div class="item">
-                                    <div class="col-md-4">
-                                        <a href="#"><%=image_tag photo.image.url(:medium), class: "imagecarousel"%></a>
-                                        <div class="text-center"><%=photo.description%></div>
-                                    </div>
-                                </div>
-                                <%end%>
-                            </div>
-                            <a class="left carousel-control" href="#eventCarousel" data-slide="prev"></a>
-                            <a class="right carousel-control" href="#eventCarousel" data-slide="next"></a>
-                        </div>
-                        <!--/carousel-inner-->
-                    </div><!--/myCarousel-->
-                </div><!--/well-->
-            </div>
-        </div>
-    </div>
+<%=render partial: "photos/carousel"%>
 
 <%=render partial: "photos/gallery"%>
