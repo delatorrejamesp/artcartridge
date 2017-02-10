@@ -3,12 +3,15 @@ Rails.application.routes.draw do
 
 
 
+  get 'pages/blog'
+
   resources :categories
 
   get 'pages/about', as: :about
 
   get 'pages/contact', as: :contact
 
+  get 'pages/blog', as: :blog
   devise_for :users
 
   authenticated :user do
