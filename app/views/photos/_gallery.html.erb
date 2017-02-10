@@ -1,5 +1,11 @@
-<div id="gallery" style="display:none;">
-    <%@photos.each do |photo|%>
-        <%=image_tag photo.image.url(:medium), data: { image: photo.image.url, description: photo.description } %>
+<div id="gallery">
+  <%@photos.each do |photo|%>
+      <%=link_to photo.image.url do %>
+          <%=image_tag photo.image.url(:medium) %>
+           <div class="caption">
+                <%=image_tag photo.user.avatar.url(:thumb), class: "img-circle", size: "30x30"%>
+                <%="@#{photo.user.username}"%>
+           </div>
       <%end%>
+  <%end%>
 </div>
