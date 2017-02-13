@@ -8,18 +8,35 @@
                 <span class="icon-bar"></span>
             </button>
             <%if user_signed_in?%>
-            <%=link_to "ArtCartridge", authenticated_root_url, class: "navbar-brand"%>
+              <%if current_page? authenticated_root_url %>
+                <%=link_to "ArtCartridge", authenticated_root_url, class: "navbar-brand"%>
+              <%else%>
+                <%=link_to authenticated_root_url, class: "navbar-brand" do %>
+                  <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                <%end%>
+                <%=link_to "@#{current_user.username}", user_url(current_user), class: "navbar-brand"%>
+              <%end%>
             <%else%>
-            <%=link_to "ArtCartridge", root_url, class: "navbar-brand"%>
+              <%=link_to "ArtCartridge", root_url, class: "navbar-brand"%>
             <%end%>
         </div>
         <div class="collapse navbar-collapse" id="navbar">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-left">
                 <li class="dropdown">
                     <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-fw fa-bell-o"></i> Search </a> -->
                 </li>
-                <li class="active"><%=link_to "About Us", about_url%></li>
-                <li class="active"><%=link_to "Contact Us", contact_url%></li>
+                <%if user_signed_in?%>
+                  <li class="active"><%=link_to "Portfolio", portfolio_user_url(current_user)%></li>
+                  <!-- <li class="active"><%=link_to "About", about_url%></li> -->
+                  <li class="active"><%=link_to "Shop", contact_url%></li>
+                  <li class="active"><%=link_to "Contact", contact_url%></li>
+                <%else%>
+                  <li class="active"><%=link_to "About", about_url%></li>
+                  <li class="active"><%=link_to "Contact", contact_url%></li>
+                  <li class="active"><%=link_to "Blog", contact_url%></li>
+                <%end%>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
                 <%if user_signed_in?%>
                 <li class="active"><%=link_to "Upload", new_photo_path%></li>
                 <li style="padding: 0px!important;">

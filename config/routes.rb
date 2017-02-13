@@ -24,7 +24,9 @@ Rails.application.routes.draw do
 
     match "users/:id/profile" => "users#edit", as: "user_profile", via: [ :get ]
     resources :users do
-
+      member do
+        get :portfolio
+      end
     end
   end
   resources :photos, only: [:index, :show]

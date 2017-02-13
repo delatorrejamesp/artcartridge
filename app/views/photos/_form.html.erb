@@ -1,5 +1,5 @@
-<h3>Upload Photo</h3>
-<br>
+<h3 class="text-center">Upload Photo</h3>
+<hr>
 <%= form_for @photo, url: photos_path, html: { multipart: true, role: "form", class: "form-horizontal" } do |f| %>
   <%=f.hidden_field :user_id %>
   <div class="form-group">

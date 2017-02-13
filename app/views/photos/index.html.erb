@@ -1,16 +1,5 @@
-
-  <!-- <div class="row rowitem">
-    <%#@photos.each do |photo|%>
-    <div class="item well">
-
-      <%#=image_tag photo.image.url(:medium), class: "imageclass"%>
-      <p><%#=photo.description%></p>
-    </div>
-    <%#end%>
-  </div> -->
-
-<%#=render partial: "photos/carousel"%>
-
-<%=render partial: "photos/gallery"%>
-
-<%#=render partial: "photos/quotecarousel"%>
+<div class="row clearfix">
+    <div class="col-md-12">
+      <%=render partial: "photos/gallery"%>
+   </div>
+</div>

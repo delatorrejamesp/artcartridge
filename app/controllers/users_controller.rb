@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [ :edit, :update, :destroy, :show ]
+  before_action :set_user, only: [ :edit, :update, :destroy, :show, :portfolio ]
 
   def profile
 
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def show
-
+    @photos = @user.photos
   end
 
   def update
@@ -30,6 +30,11 @@ class UsersController < ApplicationController
       if !@user.errors.any?
         redirect_to user_url(@user)
       end
+  end
+
+  def portfolio
+    @photos = @user.photos
+    render "photos/index"
   end
 
   private

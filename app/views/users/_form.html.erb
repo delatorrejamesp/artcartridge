@@ -1,3 +1,5 @@
+<h3 class="text-center">Edit Profile</h3>
+<hr>
 <%= form_for(@user, url: user_path(@user),  authenticity_token: true, remote: true , html: { method: :patch, class: "form-horizontal" }) do |f| %>
 <div class="form-group">
   <%=f.label :avatar, class: "col-sm-3"%>

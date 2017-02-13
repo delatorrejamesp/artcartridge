@@ -28,10 +28,26 @@ class User < ApplicationRecord
 
     before_commit :set_username
 
-    attr_accessor :full_name, :random_picked_photo
+    attr_accessor :full_name, :random_picked_photo, :age
 
     def full_name
         "#{first_name} #{last_name}"
+    end
+
+    def age
+      if self.birthday
+        age = Date.today.year - self.birthday.year
+        age -= 1 if Date.today < self.birthday + age.years #for days before birthday
+        @age = age
+      end
+    end
+
+    def paragraph_info
+      paragraph = Array.new
+      paragraph << "From #{self.address}" unless self.address.blank?
+      paragraph << "Age #{self.age}" unless self.age.nil?
+      paragraph.delete_if { |p| p.blank? }
+      paragraph.to_sentence
     end
 
     has_attached_file :avatar,
