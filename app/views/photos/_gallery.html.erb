@@ -1,6 +1,7 @@
 <div id="gallery">
   <%@photos.each do |photo|%>
-    <div>
+    <div >
+        <%=link_to photo_url(photo), remote: true, data: { target: "preview" }  do%>
         <%=image_tag photo.image.url(:medium) %>
         <div class="caption">
             <%=link_to user_url(photo.user), method: :get do%>
@@ -8,6 +9,7 @@
             <%="@#{photo.user.username}"%>
             <%end%>
         </div>
-    </div>
+        <%end%>
+  </div>
   <%end%>
 </div>
