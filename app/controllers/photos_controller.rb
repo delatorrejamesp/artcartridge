@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
 
+  before_action :set_photo, only: [ :show ]
 
   def index
     @photos = Photo.all
@@ -11,6 +12,10 @@ class PhotosController < ApplicationController
     @photo = Photo.new(photo)
   end
 
+  def show
+
+  end
+
   def create
       @photo = Photo.new(photo_params)
       @photo.save
@@ -18,6 +23,10 @@ class PhotosController < ApplicationController
   end
 
   private
+
+  def set_photo
+    @photo=Photo.find(params[:id])
+  end
 
   def photo_params
     params.require(:photo).permit(:user_id,:image, :description)
