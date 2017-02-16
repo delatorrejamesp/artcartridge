@@ -1,11 +1,10 @@
 <div class="row">
-    <div class="col-md-8 text-center">
+    <div class="col-md-6">
         <%=image_tag @photo.image.url(:medium)%>
     </div>
-    <div class="col-md-4">
-        Comments here,,,
-
-        add placeholers please
-
+    <div class="col-md-5 col-md-offset-1">
+  
+            <textarea class="form-control" id="message-text" placeholder="Comment here..."></textarea>
+<button type="button" class="btn btn-primary btn-xs" style="margin-top:5px; float:right">Add Comment</button>
     </div>
 </div>
