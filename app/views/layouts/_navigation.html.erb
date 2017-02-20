@@ -29,10 +29,6 @@
                   <%if !current_page? authenticated_root_url %>
                     <li class="active"><%=link_to "Portfolio", portfolio_user_url(current_user)%></li>
                   <%end%>
-                  <!-- <li class="active"><%=link_to "About", about_url%></li> -->
-                  <li class="active"><%=link_to "About", about_url%></li>
-                  <li class="active"><%=link_to "Contact", contact_url%></li>
-                  <li class="active"><%=link_to "Blog", blog_url%></li>
                 <%else%>
                   <li class="active"><%=link_to "About", about_url%></li>
                   <li class="active"><%=link_to "Contact", contact_url%></li>

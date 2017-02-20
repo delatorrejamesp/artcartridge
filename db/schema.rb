@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20170207115523) do
     t.string   "last_name"
     t.text     "address"
     t.text     "about_me"
-    t.date     "birthday",               default: '1999-02-16'
+    t.date     "birthday",               default: '1999-02-20'
     t.string   "slug"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
