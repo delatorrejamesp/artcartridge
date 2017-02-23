@@ -1,42 +1,63 @@
-    <div class="card hovercard">
-        <%if @user.photos.any?%>
-        <%bg = @user.random_picked_photo.image.url%>
-        <%else%>
-        <%bg = 'http://lorempixel.com/850/280/nature/4/'%>
-        <%end%>
-        <div class="cardheader" style="background: url(<%=bg%>);background-size:cover;height:135px;"></div>
-        <div class="avatar">
-            <%=image_tag @user.avatar.url(:medium)%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-3"> 
+            <div class="card hovercard">
+                <%if @user.photos.any?%>
+                <%bg = @user.random_picked_photo.image.url%>
+                <%else%>
+                <%bg = 'http://lorempixel.com/850/280/nature/4/'%>
+                <%end%>
+                <div class="cardheader" style="background: url(<%=bg%>);background-size:cover;height:135px;"></div>
+                <div class="avatar">
+                    <%=image_tag @user.avatar.url(:medium)%>
+                </div>
+                <div class="info">
+                    <span class="title">
+                        <%=@user.full_name%>
+                    </span><br>
+                    <span class="info">
+                        <%=@user.paragraph_info%>
+                    </span><br>
+                    <span class="desc">
+                        <%=@user.about_me%>
+                    </span>
+                </div>
+                <div class="bottom">
+                    <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/" target="_blank">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a class="btn btn-danger btn-sm" rel="publisher" href="https://plus.google.com/" target="_blank">
+                        <i class="fa fa-google-plus"></i>
+                    </a>
+                    <a class="btn btn-primary btn-sm" rel="publisher" href="https://facebook.com/" target="_blank">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/" target="_blank">
+                        <i class="fa fa-behance"></i>
+                    </a>
+                </div>
+            </div>
+                    <!-- required for floating -->
+                  <!-- Nav tabs -->
+                  <ul class="nav nav-tabs tabs-left">
+                    <li class="active"><a href="#portfolio" data-toggle="tab">Portfolio</a></li>
+                    <li><a href="#about" data-toggle="tab">About</a></li>
+                    <li><a href="#shop" data-toggle="tab">Shop</a></li>
+                    <li><a href="#contact" data-toggle="tab">Contact</a></li>
+                  </ul>
         </div>
-        <div class="info">
-            <span class="title">
-                <%=@user.full_name%>
-            </span><br>
-            <span class="info">
-                <%=@user.paragraph_info%>
-            </span><br>
-            <span class="desc">
-                <%=@user.about_me%>
-            </span>
+
+        <div class="col-xs-9">
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="tab-pane active" id="portfolio"><%=render partial: "photos/gallery"%></div>
+            <div class="tab-pane" id="about">About</div>
+            <div class="tab-pane" id="shop">Shop</div>
+            <div class="tab-pane" id="contact">Contact</div>
+          </div>
         </div>
-        <div class="bottom">
-            <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/" target="_blank">
-                <i class="fa fa-twitter"></i>
-            </a>
-            <a class="btn btn-danger btn-sm" rel="publisher" href="https://plus.google.com/" target="_blank">
-                <i class="fa fa-google-plus"></i>
-            </a>
-            <a class="btn btn-primary btn-sm" rel="publisher" href="https://facebook.com/" target="_blank">
-                <i class="fa fa-facebook"></i>
-            </a>
-            <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/" target="_blank">
-                <i class="fa fa-behance"></i>
-            </a>
-        </div>
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#">Portfolio</a></li>
-            <li><a href="#">Menu 1</a></li>
-            <li><a href="#">Menu 2</a></li>
-            <li><a href="#">Menu 3</a></li>
-        </ul>
+
     </div>
+
+</div>

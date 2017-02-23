@@ -241,6 +241,7 @@ DEPENDENCIES
   pg
   puma (~> 3.0)
   rails (~> 5.0.1)
+  rb-fsevent (<= 0.9.4)
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)
