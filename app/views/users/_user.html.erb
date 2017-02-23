@@ -1,78 +1,63 @@
 
-<!-- test -->
-    <div class="card hovercard">
-        <%if @user.photos.any?%>
-        <%bg = @user.random_picked_photo.image.url%>
-        <%else%>
-        <%bg = 'http://lorempixel.com/850/280/nature/4/'%>
-        <%end%>
-        <div class="cardheader" style="background: url(<%=bg%>);background-size:cover;height:135px;"></div>
-        <div class="avatar">
-            <%=image_tag @user.avatar.url(:medium)%>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-3"> 
+            <div class="card hovercard">
+                <%if @user.photos.any?%>
+                <%bg = @user.random_picked_photo.image.url%>
+                <%else%>
+                <%bg = 'http://lorempixel.com/850/280/nature/4/'%>
+                <%end%>
+                <div class="cardheader" style="background: url(<%=bg%>);background-size:cover;height:135px;"></div>
+                <div class="avatar">
+                    <%=image_tag @user.avatar.url(:medium)%>
+                </div>
+                <div class="info">
+                    <span class="title">
+                        <%=@user.full_name%>
+                    </span><br>
+                    <span class="info">
+                        <%=@user.paragraph_info%>
+                    </span><br>
+                    <span class="desc">
+                        <%=@user.about_me%>
+                    </span>
+                </div>
+                <div class="bottom">
+                    <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/" target="_blank">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a class="btn btn-danger btn-sm" rel="publisher" href="https://plus.google.com/" target="_blank">
+                        <i class="fa fa-google-plus"></i>
+                    </a>
+                    <a class="btn btn-primary btn-sm" rel="publisher" href="https://facebook.com/" target="_blank">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/" target="_blank">
+                        <i class="fa fa-behance"></i>
+                    </a>
+                </div>
+            </div>
+                    <!-- required for floating -->
+                  <!-- Nav tabs -->
+                  <ul class="nav nav-tabs tabs-left">
+                    <li class="active"><a href="#portfolio" data-toggle="tab">Portfolio</a></li>
+                    <li><a href="#about" data-toggle="tab">About</a></li>
+                    <li><a href="#shop" data-toggle="tab">Shop</a></li>
+                    <li><a href="#contact" data-toggle="tab">Contact</a></li>
+                  </ul>
         </div>
-        <div class="info">
-            <span class="title">
-                <%=@user.full_name%>
-            </span><br>
-            <span class="info">
-                <%=@user.paragraph_info%>
-            </span><br>
-            <span class="desc">
-                <%=@user.about_me%>
-            </span>
+
+        <div class="col-xs-9">
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="tab-pane active" id="portfolio"><%=render partial: "photos/gallery"%></div>
+            <div class="tab-pane" id="about">About</div>
+            <div class="tab-pane" id="shop">Shop</div>
+            <div class="tab-pane" id="contact">Contact</div>
+          </div>
         </div>
-        <div class="bottom">
-            <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/" target="_blank">
-                <i class="fa fa-twitter"></i>
-            </a>
-            <a class="btn btn-danger btn-sm" rel="publisher" href="https://plus.google.com/" target="_blank">
-                <i class="fa fa-google-plus"></i>
-            </a>
-            <a class="btn btn-primary btn-sm" rel="publisher" href="https://facebook.com/" target="_blank">
-                <i class="fa fa-facebook"></i>
-            </a>
-            <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/" target="_blank">
-                <i class="fa fa-behance"></i>
-            </a>
-        </div>
-    </div>
-    <!-- <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
-        <div class="btn-group" role="group">
-            <button type="button" id="stars" class="btn btn-primary" href="#tab1" data-toggle="tab">
-                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                <div class="hidden-xs">Stars</div>
-            </button>
-        </div>
-        <div class="btn-group" role="group">
-            <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab">
-                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                <div class="hidden-xs">Favorites</div>
-            </button>
-        </div>
-        <div class="btn-group" role="group">
-            <button type="button" id="following" class="btn btn-default" href="#tab3" data-toggle="tab">
-                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                <div class="hidden-xs">Following</div>
-            </button>
-        </div>
+
     </div>
 
-    <div class="well">
-        <div class="tab-content">
-            <div class="tab-pane fade in active" id="tab1">
-                <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                    It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-                    desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</h3>
-            </div>
-            <div class="tab-pane fade in" id="tab2">
-                <h3>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,
-                    looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de
-                    Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a
-                    line in section 1.10.32.</h3>
-            </div>
-            <div class="tab-pane fade in" id="tab3">
-                <h3>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English
-                    versions from the 1914 translation by H. Rackham.</h3>
-            </div>
-        </div>
-    </div> -->
+</div>
