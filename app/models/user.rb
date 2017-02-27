@@ -80,6 +80,6 @@ class User < ApplicationRecord
 
     def set_username
         self.username = "#{email.split('@')[0]}#{SecureRandom.urlsafe_base64(5)}".downcase
-        self.slug = self.username.downcase
+        self.slug = self.username.downcase.gsub(".","-")
     end
 end
