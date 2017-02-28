@@ -7,70 +7,40 @@
     <div class="row">
         <div class="col-md-12 profile">
               <div class="" style="background: url(<%=bg%>);background-size:cover;height:200px;">
-
               </div>
-
               <div class="block">
                     <div class="avatar"><%=image_tag @user.avatar.url(:medium), class: "img-circle", size: "120x120"%></div>
-                    <!-- <div class=""><h3 ><%=@user.full_name%></h3></div> -->
                      <div style="position:relative;">
-                       <div style="position:absolute;bottom:0;left:0;padding-left:160px; padding-bottom:20px;">
-                         <h3><%=@user.full_name%></h3>
-
-                       </siv>
+                       <div style="position:absolute;bottom:0;left:0;padding-left:160px; padding-bottom:10px; height: 60px;">
+                         <h3 style="margin-bottom:0px; margin-top:0px;"><%=@user.full_name%></h3>
+                         <%if @user.address?%>
+                             <p> <i class="fa fa-map-marker" aria-hidden="true"></i> <%=@user.address%></p>
+                         <%end%>
+                       </div>
                      </div>
               </div>
               <div class="block" style="margin-top: 10px;">
                   <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab1" data-toggle="tab">Portfolio</a></li>
-                        <li><a href="#tab2" data-toggle="tab">ID</a></li>
+                        <li><a href="#tab2" data-toggle="tab">About</a></li>
                         <li><a href="#tab3" data-toggle="tab">References</a></li>
                         <li><a href="#tab4" data-toggle="tab">Inspiring</a></li>
+                        <li><a href="#tab5" data-toggle="tab">Inspired by</a></li>
+                        <li><a href="#tab6" data-toggle="tab">Website</a></li>
                     </ul>
-
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="tab1">
-
                           <%=render partial: "photos/gallery"%>
                         </div>
-                        <div class="tab-pane fade" id="tab2">Default 2</div>
-                        <div class="tab-pane fade" id="tab3">Default 3</div>
-                        <div class="tab-pane fade" id="tab4">Default 4</div>
+                        <div class="tab-pane fade" id="tab2">
+                          <h3>About Content</h3>
+                        </div>
+                        <div class="tab-pane fade" id="tab3"><h3>References</h3></div>
+                        <div class="tab-pane fade" id="tab4"><h3>Inspiring</h3></div>
+                        <div class="tab-pane fade" id="tab5"><h3>Inspired by</h3></div>
+                        <div class="tab-pane fade" id="tab6"><h3>Website</h3></div>
                     </div>
+
               </div>
-            <!-- <div class="card hovercard">
-
-                <div class="cardheader" style="background: url(<%=bg%>);background-size:cover;height:200px;"></div>
-                <div class="avatar">
-                    <%=image_tag @user.avatar.url(:medium), align: "left"%>
-                </div>
-
-                <div class="bottom pull-left">
-                    <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/" target="_blank">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                    <a class="btn btn-danger btn-sm" rel="publisher" href="https://plus.google.com/" target="_blank">
-                        <i class="fa fa-google-plus"></i>
-                    </a>
-                    <a class="btn btn-primary btn-sm" rel="publisher" href="https://facebook.com/" target="_blank">
-                        <i class="fa fa-facebook"></i>
-                    </a>
-                    <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/" target="_blank">
-                        <i class="fa fa-behance"></i>
-                    </a>
-                </div>
-                <div class="info pull-left">
-                    <span class="title">
-                        <%=@user.full_name%>
-                    </span><br>
-                    <span class="info">
-                        <%=@user.paragraph_info%>
-                    </span><br>
-                    <span class="desc">
-                        <%=@user.about_me%>
-                    </span>
-                </div>
-
-            </div> -->
         </div>
     </div>

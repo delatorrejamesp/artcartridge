@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   before_action :authenticate_user!, only: [ :dashboard ]
 
   def index
-    @photos = Photo.all
+    @photos = Photo.all.order(created_at: :desc)
   end
 
   def dashboard

@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   end
 
   def portfolio
-    @photos = @user.photos
+    @photos = @user.photos.order(created_at: :desc).limit(5)
     render "photos/index"
   end
 
