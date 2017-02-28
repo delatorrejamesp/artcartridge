@@ -24,7 +24,6 @@ class UsersController < ApplicationController
       end
       user[:address] = user_params[:address]
       user[:about_me] = user_params[:about_me]
-      user[:about_me] = user_params[:about_me]
       user[:avatar] = user_params[:avatar]
       @user.update(user)
       if !@user.errors.any?

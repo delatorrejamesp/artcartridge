@@ -1,15 +1,15 @@
 <div id="gallery">
   <%@photos.each do |photo|%>
-    <div >
+    <div>
         <%=link_to photo_url(photo), remote: true, data: { target: "preview" }  do%>
         <%=image_tag photo.image.url(:medium) %>
         <div class="caption">
             <h4><%=photo.title%></h4>
             <%=link_to user_url(photo.user), method: :get do%>
-            <%=image_tag photo.user.avatar.url(:thumb), class: "img-circle", size: "20x20"%>
-            <%="@#{photo.user.username}"%>
-            <p><%=photo.description%><p/>
+                <%=image_tag photo.user.avatar.url(:thumb), class: "img-circle", size: "20x20"%>
+                <%="@#{photo.user.username}"%>
             <%end%>
+            <p><%=photo.description%><p/>
         </div>
         <%end%>
   </div>

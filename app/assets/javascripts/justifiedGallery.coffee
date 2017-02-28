@@ -10,3 +10,4 @@ $(document).on 'turbolinks:load', ->
       return
     ).on 'ajax:success', (data, status, xhr) ->
       $('#myModal').modal('show')
+      $('[data-toggle="popover"]').popover()

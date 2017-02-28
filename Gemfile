@@ -73,3 +73,5 @@ gem 'cancan'
 gem 'friendly_id'
 
 gem 'country_select'
+gem 'social-share-button'
+gem 'shareable'
