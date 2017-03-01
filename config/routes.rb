@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
 
 
+  get 'modals/photos'
+
   get 'pages/blog'
 
   resources :categories

@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170220065636) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -24,10 +27,10 @@ ActiveRecord::Schema.define(version: 20170220065636) do
     t.string   "sluggable_type", limit: 50
     t.string   "scope"
     t.datetime "created_at"
-    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
-    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
-    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
-    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
   end
 
   create_table "photos", force: :cascade do |t|
@@ -40,7 +43,7 @@ ActiveRecord::Schema.define(version: 20170220065636) do
     t.integer  "user_id"
     t.text     "description"
     t.string   "title"
-    t.index ["user_id"], name: "index_photos_on_user_id"
+    t.index ["user_id"], name: "index_photos_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -65,12 +68,12 @@ ActiveRecord::Schema.define(version: 20170220065636) do
     t.string   "last_name"
     t.text     "address"
     t.text     "about_me"
-    t.date     "birthday",               default: '1999-02-16'
+    t.date     "birthday",               default: '1999-03-01'
     t.string   "slug"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["slug"], name: "index_users_on_slug"
-    t.index ["username"], name: "index_users_on_username"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["slug"], name: "index_users_on_slug", using: :btree
+    t.index ["username"], name: "index_users_on_username", using: :btree
   end
 
 end

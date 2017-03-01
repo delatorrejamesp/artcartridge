@@ -10,6 +10,7 @@ class PhotosController < ApplicationController
     photo = Hash.new
     photo[:user_id] = current_user.id if current_user
     @photo = Photo.new(photo)
+
   end
 
   def show
@@ -18,8 +19,13 @@ class PhotosController < ApplicationController
 
   def create
       @photo = Photo.new(photo_params)
+      @photo.user_id = current_user.id
       @photo.save
-      redirect_to photos_url
+      if @photo.save!
+          respond_to do |format|
+            format.json{ render :json => @photo }
+          end
+      end
   end
 
   private
@@ -29,7 +35,7 @@ class PhotosController < ApplicationController
   end
 
   def photo_params
-    params.require(:photo).permit(:user_id,:image, :title, :description)
+    params.require(:photo).permit( :image, :title, :description)
 
   end
 
