@@ -1,3 +1,3 @@
-$(".modal-body").html("<%=escape_javascript(render(:partial => 'photos/photo')).html_safe %>");
+$(".modal-body").html("<%=escape_javascript(render(:partial => 'photos/photo_modal')).html_safe %>");
 $("[data-target~=photo][data-target~=user]").html("<img class='img-circle' src='<%=@photo.user.avatar.url(:thumb)%>' width='30' height='30'>");
 $("[data-target~=photo][data-target~=user][data-target~=name]").html("<%=@photo.user.full_name%>");

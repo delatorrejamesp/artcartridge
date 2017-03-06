@@ -32,8 +32,8 @@
   </div>
   <div class="form-group">
       <%=f.label :address, class: "col-sm-3"%>
-      <div class="col-sm-12">
-          <%= f.country_select :address, include_blank: 'Select a country' , rows: 3%>
+      <div class="col-sm-9">
+          <%= f.country_select :address,  { include_blank: 'Select a country' }, { class: 'form-control' } %>
       </div>
   </div>
   <div class="form-group">

@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20170220065636) do
     t.string   "last_name"
     t.text     "address"
     t.text     "about_me"
-    t.date     "birthday",               default: '1999-03-01'
+    t.date     "birthday",               default: '1999-03-05'
     t.string   "slug"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

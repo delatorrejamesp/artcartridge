@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/magoosh/jquery-infinite-pages.git
+  revision: 75097180e477f5430d39c6bf203068159a3136e4
+  ref: master
+  specs:
+    jquery-infinite-pages (0.2.0)
+      coffee-script
+      jquery-rails
+      railties (>= 3.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -253,6 +263,7 @@ DEPENDENCIES
   dropzonejs-rails
   friendly_id
   jbuilder (~> 2.5)
+  jquery-infinite-pages!
   jquery-rails
   kaminari
   listen (~> 3.0.5)

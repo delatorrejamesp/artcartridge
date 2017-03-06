@@ -1,53 +1,30 @@
-<div class="row">
-    <div class="col-md-10 col-md-offset-1">
-        <h3><%=@photo.title%></h3>
-        <p>
-            <%=image_tag @photo.user.avatar.url(:medium), size: "25x25", class: "img-circle" %>
-            <%=link_to @photo.user.full_name, user_url(@photo.user) %>
-            on
-            <%=@photo.created_at.strftime("%B %-d, %Y")%>
-        </p>
-        <div class="clearfix visible-xs-block"></div>
-        <div class="col-md-6" data-target="expandable" data-url="<%=@photo.image.url%>", data-url-med="<%=@photo.image.url(:medium)%>" >
-            <%=image_tag @photo.image.url(:medium), style: "width:100%; hieght:100%;"%>
-            <p>
-                <%=link_to "#Neat","#"%>
-                <%=link_to "#Comedy","#"%>
-                <%=link_to "#Dark","#"%>
-                <%=link_to "#Nature","#"%>
-                <%=link_to "#Anime","#"%>
-            </p>
-            <p><%=@photo.description%></p>
-        </div>
-        <div class="col-md-6">
-           <%if user_signed_in?%>
-
-                <div class="btn-toolbar">
-                    <div class="btn-group">
-                        <a href="#" class="btn btn-inverse disabled">
-                            <i class="glyphicon glyphicon-thumbs-up"></i>
-                        </a>
-                        <a href="#" class="btn btn-inverse disabled">
-                            <i class="glyphicon glyphicon-heart"></i>
-                        </a>
-                        <a href="javascripts:void(0)" class="btn btn-inverse" data-toggle="popover" data-placement="top" data-html="true" data-content='<%=render partial: "layouts/social_share_buttons"%>'>
-                            <i class="glyphicon glyphicon-share-alt"></i>
-                        </a>
-                    </div>
-                    <div class="btn-group">
-                        <a href="#" class="btn btn-inverse disabled">
-                            <i class="glyphicon glyphicon-trash"></i>
-                        </a>
-                    </div>
-                </div>
-                <textarea class="form-control" id="message-text" placeholder="Comment here..." style="margin-top:5px;margin-bottom:5px;"></textarea>
-                <button type="button" class="btn btn-primary btn-xs" style="float:right">Add Comment</button>
+<!-- <div class="photo grid-item">
+    <%=link_to photo_url(photo), remote: true, data: { target: "preview" }  do%>
+        <%=image_tag photo.image.url(:medium) %>
+        <div class="caption">
+            <h4><%=photo.title%></h4>
+            <%=link_to user_url(photo.user), method: :get do%>
+            <%=image_tag photo.user.avatar.url(:thumb), class: "img-circle", size: "20x20"%>
+            <%="@#{photo.user.username}"%>
             <%end%>
-            <br>
-            <div>
-                <p>comment sections</p>
-            </div>
+            <p><%=photo.description%><p/>
         </div>
+    <%end%>
+</div> -->
+<div class="photo item">
+    <%=link_to photo_url(photo), remote: true, data: { target: "preview" }  do%>
+    <%=image_tag photo.image.url(:medium), style: "width: 100%;" %>
+    <%end%>
+    <div class="caption">
+        <%if !photo.title.blank?%>
+        <h4><%=photo.title%></h4>
+        <%end%>
+        <%=link_to user_url(photo.user), method: :get do%>
+        <%=image_tag photo.user.avatar.url(:thumb), class: "img-circle", size: "20x20"%>
+        <%="@#{photo.user.username}"%>
+        <%end%>
+        <%if !photo.description.blank?%>
+        <p><%=photo.description%><p/>
+        <%end%>
     </div>
-
 </div>

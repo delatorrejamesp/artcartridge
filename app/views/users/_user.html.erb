@@ -14,7 +14,11 @@
                        <div style="position:absolute;bottom:0;left:0;padding-left:160px; padding-bottom:10px; height: 60px;">
                          <h3 style="margin-bottom:0px; margin-top:0px;"><%=@user.full_name%></h3>
                          <%if @user.address?%>
-                             <p> <i class="fa fa-map-marker" aria-hidden="true"></i> <%=@user.address%></p>
+                             <p>
+                                 <i class="fa fa-map-marker" aria-hidden="true"></i> <%=@user.address%>
+                                 <i class="fa fa-globe" aria-hidden="true"></i> wwww.arcartridge.com<br>
+                                 <i class="fa fa-envelope" aria-hidden="true"> <%=@user.email%></i>
+                             </p>
                          <%end%>
                        </div>
                      </div>

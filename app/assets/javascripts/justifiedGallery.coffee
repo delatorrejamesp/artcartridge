@@ -1,7 +1,7 @@
 $(document).on 'turbolinks:load', ->
-  $("#gallery").justifiedGallery(
-    rowHeight: 250
-  )
+  # $("#gallery").justifiedGallery(
+  #   rowHeight: 250
+  # )
   $('[data-target~=preview]').on('ajax:beforeSend', (xhr, settings) ->
       console.log("before ajax")
       return

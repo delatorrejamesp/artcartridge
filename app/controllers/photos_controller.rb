@@ -3,7 +3,7 @@ class PhotosController < ApplicationController
   before_action :set_photo, only: [ :show ]
 
   def index
-    @photos = Photo.all.order(created_at: :desc)
+    @photos = Photo.all.order(created_at: :desc).page(params[:page])
   end
 
   def new
