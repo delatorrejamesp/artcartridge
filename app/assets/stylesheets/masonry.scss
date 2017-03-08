@@ -1,5 +1,5 @@
 .wrapper {
-    width: 95%;
+    // width: 95%;
     margin: 3em auto;
 }
 
@@ -15,8 +15,8 @@
 .item {
     display: inline-block;
     background: #fff;
-    padding: 1em;
-    margin: 0 0 1.5em;
+    padding: 0.5em;
+    margin: 0 0 0.5em;
     width: 100%;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -42,23 +42,23 @@
 
 @media only screen and (min-width: 900px) {
     .masonry {
-        -moz-column-count: 4;
-        -webkit-column-count: 4;
-        column-count: 4;
-    }
-}
-
-@media only screen and (min-width: 1100px) {
-    .masonry {
         -moz-column-count: 5;
         -webkit-column-count: 5;
         column-count: 5;
     }
 }
 
+// @media only screen and (min-width: 1100px) {
+//     .masonry {
+//         -moz-column-count: 5;
+//         -webkit-column-count: 5;
+//         column-count: 5;
+//     }
+// }
+
 @media only screen and (min-width: 1280px) {
     .wrapper {
-        width: 1260px;
+        width: 1170px;
     }
 }
 .load-more{
@@ -68,5 +68,5 @@
     padding: 1.25em;
     text-align: center;
     color: #CAD0DC;
-    border: 3px solid #D1D8DE;
+    border: 3px solid #D1D8DE
 }

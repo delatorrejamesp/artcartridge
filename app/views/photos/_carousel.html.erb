@@ -3,12 +3,12 @@
         <div class="carousel fdi-Carousel slide" id="eventCarousel" data-interval="0">
             <div class="carousel-inner onebyone-carosel">
                 <%@photos.each_with_index do |photo, index|%>
-                <div class="item <%=" active" if index == 0%>">
-                    <div class="col-md-4">
-                        <a href="#"><%=image_tag photo.image.url(:medium), class: "imagecarousel"%></a>
-                        <div class="text-center"><%=photo.description%></div>
+                    <div class="item <%=" active" if index == 0%>">
+                        <div class="col-md-4">
+                            <a href="#"><%=image_tag photo.image.url(:medium), class: "imagecarousel"%></a>
+                            <div class="text-center"><%=photo.description%></div>
+                        </div>
                     </div>
-                </div>
                 <%end%>
             </div>
             <a class="left carousel-control" href="#eventCarousel" data-slide="prev"></a>

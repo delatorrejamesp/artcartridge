@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @photos = @user.photos
+    @photos = @user.photos.page(params[:page])
   end
 
   def update
