@@ -28,12 +28,16 @@ Rails.application.routes.draw do
     resources :users do
       member do
         get :portfolio
+        get :photos
       end
     end
   end
   resources :photos, only: [:index, :show]
-
-  match ":id/(profile)" => "users#show",  via: [ :get ]
+  match ":id/" => "users#show_pro",  via: [ :get ], as: :professional_page
+  match ":id/portfolio" => "users#portfolio",  via: [ :get ], as: :professional_page_portfolio
+  match ":id/contact" => "pages#contact",  via: [ :get ], as: :professional_page_contact
+  match ":id/shop" => "pages#shop",  via: [ :get ], as: :professional_page_shop
+  match ":id/profile" => "users#show",  via: [ :get ], as: :community_page
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [ :edit, :update, :destroy, :show, :portfolio ]
+  before_action :set_user, only: [ :edit, :update, :destroy, :show, :portfolio, :photos, :show_pro ]
 
   def profile
 
@@ -11,7 +11,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @photos = @user.photos.page(params[:page])
+    @photos = @user.photos.order(created_at: :desc).page(params[:page])
+  end
+
+  def show_pro
+
   end
 
   def update
@@ -32,8 +36,12 @@ class UsersController < ApplicationController
   end
 
   def portfolio
-    @photos = @user.photos.order(created_at: :desc).limit(5)
+    @photos = @user.photos.order(created_at: :desc).page(params[:page])
     render "photos/index"
+  end
+
+  def contact
+    render "pages/contact"
   end
 
   private

@@ -1,4 +1,6 @@
-<li><%=link_to "Show Profile", user_path(current_user)%></li>
+<li><%=link_to "Community Page", community_page_url(current_user)%></li>
+<li><%=link_to "Professional Page", professional_page_url(current_user)%></li>
+<li class="divider"></li>
 <li><%=link_to "Edit Profile", user_profile_path(current_user)%></li>
 <li><a href="#">Change Password</a></li>
 <li class="divider"></li>
