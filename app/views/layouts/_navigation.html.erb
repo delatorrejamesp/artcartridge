@@ -65,16 +65,18 @@
                 <%end%>
 
             </ul>
-            <%if current_page?(community_page_url(current_user.slug))%>
-                <form class="navbar-form navbar-right search-form" role="search">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search"/>
-                        <span class="input-group-addon" id="basic-addon1">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </span>
-                    </div>
-                </form>
-            <%end%>
+            <%if user_signed_in?%>
+                <%if current_page?(community_page_url(current_user.slug))%>
+                    <form class="navbar-form navbar-right search-form" role="search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search"/>
+                            <span class="input-group-addon" id="basic-addon1">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </span>
+                        </div>
+                    </form>
+                <%end%>
+          <%end%>
         </div>
     </div>
 </nav>

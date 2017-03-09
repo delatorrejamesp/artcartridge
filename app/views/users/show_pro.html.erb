@@ -4,6 +4,12 @@
          <div class="col-md-4">
             <ul class="list-unstyled text-center">
                 <li><%=image_tag @user.avatar.url(:medium)%></li>
+                <li>
+                    <br>
+                    <i class="fa fa-map-marker" aria-hidden="true"></i> <%=@user.address%>
+                    <i class="fa fa-globe" aria-hidden="true"></i> wwww.arcartridge.com<br>
+                    <i class="fa fa-envelope" aria-hidden="true"> <%=@user.email%></i>
+                </li>
                 <li class="social-icons">
                   <i class="fa fa-facebook"></i>
                   <i class="fa fa-twitter"></i>

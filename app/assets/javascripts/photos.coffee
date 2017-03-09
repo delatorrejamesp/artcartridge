@@ -20,7 +20,7 @@ $ ->
     debug: true
     navSelector: "a[rel=next]"
     loading: ->
-      $(this).text('Loading next page...')
+      $(".pagination").html('Loading next page...')
     error: ->
       $(this).button('There was an error, please try again')
     success: ->
