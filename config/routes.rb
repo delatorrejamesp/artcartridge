@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
 
+  #match ":id/" => "users#show_pro",  via: [ :get ], as: :professional_page, constrains: { subdomain: /./ }
 
+  constraints(:subdomain => /.+/) do
+    root :to => 'users#show_pro', as: :professional_page
+  end
 
   get 'modals/photos'
 
@@ -33,7 +37,7 @@ Rails.application.routes.draw do
     end
   end
   resources :photos, only: [:index, :show]
-  match ":id/" => "users#show_pro",  via: [ :get ], as: :professional_page
+
   match ":id/portfolio" => "users#portfolio",  via: [ :get ], as: :professional_page_portfolio
   match ":id/contact" => "pages#contact",  via: [ :get ], as: :professional_page_contact
   match ":id/shop" => "pages#shop",  via: [ :get ], as: :professional_page_shop

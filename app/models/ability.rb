@@ -36,5 +36,9 @@ class Ability
       can :read, :all
     end
 
+    can :donate, User, :id => user.id
+
+    end
+
   end
 end

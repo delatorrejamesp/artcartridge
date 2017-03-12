@@ -11,7 +11,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @photos = @user.photos.order(created_at: :desc).page(params[:page])
+    #@photos = @user.photos.order(created_at: :desc).page(params[:page])
+    @photos = Photo.where(user_id: @user.id).order(created_at: :desc).page(params[:page])
   end
 
   def show_pro
@@ -36,7 +37,8 @@ class UsersController < ApplicationController
   end
 
   def portfolio
-    @photos = @user.photos.order(created_at: :desc).page(params[:page])
+    #@photos = @user.photos.order(created_at: :desc).page(params[:page])
+    @photos = Photo.where(user_id: @user.id).order(created_at: :desc).page(params[:page])
     render "photos/index"
   end
 
@@ -51,7 +53,11 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user=User.friendly.find(params[:id])
+    if !request.subdomain.to_s.blank?
+      @user=User.friendly.find(request.subdomain)
+    else
+      @user=User.friendly.find(params[:id])
+    end
   end
 
 

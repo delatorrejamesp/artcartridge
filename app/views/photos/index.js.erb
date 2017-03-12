@@ -1,4 +1,4 @@
 <%if path_to_next_page @photos%>
 $("#gallery").append("<%=j render @photos%>")
-$(".pagination").html('<%= link_to_next_page(@photos, "Load More", :remote => true, class: "load-more") %>')
+$(".pagination > a").attr("href", "<%=j path_to_next_page @photos%>")
 <%end%>

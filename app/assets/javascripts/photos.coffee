@@ -14,8 +14,8 @@ $(document).on 'turbolinks:load', ->
       $(this).attr("class", "col-md-6")
       $(this).find("img").attr("src",url_med )
 
-$ ->
-  # Configure infinite table
+# $(document).on 'turbolinks:load', ->
+#   # Configure infinite table
   $('#gallery').infinitePages
     debug: true
     navSelector: "a[rel=next]"
@@ -23,4 +23,3 @@ $ ->
       $(".pagination").html('Loading next page...')
     error: ->
       $(this).button('There was an error, please try again')
-    success: ->
