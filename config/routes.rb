@@ -6,12 +6,17 @@ Rails.application.routes.draw do
       root to: 'home#index'
   end
 
-  constraints(:subdomain => /.+/) do
-    match "/" => 'profiles#pro', via: [ :get ], as: :professional_page
-    match "/profile" => "users#show",  via: [ :get ], as: :community_page
+  authenticate :user do
+    constraints(:subdomain => /.+/) do
+      match "/" => 'profiles#pro', via: [ :get ], as: :professional_page
+      match "/profile" => "users#show",  via: [ :get ], as: :community_page
+      match "/portfolio" => "users#portfolio",  via: [ :get ], as: :professional_page_portfolio
+      match "/contact" => "pages#contact",  via: [ :get ], as: :professional_page_contact
+      match "/shop" => "pages#shop",  via: [ :get ], as: :professional_page_shop
+    end
   end
 
-  root to: 'home#index'
+  root to: 'home#index', as: :unauthenticated_root
 
   get 'modals/photos'
 
@@ -44,9 +49,9 @@ Rails.application.routes.draw do
   end
   resources :photos, only: [:index, :show]
 
-  match ":id/portfolio" => "users#portfolio",  via: [ :get ], as: :professional_page_portfolio
-  match ":id/contact" => "pages#contact",  via: [ :get ], as: :professional_page_contact
-  match ":id/shop" => "pages#shop",  via: [ :get ], as: :professional_page_shop
+  # match ":id/portfolio" => "users#portfolio",  via: [ :get ], as: :professional_page_portfolio
+  # match ":id/contact" => "pages#contact",  via: [ :get ], as: :professional_page_contact
+  # match ":id/shop" => "pages#shop",  via: [ :get ], as: :professional_page_shop
   #match ":id/profile" => "users#show",  via: [ :get ], as: :community_page
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
