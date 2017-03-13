@@ -54,7 +54,7 @@ class UsersController < ApplicationController
 
   def set_user
     if !request.subdomain.to_s.blank?
-      subdomain=request.subdomain.to_s.gsub("wwww", "")
+      subdomain=request.subdomain.to_s.gsub("www.", "")
       logger.info "subdomain : #{subdomain}"
       @user=User.friendly.find(subdomain)
     else

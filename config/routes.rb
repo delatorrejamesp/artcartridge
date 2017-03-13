@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
 
   #match ":id/" => "users#show_pro",  via: [ :get ], as: :professional_page, constrains: { subdomain: /./ }
+  constraints(:subdomain => /www/) do
+      root to: 'home#index'
+  end
 
   constraints(:subdomain => /.+/) do
     root :to => 'users#show_pro', as: :professional_page
