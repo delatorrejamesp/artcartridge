@@ -7,8 +7,11 @@ Rails.application.routes.draw do
   end
 
   constraints(:subdomain => /.+/) do
-    root :to => 'users#show_pro', as: :professional_page
+    root :to => 'profiles#pro', as: :professional_page
+    match "/profile" => "users#show",  via: [ :get ], as: :community_page
   end
+
+  root to: 'home#index'
 
   get 'modals/photos'
 
@@ -26,7 +29,7 @@ Rails.application.routes.draw do
   authenticated :user do
     root to: 'photos#index', as: :authenticated_root
   end
-  root to: 'home#index'
+
 
   authenticate :user do
     resources :photos, only: [:new, :create, :edit, :update, :destroy]
@@ -44,7 +47,7 @@ Rails.application.routes.draw do
   match ":id/portfolio" => "users#portfolio",  via: [ :get ], as: :professional_page_portfolio
   match ":id/contact" => "pages#contact",  via: [ :get ], as: :professional_page_contact
   match ":id/shop" => "pages#shop",  via: [ :get ], as: :professional_page_shop
-  match ":id/profile" => "users#show",  via: [ :get ], as: :community_page
+  #match ":id/profile" => "users#show",  via: [ :get ], as: :community_page
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
