@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   constraints(:subdomain => /.+/) do
-    root :to => 'profiles#pro', as: :professional_page
+    match "/" => 'profiles#pro', via: [ :get ], as: :professional_page
     match "/profile" => "users#show",  via: [ :get ], as: :community_page
   end
 
