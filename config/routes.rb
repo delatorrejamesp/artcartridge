@@ -16,6 +16,11 @@ Rails.application.routes.draw do
     end
   end
 
+  # match "/profile" => "users#show",  via: [ :get ]
+  # match "/portfolio" => "users#portfolio",  via: [ :get ], as: :professional_page_portfolio
+  # match "/contact" => "pages#contact",  via: [ :get ], as: :professional_page_contact
+  # match "/shop" => "pages#shop",  via: [ :get ], as: :professional_page_shop
+
   root to: 'home#index', as: :unauthenticated_root
 
   get 'modals/photos'

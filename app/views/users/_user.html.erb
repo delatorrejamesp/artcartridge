@@ -16,7 +16,8 @@
                          <%if @user.address?%>
                              <p>
                                  <i class="fa fa-map-marker" aria-hidden="true"></i> <%=@user.address%>
-                                 <i class="fa fa-globe" aria-hidden="true"></i> wwww.arcartridge.com<br>
+                                 <i class="fa fa-globe" aria-hidden="true"></i>
+                                 <%=link_to "#{professional_page_url(@user, subdomain: "#{@user.slug}")}",  professional_page_url(@user, subdomain: "#{@user.slug}") %><br>
                                  <i class="fa fa-envelope" aria-hidden="true"> <%=@user.email%></i>
                              </p>
                          <%end%>
