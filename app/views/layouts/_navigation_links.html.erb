@@ -4,4 +4,4 @@
 <li><%=link_to "Edit Profile", user_profile_path(current_user)%></li>
 <li><a href="#">Change Password</a></li>
 <li class="divider"></li>
-<li><%=link_to "Logout", destroy_user_session_url(subdomain: false), method: :delete %></li>
+<li><%=link_to "Logout", destroy_user_session_path(subdomain: false), method: :delete %></li>
