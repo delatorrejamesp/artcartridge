@@ -20,8 +20,26 @@
                <%= render 'layouts/modal'%>
             </div>
         </main>
-        <footer class="footer">
-            <%= render 'layouts/footer' %>
-        </footer>
+        <%if user_signed_in?%>
+          <%if current_page?(professional_page_url(subdomain: "#{current_user.slug}"))%>
+                <footer>
+                    <div class="container">
+                        <hr>
+                        <div class="pull-right">
+                           [ LOGO HERE ]
+                        </div>
+                    </div>
+                    <br>
+                </footer>
+          <%else%>
+            <footer class="footer">
+                <%= render 'layouts/footer' %>
+            </footer>
+          <%end%>
+        <%else%>
+          <footer class="footer">
+              <%= render 'layouts/footer' %>
+          </footer>
+        <%end%>
     </body>
 </html>
