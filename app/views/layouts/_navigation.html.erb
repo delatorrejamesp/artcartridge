@@ -26,7 +26,7 @@
                        <%=link_to  authenticated_root_url(subdomain: false), class: "navbar-brand" do %>
                           <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
                         <%end%>
-                        <%=link_to "@#{current_user.username}", community_page_url(current_user, subdomain: "#{current_user.slug}"), class: "navbar-brand"%>
+                        <%=link_to "@#{current_user.username}", community_page_url(subdomain: "#{current_user.slug}"), class: "navbar-brand"%>
                  <%end%>
              <%end%>
         </div>
@@ -45,7 +45,7 @@
                     <%if  current_page?(professional_page_url(subdomain: "#{current_user.slug}")) ||
                       current_page?(professional_page_portfolio_url(subdomain: "#{current_user.slug}")) ||
                       current_page?(professional_page_contact_url(subdomain: "#{current_user.slug}")) ||
-                      current_page?(professional_page_shop_url(subdomain: "#{current_user.slug}"))
+                      current_page?(professional_page_shop_url(subdomain: "#{current_user.slug}")) ||
                     %>
                       <li class="active"><%=link_to "Portfolio", professional_page_portfolio_url(subdomain: "#{current_user.slug}")%></li>
                       <!-- <li class="active"><%=link_to "About", about_url%></li> -->
