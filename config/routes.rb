@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   #authenticate :user do
     constraints(:subdomain => /.+/) do
       match "/" => 'profiles#pro', via: [ :get ], as: :professional_page
-      match "/profile" => "users#show",  via: [ :get ], as: :community_page
-      match "/portfolio" => "users#portfolio",  via: [ :get ], as: :professional_page_portfolio
-      match "/contact" => "pages#contact",  via: [ :get ], as: :professional_page_contact
-      match "/shop" => "pages#shop",  via: [ :get ], as: :professional_page_shop
+      match "/profile" => "profiles#com",  via: [ :get ], as: :community_page
+      match "/portfolio" => "profiles#portfolio",  via: [ :get ], as: :professional_page_portfolio
+      match "/contact" => "profiles#contact",  via: [ :get ], as: :professional_page_contact
+      match "/shop" => "profiles#shop",  via: [ :get ], as: :professional_page_shop
     end
   #end
 

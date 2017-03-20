@@ -26,7 +26,7 @@
                        <%=link_to  authenticated_root_url(subdomain: false), class: "navbar-brand" do %>
                           <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
                         <%end%>
-                        <%=link_to "@#{current_user.username}", community_page_url(subdomain: "#{current_user.slug}"), class: "navbar-brand"%>
+                        <%=link_to "@#{current_user.username}", professional_page_url(subdomain: "#{current_user.slug}"), class: "navbar-brand"%>
                  <%end%>
              <%end%>
         </div>
@@ -41,30 +41,32 @@
                 <%end%>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+
                 <%if user_signed_in?%>
                     <%if  current_page?(professional_page_url(subdomain: "#{current_user.slug}")) ||
                       current_page?(professional_page_portfolio_url(subdomain: "#{current_user.slug}")) ||
                       current_page?(professional_page_contact_url(subdomain: "#{current_user.slug}")) ||
                       current_page?(professional_page_shop_url(subdomain: "#{current_user.slug}")) ||
-                    %>
+                      current_page?(community_page_url(subdomain: "#{current_user.slug}"))
+                     %>
                       <li class="active"><%=link_to "Portfolio", professional_page_portfolio_url(subdomain: "#{current_user.slug}")%></li>
-                      <!-- <li class="active"><%=link_to "About", about_url%></li> -->
                       <li class="active"><%=link_to "Contact", professional_page_contact_url(subdomain: "#{current_user.slug}")%></li>
                       <li class="active"><%=link_to "Shop", professional_page_shop_url(subdomain: "#{current_user.slug}")%></li>
-                      <!-- <li class="active"><%=link_to "Profile", community_page_url(current_user)%></li> -->
-                    <%else%>
-                      <li class="active"><%=link_to "Upload", new_photo_path, remote: true, data: { target: "uploaded" }%></li>
+                      <li class="active"><%=link_to "Profile", community_page_url(subdomain: "#{current_user.slug}")%></li>
                     <%end%>
-                    <li style="padding: 0px!important;">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding: 10px 0px 10px 0px;">
-                            <%=image_tag current_user.avatar.url(:thumb), class: "img-circle", size: "30x30"%>
-                            <!-- <span class="caret"></span> -->
-                        </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <%=render partial: "layouts/navigation_links"%>
-                        </ul>
-                    </li>
-                    <%else%>
+                    <%if current_page?(community_page_url(subdomain: "#{current_user.slug}"))%>
+                      <li class="active"><%=link_to "Upload", new_photo_path, remote: true, data: { target: "uploaded" }%></li>
+                      <li style="padding: 0px!important;">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding: 10px 0px 10px 0px;">
+                              <%=image_tag current_user.avatar.url(:thumb), class: "img-circle", size: "30x30"%>
+                              <!-- <span class="caret"></span> -->
+                          </a>
+                          <ul class="dropdown-menu" role="menu">
+                              <%=render partial: "layouts/navigation_links"%>
+                          </ul>
+                      </li>
+                    <%end%>
+               <%else%>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login<span class="caret"></span>
                         </a>
@@ -72,7 +74,7 @@
                             <%=render partial: "devise/sessions/form"%>
                         </ul>
                     </li>
-                <%end%>
+              <%end%>
 
             </ul>
             <%if user_signed_in?%>
