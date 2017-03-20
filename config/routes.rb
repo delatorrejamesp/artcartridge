@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       match "/portfolio" => "profiles#portfolio",  via: [ :get ], as: :professional_page_portfolio
       match "/contact" => "profiles#contact",  via: [ :get ], as: :professional_page_contact
       match "/shop" => "profiles#shop",  via: [ :get ], as: :professional_page_shop
+      match "/about" => "profiles#about",  via: [ :get ], as: :professional_page_about
     end
   #end
 

@@ -7,88 +7,70 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <!-- <%if user_signed_in?%>
-              <%if current_page? authenticated_root_url %>
-                <%=link_to "ArtCartridge", authenticated_root_url, class: "navbar-brand"%>
-              <%else%>
-                <%=link_to authenticated_root_url(subdomain: false), class: "navbar-brand" do %>
-                  <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-                <%end%>
-                <%=link_to "@#{current_user.username}", professional_page_url(current_user), class: "navbar-brand"%>
-              <%end%>
+            <%if user_signed_in?%>
+            <%if current_page?(professional_page_url(subdomain: "#{current_user.slug}")) %>
+            <%=link_to "#{current_user.full_name}", professional_page_url(current_user, subdomain: "#{current_user.slug}"), class: "navbar-brand"%>
             <%else%>
-              <%=link_to "ArtCartridge", unauthenticated_root_url(subdomain: false), class: "navbar-brand"%>
-            <%end%> -->
-              <%if user_signed_in?%>
-                 <%if current_page?(professional_page_url(subdomain: "#{current_user.slug}")) %>
-                        <%=link_to "#{current_user.full_name}", professional_page_url(current_user, subdomain: "#{current_user.slug}"), class: "navbar-brand"%>
-                  <%else%>
-                       <%=link_to  authenticated_root_url(subdomain: false), class: "navbar-brand" do %>
-                          <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-                        <%end%>
-                        <%=link_to "@#{current_user.username}", professional_page_url(subdomain: "#{current_user.slug}"), class: "navbar-brand"%>
-                 <%end%>
-             <%end%>
+            <%=link_to  authenticated_root_url(subdomain: false), class: "navbar-brand" do %>
+            <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+            <%end%>
+            <%=link_to "@#{current_user.username}", professional_page_url(subdomain: "#{current_user.slug}"), class: "navbar-brand"%>
+            <%end%>
+            <%end%>
         </div>
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav navbar-left">
-                <li class="dropdown">
-                </li>
+                <li class="dropdown"></li>
                 <%if !user_signed_in?%>
-                  <li class="active"><%=link_to "About", about_url%></li>
-                  <li class="active"><%=link_to "Contact", contact_url%></li>
-                  <li class="active"><%=link_to "Blog", blog_url%></li>
+                <li class="active"><%=link_to "About", about_url%></li>
+                <li class="active"><%=link_to "Contact", contact_url%></li>
+                <li class="active"><%=link_to "Blog", blog_url%></li>
                 <%end%>
             </ul>
             <ul class="nav navbar-nav navbar-right">
 
                 <%if user_signed_in?%>
-                    <%if  current_page?(professional_page_url(subdomain: "#{current_user.slug}")) ||
-                      current_page?(professional_page_portfolio_url(subdomain: "#{current_user.slug}")) ||
-                      current_page?(professional_page_contact_url(subdomain: "#{current_user.slug}")) ||
-                      current_page?(professional_page_shop_url(subdomain: "#{current_user.slug}")) ||
-                      current_page?(community_page_url(subdomain: "#{current_user.slug}"))
-                     %>
-                      <li class="active"><%=link_to "Portfolio", professional_page_portfolio_url(subdomain: "#{current_user.slug}")%></li>
-                      <li class="active"><%=link_to "Contact", professional_page_contact_url(subdomain: "#{current_user.slug}")%></li>
-                      <li class="active"><%=link_to "Shop", professional_page_shop_url(subdomain: "#{current_user.slug}")%></li>
-                      <li class="active"><%=link_to "Profile", community_page_url(subdomain: "#{current_user.slug}")%></li>
-                    <%end%>
-                    <%if current_page?(community_page_url(subdomain: "#{current_user.slug}"))%>
-                      <li class="active"><%=link_to "Upload", new_photo_path, remote: true, data: { target: "uploaded" }%></li>
-                      <li style="padding: 0px!important;">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding: 10px 0px 10px 0px;">
-                              <%=image_tag current_user.avatar.url(:thumb), class: "img-circle", size: "30x30"%>
-                              <!-- <span class="caret"></span> -->
-                          </a>
-                          <ul class="dropdown-menu" role="menu">
-                              <%=render partial: "layouts/navigation_links"%>
-                          </ul>
-                      </li>
-                    <%end%>
-               <%else%>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login<span class="caret"></span>
-                        </a>
-                        <ul id="dropdown-login" class="dropdown-menu" style="padding: 10px 15px 20px 15px; width: 300px;">
-                            <%=render partial: "devise/sessions/form"%>
-                        </ul>
-                    </li>
-              <%end%>
+                <%if current_page?(professional_page_url(subdomain: "#{current_user.slug}")) || current_page?(professional_page_portfolio_url(subdomain: "#{current_user.slug}")) || current_page?(professional_page_contact_url(subdomain: "#{current_user.slug}")) ||
+                current_page?(professional_page_shop_url(subdomain: "#{current_user.slug}")) || current_page?(community_page_url(subdomain: "#{current_user.slug}")) %>
+                <li class="active"><%=link_to "Portfolio", professional_page_portfolio_url(subdomain: "#{current_user.slug}")%></li>
+                <li class="active"><%=link_to "Contact", professional_page_contact_url(subdomain: "#{current_user.slug}")%></li>
+                <li class="active"><%=link_to "Shop", professional_page_shop_url(subdomain: "#{current_user.slug}")%></li>
+                <li class="active"><%=link_to "Profile", community_page_url(subdomain: "#{current_user.slug}")%></li>
+                <%end%>
+                <%if current_page?(community_page_url(subdomain: "#{current_user.slug}"))%>
+                <li class="active"><%=link_to "Upload", new_photo_path, remote: true, data: { target: "uploaded" }%></li>
+                <li style="padding: 0px!important;">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding: 10px 0px 10px 0px;">
+                        <%=image_tag current_user.avatar.url(:thumb), class: "img-circle", size: "30x30"%>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <%=render partial: "layouts/navigation_links"%>
+                    </ul>
+                </li>
+                <%end%>
+                <%else%>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login<span class="caret"></span>
+                    </a>
+                    <ul id="dropdown-login" class="dropdown-menu" style="padding: 10px 15px 20px 15px; width: 300px;">
+                        <%=render partial: "devise/sessions/form"%>
+                    </ul>
+                </li>
+                <%end%>
 
             </ul>
             <%if user_signed_in?%>
-                <%if current_page?(community_page_url(current_user.slug))%>
-                    <form class="navbar-form navbar-right search-form" role="search">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search"/>
-                            <span class="input-group-addon" id="basic-addon1">
-                                <i class="glyphicon glyphicon-search"></i>
-                            </span>
-                        </div>
-                    </form>
-                <%end%>
-          <%end%>
+            <%if current_page?(community_page_url(current_user.slug))%>
+            <form class="navbar-form navbar-right search-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search"/>
+                    <span class="input-group-addon" id="basic-addon1">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </span>
+                </div>
+            </form>
+            <%end%>
+            <%end%>
         </div>
     </div>
 </nav>

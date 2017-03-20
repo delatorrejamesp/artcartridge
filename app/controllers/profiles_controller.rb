@@ -24,6 +24,10 @@ class ProfilesController < ApplicationController
      render "pages/shop"
    end
 
+   def about
+     render "pages/about"
+   end
+
    private
 
    def get_photos
