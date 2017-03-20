@@ -31,8 +31,9 @@
 
                 <%if user_signed_in?%>
                 <%if current_page?(professional_page_url(subdomain: "#{current_user.slug}")) || current_page?(professional_page_portfolio_url(subdomain: "#{current_user.slug}")) || current_page?(professional_page_contact_url(subdomain: "#{current_user.slug}")) ||
-                current_page?(professional_page_shop_url(subdomain: "#{current_user.slug}")) || current_page?(community_page_url(subdomain: "#{current_user.slug}")) %>
+                current_page?(professional_page_shop_url(subdomain: "#{current_user.slug}")) || current_page?(community_page_url(subdomain: "#{current_user.slug}")) || current_page?(professional_page_about_url(subdomain: "#{current_user.slug}")) %>
                 <li class="active"><%=link_to "Portfolio", professional_page_portfolio_url(subdomain: "#{current_user.slug}")%></li>
+                  <li class="active"><%=link_to "About", professional_page_about_url(subdomain: "#{current_user.slug}")%></li>
                 <li class="active"><%=link_to "Contact", professional_page_contact_url(subdomain: "#{current_user.slug}")%></li>
                 <li class="active"><%=link_to "Shop", professional_page_shop_url(subdomain: "#{current_user.slug}")%></li>
                 <li class="active"><%=link_to "Profile", community_page_url(subdomain: "#{current_user.slug}")%></li>
