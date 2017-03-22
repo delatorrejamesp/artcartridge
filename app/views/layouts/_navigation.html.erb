@@ -7,7 +7,6 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <%=user_signed_in?%>
             <%if user_signed_in?%>
                 <%if current_page?(professional_page_url(subdomain: "#{current_user.slug}")) %>
                     <%=link_to "#{current_user.full_name}", professional_page_url(current_user, subdomain: "#{current_user.slug}"), class: "navbar-brand"%>
@@ -23,9 +22,9 @@
             <ul class="nav navbar-nav navbar-left">
                 <li class="dropdown"></li>
                 <%if !user_signed_in?%>
-                <li class="active"><%=link_to "About", about_url(subdomain: false)%></li>
-                <li class="active"><%=link_to "Contact", contact_url(subdomain: false)%></li>
-                <li class="active"><%=link_to "Blog", blog_url(subdomain: false)%></li>
+                <li class="active"><%=link_to "About", about_url%></li>
+                <li class="active"><%=link_to "Contact", contact_url%></li>
+                <li class="active"><%=link_to "Blog", blog_url%></li>
                 <%end%>
             </ul>
             <ul class="nav navbar-nav navbar-right">
