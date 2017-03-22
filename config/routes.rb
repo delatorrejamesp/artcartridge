@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  root to: 'home#index', as: :unauthenticated_root
+
+  #root to: 'home#index', as: :unauthenticated_root
 
   get 'about' => "pages#about", as: :about
 
@@ -19,7 +20,7 @@ Rails.application.routes.draw do
     match "/portfolio" => "profiles#portfolio",  via: [ :get ], as: :professional_page_portfolio
     match "/contact" => "profiles#contact",  via: [ :get ], as: :professional_page_contact
     match "/shop" => "profiles#shop",  via: [ :get ], as: :professional_page_shop
-    match "/about" => "profiles#about",  via: [ :get ], as: :professional_page_about
+    match "/about" => "profiles#pro'",  via: [ :get ], as: :professional_page_about
   end
 
   # match "/profile" => "users#show",  via: [ :get ]
