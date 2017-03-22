@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: 'home#index', as: :unauthenticated_root
 
   get 'about' => "pages#about", as: :about

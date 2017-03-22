@@ -79,3 +79,5 @@ gem 'kaminari'
 gem 'dropzonejs-rails'
 gem 'pg'
 gem 'jquery-infinite-pages', git: 'https://github.com/magoosh/jquery-infinite-pages.git', ref: 'master'
+gem 'rails_admin', '~> 1.1.1'
+gem "cancan"

@@ -30,12 +30,19 @@ class Ability
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
     user ||= User.new
 
-    if user
+
+    if !user.admin? && user
       can :manage, User, :id => user.id
     else
       can :read, :all
     end
 
+    if user.admin && user
+       can :access, :rails_admin
+       can :manage, :all
+    end
+
+
   end
-  
+
 end
