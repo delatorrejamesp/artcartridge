@@ -1,40 +1,36 @@
 Rails.application.routes.draw do
 
+  root to: 'home#index', as: :unauthenticated_root
 
-  #match ":id/" => "users#show_pro",  via: [ :get ], as: :professional_page, constrains: { subdomain: /./ }
+  get 'about' => "pages#about", as: :about
+
+  get 'contact' => "pages#contact", as: :contact
+
+  get 'blog' => "pages#blog", as: :blog
+
   constraints(:subdomain => /www/) do
       root to: 'home#index'
   end
 
-  #authenticate :user do
-    constraints(:subdomain => /.+/) do
-      match "/" => 'profiles#pro', via: [ :get ], as: :professional_page
-      match "/profile" => "profiles#com",  via: [ :get ], as: :community_page
-      match "/portfolio" => "profiles#portfolio",  via: [ :get ], as: :professional_page_portfolio
-      match "/contact" => "profiles#contact",  via: [ :get ], as: :professional_page_contact
-      match "/shop" => "profiles#shop",  via: [ :get ], as: :professional_page_shop
-      match "/about" => "profiles#about",  via: [ :get ], as: :professional_page_about
-    end
-  #end
+  constraints(:subdomain => /.+/) do
+    match "/" => 'profiles#pro', via: [ :get ], as: :professional_page
+    match "/profile" => "profiles#com",  via: [ :get ], as: :community_page
+    match "/portfolio" => "profiles#portfolio",  via: [ :get ], as: :professional_page_portfolio
+    match "/contact" => "profiles#contact",  via: [ :get ], as: :professional_page_contact
+    match "/shop" => "profiles#shop",  via: [ :get ], as: :professional_page_shop
+    match "/about" => "profiles#about",  via: [ :get ], as: :professional_page_about
+  end
 
   # match "/profile" => "users#show",  via: [ :get ]
   # match "/portfolio" => "users#portfolio",  via: [ :get ], as: :professional_page_portfolio
   # match "/contact" => "pages#contact",  via: [ :get ], as: :professional_page_contact
   # match "/shop" => "pages#shop",  via: [ :get ], as: :professional_page_shop
 
-  root to: 'home#index', as: :unauthenticated_root
 
-  get 'modals/photos'
 
-  get 'pages/blog'
 
   resources :categories
 
-  get 'pages/about', as: :about
-
-  get 'pages/contact', as: :contact
-
-  get 'pages/blog', as: :blog
   devise_for :users
 
   authenticated :user do
@@ -43,6 +39,7 @@ Rails.application.routes.draw do
 
 
   authenticate :user do
+
     resources :photos, only: [:new, :create, :edit, :update, :destroy]
 
     match "users/:id/profile" => "users#edit", as: "user_profile", via: [ :get ]
@@ -53,12 +50,8 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :photos, only: [:index, :show]
 
-  # match ":id/portfolio" => "users#portfolio",  via: [ :get ], as: :professional_page_portfolio
-  # match ":id/contact" => "pages#contact",  via: [ :get ], as: :professional_page_contact
-  # match ":id/shop" => "pages#shop",  via: [ :get ], as: :professional_page_shop
-  #match ":id/profile" => "users#show",  via: [ :get ], as: :community_page
+  resources :photos, only: [:index, :show]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
