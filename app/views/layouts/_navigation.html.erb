@@ -8,7 +8,8 @@
                 <span class="icon-bar"></span>
             </button>
             <%if user_signed_in?%>
-                <%if current_page?(professional_page_url(subdomain: "#{current_user.slug}")) %>
+                <%if current_page?(professional_page_url(subdomain: "#{current_user.slug}")) || current_page?(professional_page_portfolio_url(subdomain: "#{current_user.slug}")) || current_page?(professional_page_contact_url(subdomain: "#{current_user.slug}")) ||
+                current_page?(professional_page_shop_url(subdomain: "#{current_user.slug}")) || current_page?(professional_page_about_url(subdomain: "#{current_user.slug}")) %>
                     <%=link_to "#{current_user.full_name}", professional_page_url(current_user, subdomain: "#{current_user.slug}"), class: "navbar-brand"%>
                  <%else%>
                     <%=link_to  authenticated_root_url(subdomain: false), class: "navbar-brand" do %>
@@ -57,18 +58,17 @@
                         </ul>
                     </li>
                 <%end%>
-
             </ul>
             <%if user_signed_in?%>
             <%if current_page?(community_page_url(current_user.slug))%>
-            <form class="navbar-form navbar-right search-form" role="search">
+            <!-- <form class="navbar-form navbar-right search-form" role="search">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search"/>
                     <span class="input-group-addon" id="basic-addon1">
                         <i class="glyphicon glyphicon-search"></i>
                     </span>
                 </div>
-            </form>
+            </form> -->
             <%end%>
             <%end%>
         </div>
