@@ -15,7 +15,7 @@ end
 gem 'rails', '~> 5.0.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: :development
-gem 'pg', group: :production
+# gem 'pg', group: :production
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -80,3 +80,4 @@ gem 'dropzonejs-rails'
 gem 'jquery-infinite-pages', git: 'https://github.com/magoosh/jquery-infinite-pages.git', ref: 'master'
 gem 'rails_admin', '~> 1.1.1'
 gem "cancan"
+gem 'pg'
