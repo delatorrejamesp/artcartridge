@@ -3,11 +3,11 @@ Rails.application.routes.draw do
 
     # root to: 'home#index', as: :unauthenticated_root
 
-    get 'about' => 'pages#about', as: :about
+    get 'p/about' => 'pages#about', as: :about
 
-    get 'contact' => 'pages#contact', as: :contact
+    get 'p/contact' => 'pages#contact', as: :contact
 
-    get 'blog' => 'pages#blog', as: :blog
+    get 'p/blog' => 'pages#blog', as: :blog
 
     constraints(subdomain: /www/) do
         root to: 'home#index'
