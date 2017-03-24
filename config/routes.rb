@@ -3,6 +3,12 @@ Rails.application.routes.draw do
 
     # root to: 'home#index', as: :unauthenticated_root
 
+    get 'about' => 'pages#about', as: :about
+
+    get 'contact' => 'pages#contact', as: :contact
+
+    get 'blog' => 'pages#blog', as: :blog
+
     constraints(subdomain: /www/) do
         root to: 'home#index'
     end
@@ -38,11 +44,7 @@ Rails.application.routes.draw do
 
     resources :photos, only: [:index, :show]
 
-    get 'about' => 'pages#about', as: :about
 
-    get 'contact' => 'pages#contact', as: :contact
-
-    get 'blog' => 'pages#blog', as: :blog
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
