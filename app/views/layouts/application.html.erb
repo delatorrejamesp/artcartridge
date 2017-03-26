@@ -21,7 +21,8 @@
             </div>
         </main>
         <%if user_signed_in?%>
-          <%if current_page?(professional_page_url(subdomain: "#{current_user.slug}"))%>
+        <%if current_page?(professional_page_url(subdomain: "#{current_user.slug}")) || current_page?(professional_page_portfolio_url(subdomain: "#{current_user.slug}")) || current_page?(professional_page_contact_url(subdomain: "#{current_user.slug}")) ||
+        current_page?(professional_page_shop_url(subdomain: "#{current_user.slug}")) || current_page?(professional_page_about_url(subdomain: "#{current_user.slug}")) %>
                 <footer>
                     <div class="container">
                         <hr>
