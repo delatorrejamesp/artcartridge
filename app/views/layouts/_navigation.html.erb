@@ -13,7 +13,7 @@
                     <%=link_to "#{current_user.full_name}", professional_page_url(current_user, subdomain: "#{current_user.slug}"), class: "navbar-brand"%>
                  <%else%>
                     <%if Rails.env.production?%>
-                      <% url = "www.artcartridge.com"%>
+                      <% url = "http://www.artcartridge.com"%>
                     <%else%>
                       <% url = authenticated_root_url(subdomain: false)%>
                     <%end%>
