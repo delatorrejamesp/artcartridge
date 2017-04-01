@@ -39,6 +39,7 @@ Rails.application.routes.draw do
                 get :portfolio
                 get :photos
             end
+            resources :follows, :only => [:create, :destroy]
         end
     end
 

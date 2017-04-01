@@ -18,6 +18,9 @@ class User < ApplicationRecord
     #     new_record? || slug.nil? || slug.blank? # you can add more condition here
     # end
 
+    acts_as_followable
+    acts_as_follower
+
     validates :username,
         length: {  in: 0..24, allow_blank: false,
         allow_nil: false, message: "can't be blank" },  on: [:update]

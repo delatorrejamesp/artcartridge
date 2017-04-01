@@ -81,3 +81,4 @@ gem 'jquery-infinite-pages', git: 'https://github.com/magoosh/jquery-infinite-pa
 gem 'rails_admin', '~> 1.1.1'
 gem "cancan"
 gem 'pg'
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
