@@ -1,8 +1,9 @@
 
+<%btnsize ||= ""%>
 <% unless user == current_user %>
   <% if current_user.following?(user) %>
-    <%= button_to("Un-Follow #{user.follow_count}", user_follow_path(user.to_param, current_user.get_follow(user).id), class: "btn btn-default", style: "width: 100px;", :method => :delete, :remote => true) %>
+    <%= button_to("Unfollow", user_follow_path(user.to_param, current_user.get_follow(user).id), class: "btn btn-default #{btnsize}", :method => :delete, :remote => true) %>
   <% else %>
-    <%= button_to("Follow #{user.follow_count}", user_follows_path(user.to_param), :remote => true, style: "width: 100px;", class: "btn btn-primary") %>
+    <%= button_to("Follow", user_follows_path(user.to_param), :remote => true, class: "btn btn-primary") %>
   <% end %>
 <% end %>
