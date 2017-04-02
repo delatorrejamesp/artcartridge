@@ -51,15 +51,19 @@
                         <div class="tab-pane fade" id="tab4"><h3>Inspiring</h3></div>
                         <div class="tab-pane fade" id="tab5">
                               <h3>Inspired by</h3>
-                              <h4>Followers</h4>
-                              <%@user.all_follows.each do |user| %>
-                                  <%=render partial: "users/small_profile", locals: { user: user } %>
+                              <%if @user.all_follows.any? %>
+                                <h4>Followers</h4>
+                                <%@user.all_follows.each do |user| %>
+                                    <%=render partial: "users/small_profile", locals: { user: user } %>
+                                <%end%>
                               <%end%>
-                              <h4>Following</h4>
-                              <%@user.all_following.each do |user| %>
-                                  <%#=f.methods%>
-                                  <%#user = f.follower%>
-                                  <%=render partial: "users/small_profile", locals: { user: user } %>
+                              <%if @user.all_following.any? %>
+                                <h4>Following</h4>
+                                <%@user.all_following.each do |user| %>
+                                    <%#=f.methods%>
+                                    <%#user = f.follower%>
+                                    <%=render partial: "users/small_profile", locals: { user: user } %>
+                                <%end%>
                               <%end%>
                         </div>
                         <div class="tab-pane fade" id="tab6"><h3>Website</h3></div>
