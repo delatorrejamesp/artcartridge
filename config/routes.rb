@@ -31,9 +31,15 @@ Rails.application.routes.draw do
     end
 
     authenticate :user do
-        resources :photos, only: [:new, :create, :edit, :update, :destroy]
+
+        resources :photos, only: [:new, :create, :edit, :update, :destroy] do
+           collection do
+             get "/:user_id/take_three" => "photos#take_three", as: :take_three
+           end
+        end
 
         match 'users/:id/profile' => 'users#edit', as: 'user_profile', via: [:get]
+
         resources :users do
             member do
                 get :portfolio
