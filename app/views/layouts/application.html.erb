@@ -13,7 +13,7 @@
         <header>
         <%if request.subdomain.empty?%>
             <%= render 'layouts/navigation' %>
-        <%else%>
+        <%elsif request.subdomain != "www"%>
           <%= render 'layouts/navigation_subdomain' %>
         <%end%>
         </header>
