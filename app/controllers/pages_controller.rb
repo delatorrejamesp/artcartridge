@@ -16,7 +16,7 @@ class PagesController < ApplicationController
       unless request.subdomain.to_s.blank?
           subdomain = request.subdomain.to_s.gsub('www.', '')
           logger.info "subdomain : #{subdomain}"
-          @user = User.friendly.find(subdomain)
+          @user=User.friendly.find(subdomain) if request.subdomain != "www"
       end
   end
 

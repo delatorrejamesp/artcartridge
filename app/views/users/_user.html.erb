@@ -1,79 +1,95 @@
-
 <%if @user.photos.any?%>
 <%bg = @user.random_picked_photo.image.url%>
 <%else%>
 <%bg = 'http://lorempixel.com/850/280/nature/4/'%>
 <%end%>
-    <div class="row">
+<div class="row">
 
-        <div class="col-md-12 profile">
-              <div class="" style="background: url(<%=bg%>);background-size:cover;height:200px;">
-              </div>
-              <div class="block">
-                    <div class="avatar"><%=image_tag @user.avatar.url(:medium), class: "img-circle", size: "120x120"%></div>
-                     <div style="position:relative;">
-                       <div style="position:absolute;bottom:0;left:0;padding-left:160px; padding-bottom:10px; height: 60px;">
-                         <h3 style="margin-bottom:0px; margin-top:0px;"><%=@user.full_name%></h3>
-                         <%if @user.address?%>
-                             <p>
-                                 <i class="fa fa-map-marker" aria-hidden="true"></i> <%=@user.address%>
-                                 <i class="fa fa-globe" aria-hidden="true"></i>
-                                 <%=link_to "#{professional_page_url(@user, subdomain: "#{@user.slug}")}",  professional_page_url(@user, subdomain: "#{@user.slug}") %><br>
-                                 <i class="fa fa-envelope" aria-hidden="true"> <%=@user.email%></i>
-                             </p>
+    <div class="col-md-12 profile">
+        <div class="" style="background: url(<%=bg%>);background-size:cover;height:200px;"></div>
+        <div class="block">
+            <div class="avatar"><%=image_tag @user.avatar.url(:medium), class: "img-circle", size: "120x120"%></div>
+            <div style="position:relative;">
+                <div style="position:absolute;bottom:0;left:0;padding-left:160px; padding-bottom:10px; height: 60px;">
+                    <h3 style="margin-bottom:0px; margin-top:0px;"><%=@user.full_name%></h3>
+                    <%if @user.address?%>
+                    <p>
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <%=@user.address%>
+                        <i class="fa fa-globe" aria-hidden="true"></i>
+                        <%=link_to "#{professional_page_url(@user, subdomain: "#{@user.slug}")}",  professional_page_url(@user, subdomain: "#{@user.slug}") %><br>
+                        <i class="fa fa-envelope" aria-hidden="true">
+                            <%=@user.email%></i>
+                    </p>
 
-                         <%end%>
-                       </div>
-                     </div>
-                     <% if user_signed_in? %>
-                       <div id="follow_user" class="pull-right" style="margin-right: 50px;">
-                         <%= render :partial => "shared/follow_user", :locals => {:user => @user} %>
-                       </div>
-                     <% end %>
-              </div>
-              <div class="block" style="margin-top: 10px;">
-                  <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab1" data-toggle="tab">Portfolio</a></li>
-                        <li><a href="#tab2" data-toggle="tab">About</a></li>
-                        <li><a href="#tab3" data-toggle="tab">References</a></li>
-                        <li><a href="#tab4" data-toggle="tab">Inspiring</a></li>
-                        <li><a href="#tab5" data-toggle="tab">Inspired by</a></li>
-                        <li><a href="#tab6" data-toggle="tab">Website</a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane fade in active" id="tab1">
-                          <%=render partial: "photos/gallery"%>
-                        </div>
-                        <div class="tab-pane fade" id="tab2">
-                          <h3>About Content</h3>
-                        </div>
-                        <div class="tab-pane fade" id="tab3"><h3>References</h3></div>
-                        <div class="tab-pane fade" id="tab4">
-
-                          <%if @user.all_following.any? %>
-                            <h3>Inspiring</h3>
-                            <div class="row grid">
-                              <%@user.all_following.each_with_index do |user,index| %>
-                                  <%=render partial: "users/small_profile", locals: { user: user, index: index } %>
-                              <%end%>
-                            </div>
-                          <%end%>
-                        </div>
-                        <div class="tab-pane fade" id="tab5">
-                              <%if @user.all_follows.any? %>
-                                <h3>Inspired by</h3>
-                                <div class="row grid">
-                                <%@user.followers.inspect%>
-                                  <%@user.followers.each_with_index do |user, index| %>
-                                      <%=render partial: "users/small_profile", locals: { user: user, index: index  } %>
-                                  <%end%>
-                                </div>
-                              <%end%>
-                        </div>
-                        <div class="tab-pane fade" id="tab6"><h3>Website</h3></div>
-                    </div>
-
-              </div>
+                    <%end%>
+                </div>
+            </div>
+            <% if user_signed_in? %>
+            <div id="follow_user" class="pull-right" style="margin-right: 50px;">
+                <%= render :partial => "shared/follow_user", :locals => {:user => @user} %>
+            </div>
+            <% end %>
         </div>
+        <div class="block" style="margin-top: 10px;">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#tab1" data-toggle="tab">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#tab2" data-toggle="tab">About</a>
+                </li>
+                <li>
+                    <a href="#tab3" data-toggle="tab">References</a>
+                </li>
+                <li>
+                    <a href="#tab4" data-toggle="tab">Inspiring</a>
+                </li>
+                <li>
+                    <a href="#tab5" data-toggle="tab">Inspired by</a>
+                </li>
+                <li>
+                    <a href="#tab6" data-toggle="tab">Website</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="tab1">
+                    <%=render partial: "photos/gallery"%>
+                </div>
+                <div class="tab-pane fade" id="tab2">
+                    <h3>About Content</h3>
+                </div>
+                <div class="tab-pane fade" id="tab3">
+                    <h3>References</h3>
+                </div>
+                <div class="tab-pane fade" id="tab4">
 
+                    <%if @user.all_following.any? %>
+                    <h3>Inspiring</h3>
+                    <div class="row grid">
+                        <%@user.all_following.each_with_index do |user,index| %>
+                        <%=render partial: "users/small_profile", locals: { user: user, index: index } %>
+                        <%end%>
+                    </div>
+                    <%end%>
+                </div>
+                <div class="tab-pane fade" id="tab5">
+                    <%if @user.all_follows.any? %>
+                    <h3>Inspired by</h3>
+                    <div class="row grid">
+                        <%@user.followers.inspect%>
+                        <%@user.followers.each_with_index do |user, index| %>
+                        <%=render partial: "users/small_profile", locals: { user: user, index: index  } %>
+                        <%end%>
+                    </div>
+                    <%end%>
+                </div>
+                <div class="tab-pane fade" id="tab6">
+                    <h3>Website</h3>
+                </div>
+            </div>
+
+        </div>
     </div>
+
+</div>
