@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
 
  #, only: [ :dashboard ]
+ before_action :set_user
 
   def index
     #@photos = Photo.all.order(created_at: :desc)
@@ -10,5 +11,15 @@ class HomeController < ApplicationController
   def dashboard
 
   end
+
+
+  def set_user
+   if !request.subdomain.to_s.blank?
+     subdomain=request.subdomain.to_s.gsub("www.", "")
+     logger.info "subdomain : #{subdomain}"
+     @user=User.friendly.find(subdomain)
+   end
+
+ end
 
 end

@@ -11,7 +11,11 @@
     </head>
     <body>
         <header>
-        <%= render 'layouts/navigation' %>
+        <%if request.subdomain.empty?%>
+            <%= render 'layouts/navigation' %>
+        <%else%>
+          <%= render 'layouts/navigation_subdomain' %>
+        <%end%>
         </header>
         <main role="main" id="main">
             <div class="container">
@@ -42,5 +46,6 @@
               <%= render 'layouts/footer' %>
           </footer>
         <%end%>
+        <%#=request.subdomain%>
     </body>
 </html>

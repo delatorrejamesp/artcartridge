@@ -48,11 +48,20 @@
                           <h3>About Content</h3>
                         </div>
                         <div class="tab-pane fade" id="tab3"><h3>References</h3></div>
-                        <div class="tab-pane fade" id="tab4"><h3>Inspiring</h3></div>
+                        <div class="tab-pane fade" id="tab4">
+
+                          <%if @user.all_following.any? %>
+                            <h3>Inspiring</h3>
+                            <div class="row grid">
+                              <%@user.all_following.each_with_index do |user,index| %>
+                                  <%=render partial: "users/small_profile", locals: { user: user, index: index } %>
+                              <%end%>
+                            </div>
+                          <%end%>
+                        </div>
                         <div class="tab-pane fade" id="tab5">
-                              <h3>Inspired by</h3>
                               <%if @user.all_follows.any? %>
-                                <h4>Followers</h4>
+                                <h3>Inspired by</h3>
                                 <div class="row grid">
                                 <%@user.followers.inspect%>
                                   <%@user.followers.each_with_index do |user, index| %>
@@ -60,14 +69,6 @@
                                   <%end%>
                                 </div>
                               <%end%>
-                              <%if @user.all_following.any? %>
-                                <h4>Following</h4>
-                                <div class="row grid">
-                                  <%@user.all_following.each_with_index do |user,index| %>
-                                      <%=render partial: "users/small_profile", locals: { user: user, index: index } %>
-                                  <%end%>
-                              <%end%>
-                              </div>
                         </div>
                         <div class="tab-pane fade" id="tab6"><h3>Website</h3></div>
                     </div>

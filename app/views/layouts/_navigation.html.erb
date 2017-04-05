@@ -39,25 +39,14 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <%if user_signed_in?%>
-                    <%if current_page?(professional_page_url(subdomain: "#{current_user.slug}")) || current_page?(professional_page_portfolio_url(subdomain: "#{current_user.slug}")) || current_page?(professional_page_contact_url(subdomain: "#{current_user.slug}")) ||
-                    current_page?(professional_page_shop_url(subdomain: "#{current_user.slug}")) || current_page?(professional_page_about_url(subdomain: "#{current_user.slug}")) %>
-                    <li class="active"><%=link_to "Portfolio", professional_page_portfolio_url(subdomain: "#{current_user.slug}")%></li>
-                    <li class="active"><%=link_to "About", professional_page_about_url(subdomain: "#{current_user.slug}")%></li>
-                    <li class="active"><%=link_to "Contact", professional_page_contact_url(subdomain: "#{current_user.slug}")%></li>
-                    <li class="active"><%=link_to "Shop", professional_page_shop_url(subdomain: "#{current_user.slug}")%></li>
-                    <li class="active"><%=link_to "Profile", community_page_url(subdomain: "#{current_user.slug}")%></li>
-                    <%end%>
-                    <%if current_page?(community_page_url(subdomain: "#{current_user.slug}"))%>
-                      <li class="active"><%=link_to "Upload", new_photo_path, remote: true, data: { target: "uploaded" }%></li>
-                      <li style="padding: 0px!important;">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding: 10px 0px 10px 0px;">
-                              <%=image_tag current_user.avatar.url(:thumb), class: "img-circle", size: "30x30"%>
-                          </a>
-                          <ul class="dropdown-menu" role="menu">
-                              <%=render partial: "layouts/navigation_links"%>
-                          </ul>
-                      </li>
-                    <%end%>
+                       <li style="padding: 0px!important;">
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding: 10px 0px 10px 0px;">
+                             <span class="glyphicon glyphicon-cog" style="font-size:25px;"></span>
+                           </a>
+                           <ul class="dropdown-menu" role="menu">
+                               <%=render partial: "layouts/navigation_links"%>
+                           </ul>
+                       </li>
               <%else%>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login<span class="caret"></span>
@@ -66,20 +55,8 @@
                             <%=render partial: "devise/sessions/form"%>
                         </ul>
                     </li>
-                <%end%>
+              <%end%>
             </ul>
-            <%if user_signed_in?%>
-            <%if current_page?(community_page_url(current_user.slug))%>
-            <!-- <form class="navbar-form navbar-right search-form" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search"/>
-                    <span class="input-group-addon" id="basic-addon1">
-                        <i class="glyphicon glyphicon-search"></i>
-                    </span>
-                </div>
-            </form> -->
-            <%end%>
-            <%end%>
         </div>
     </div>
 </nav>

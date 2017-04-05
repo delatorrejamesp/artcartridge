@@ -1,0 +1,7 @@
+<li><%=link_to "Community Page", community_page_url(subdomain: "#{@user.slug}")%></li>
+<li><%=link_to "Professional Page", professional_page_url(@user, subdomain: "#{@user.slug}")%></li>
+<li class="divider"></li>
+<li><%=link_to "Edit Profile", user_profile_path(@user)%></li>
+<li><a href="#">Change Password</a></li>
+<li class="divider"></li>
+<li><%=link_to "Logout", destroy_user_session_path(subdomain: false, host: request.domain), method: :get %></li>
