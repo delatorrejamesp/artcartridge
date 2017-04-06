@@ -7,9 +7,9 @@
 <div class="col-md-3 grid-item">
     <div class="" style="background: url(<%=bg%>);background-size:cover;height:100px;"></div>
     <div class="block" align="center">
-        <div class="avatar" style="margin:-60px 0px 0px 0px"><%=image_tag user.avatar.url(:medium), class: "img-circle", size: "120x120"%></div>
+        <div class="avatar" style="margin:-40px 0px 0px 0px"><%=image_tag user.avatar.url(:medium), class: "img-circle", size: "80x80"%></div>
         <div style="position:relative;">
-            <div style="position:absolute;bottom:0;padding-bottom:10px; height: 60px;">
+            <div style="position:absolute;bottom:0;padding-bottom:10px; height: 40px;">
                 <% if user_signed_in? %>
                 <div id="follow_user" style="">
                     <%#= render :partial => "shared/follow_user", :locals => {:user => user, btnsize: "btn-xs"} %>
@@ -27,7 +27,7 @@
             <%end%>
           </li>
           <li>
-            <%=link_to take_three_photos_url(user_id: user.id), remote: true  do%>
+            <%=link_to take_three_photos_url(user_id: user.id), remote: true, data: { opento: :modal }  do%>
               <span class="glyphicon glyphicon-search"></span>
             <%end%>
           </li>

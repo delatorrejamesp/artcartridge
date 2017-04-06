@@ -1,0 +1,8 @@
+<h3>Sample 3 photos</h3>
+<div class="row grid">
+  <%@photos.each do |photo|%>
+      <div class="col-md-4 grid-item">
+          <%=image_tag photo.image.url(:medium), style: "width:100%;padding:10px;"%>
+      </div>
+  <%end%>
+</div>
