@@ -12,11 +12,12 @@
             current_page?(professional_page_shop_url(subdomain: "#{@user.slug}")) || current_page?(professional_page_about_url(subdomain: "#{@user.slug}")) %>
             <%=link_to "#{@user.full_name}", professional_page_url(@user, subdomain: "#{@user.slug}"), class: "navbar-brand"%>
             <%else%>
-            <%if Rails.env.production?%>
+            <%#if Rails.env.production?%>
+              <%# url = "http://www.artcartridge.com"%>
+            <%#else%>
+              <%# url = authenticated_root_url(subdomain: false)%>
+            <%#end%>
             <% url = "http://www.artcartridge.com"%>
-            <%else%>
-            <% url = authenticated_root_url(subdomain: false)%>
-            <%end%>
             <%=link_to "#{url}", class: "navbar-brand" do %>
             <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
             <%end%>
