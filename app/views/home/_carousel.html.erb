@@ -10,7 +10,7 @@
     <%@photos.each_with_index do |photo,index|%>
       <div class="item <%='active' if index == 0 %>">
         <!-- <img src="img_chania.jpg" alt="Chania"> -->
-        <%=image_tag photo.image.url%>
+        <%=image_tag photo.image.url, width: "100%;"%>
       </div>
     <%end%>
   </div>
