@@ -39,25 +39,27 @@
                 <li class="active"><%=link_to "Shop", professional_page_shop_url(subdomain: "#{@user.slug}")%></li>
                 <li class="active"><%=link_to "Profile", community_page_url(subdomain: "#{@user.slug}")%></li>
                 <%end%>
-                <%if current_page?(community_page_url(subdomain: "#{@user.slug}"))%>
-                <li class="active"><%=link_to "Upload", new_photo_path, remote: true, data: { target: "uploaded" }%></li>
-                <li style="padding: 0px!important;">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding: 10px 0px 10px 0px;">
-                        <%=image_tag @user.avatar.url(:thumb), class: "img-circle", size: "30x30"%>
-                    </a>
-                    <ul class="dropdown-menu" role="menu">
-                        <%=render partial: "layouts/navigation_subdomain_links"%>
-                    </ul>
-                </li>
+                  <%if current_page?(community_page_url(subdomain: "#{@user.slug}"))%>
+                  <li class="active"><%=link_to "Upload", new_photo_path, remote: true, data: { target: "uploaded" }%></li>
+                  <li style="padding: 0px!important;">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding: 10px 0px 10px 0px;">
+                          <%=image_tag @user.avatar.url(:thumb), class: "img-circle", size: "30x30"%>
+                      </a>
+                      <ul class="dropdown-menu" role="menu">
+                          <%=render partial: "layouts/navigation_subdomain_links"%>
+                      </ul>
+                  </li>
                 <%else%>
-                <li style="padding: 0px!important;">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding: 12px 0px 10px 0px;">
-                        <span class="glyphicon glyphicon-cog" style="font-size:22px;"></span>
-                    </a>
-                    <ul class="dropdown-menu" role="menu">
-                        <%=render partial: "layouts/navigation_subdomain_links"%>
-                    </ul>
-                </li>
+                  <%if user_signed_in?%>
+                    <li style="padding: 0px!important;">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding: 12px 0px 10px 0px;">
+                            <span class="glyphicon glyphicon-cog" style="font-size:22px;"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <%=render partial: "layouts/navigation_subdomain_links"%>
+                        </ul>
+                    </li>
+                  <%end%>
                 <%end%>
             </ul>
         </div>

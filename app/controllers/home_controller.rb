@@ -5,7 +5,7 @@ class HomeController < ApplicationController
 
   def index
     #@photos = Photo.all.order(created_at: :desc)
-    @photos = Photo.all.order(created_at: :desc).page(params[:page])
+    @photos = Photo.take(4)#all.order(created_at: :desc).page(params[:page])
   end
 
   def dashboard
