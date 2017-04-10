@@ -41,16 +41,18 @@
                 <li class="active"><%=link_to "Profile", community_page_url(subdomain: "#{@user.slug}")%></li>
                 <%end%>
                   <%if current_page?(community_page_url(subdomain: "#{@user.slug}"))%>
-                  <li class="active"><%=link_to "Upload", new_photo_path, remote: true, data: { target: "uploaded" }%></li>
+                  <%if user_signed_in?%>
+                    <li class="active"><%=link_to "Upload", new_photo_path, remote: true, data: { target: "uploaded" }%></li>
+                  <%end%>
                   <li style="padding: 0px!important;">
                       <%if user_signed_in?%>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding: 10px 0px 10px 0px;">
                             <%=image_tag current_user.avatar.url(:thumb), class: "img-circle", size: "30x30"%>
                         </a>
-                      <%end%>
-                      <ul class="dropdown-menu" role="menu">
-                          <%=render partial: "layouts/navigation_subdomain_links"%>
-                      </ul>
+                        <ul class="dropdown-menu" role="menu">
+                            <%=render partial: "layouts/navigation_subdomain_links"%>
+                        </ul>
+                        <%end%>
                   </li>
                 <%else%>
                   <%if user_signed_in?%>
