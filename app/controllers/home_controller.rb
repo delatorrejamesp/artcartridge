@@ -8,6 +8,11 @@ class HomeController < ApplicationController
     @photos = Photo.take(4)#all.order(created_at: :desc).page(params[:page])
   end
 
+  def feeds
+    #@photos = Photo.all.order(created_at: :desc)
+    @photos = Photo.all.order(created_at: :desc).page(params[:page])
+  end
+
   def dashboard
 
   end
