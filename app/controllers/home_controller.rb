@@ -10,7 +10,9 @@ class HomeController < ApplicationController
 
   def feeds
     #@photos = Photo.all.order(created_at: :desc)
-    @photos = @user.photos.order(created_at: :desc).page(params[:page])
+    if @user
+      @photos = @user.photos.order(created_at: :desc).page(params[:page])
+    end
   end
 
   def dashboard
