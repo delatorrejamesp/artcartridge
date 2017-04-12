@@ -24,7 +24,7 @@
                     <%#=link_to "@#{current_user.username}", community_page_url(subdomain: "#{current_user.slug}"), class: "navbar-brand"%>
                 <%#end%>
             <%else%>
-                <%=link_to  unauthenticated_root_url(subdomain: false), class: "navbar-brand" do %>
+                <%=link_to  unauthenticated_root_url, class: "navbar-brand" do %>
                     ArtCartridge
                 <%end%>
             <%end%>
