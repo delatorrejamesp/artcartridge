@@ -18,6 +18,7 @@
               <%# url = authenticated_root_url(subdomain: false)%>
             <%#end%>
             <% url = "http://www.artcartridge.com"%>
+            <% url = "http://#{url}" unless url=~/^https?:\/\//%>
             <%=link_to "#{url}", class: "navbar-brand" do %>
             <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
             <%end%>

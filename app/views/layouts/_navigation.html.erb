@@ -13,10 +13,11 @@
                     <%#=link_to "#{current_user.full_name}", professional_page_url(current_user, subdomain: "#{current_user.slug}"), class: "navbar-brand"%>
                  <%#else%>
                 <%if Rails.env.production?%>
-                  <% url = "http://www.artcartridge.com"%>
+                  <% url = "http://www.artcartridge.com" %>
                 <%else%>
                   <% url = authenticated_root_url(subdomain: false)%>
                 <%end%>
+                <% url = "http://#{url}" unless url=~/^https?:\/\//%>
                 <%=link_to "#{url}", class: "navbar-brand" do %>
                   ArtCartridge
                 <%end%>
