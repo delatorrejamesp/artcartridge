@@ -24,27 +24,20 @@
                <%= render 'layouts/modal'%>
             </div>
         </main>
-        <%if user_signed_in?%>
-        <%if current_page?(professional_page_url(subdomain: "#{current_user.slug}")) || current_page?(professional_page_portfolio_url(subdomain: "#{current_user.slug}")) || current_page?(professional_page_contact_url(subdomain: "#{current_user.slug}")) ||
-        current_page?(professional_page_shop_url(subdomain: "#{current_user.slug}")) || current_page?(professional_page_about_url(subdomain: "#{current_user.slug}")) %>
-                <footer>
-                    <div class="container">
-                        <hr>
-                        <div class="pull-right">
-                           [ LOGO HERE ]
-                        </div>
-                    </div>
-                    <br>
-                </footer>
-          <%else%>
+        <%if request.subdomain.empty? || request.subdomain == "www" %>
             <footer class="footer">
                 <%= render 'layouts/footer' %>
             </footer>
-          <%end%>
-        <%else%>
-          <footer class="footer">
-              <%= render 'layouts/footer' %>
-          </footer>
+        <%elsif request.subdomain != "www"%>
+            <footer>
+                <div class="container">
+                    <hr>
+                    <div class="pull-right">
+                       [ LOGO HERE ]
+                    </div>
+                </div>
+                <br>
+            </footer>
         <%end%>
         <%#=request.subdomain%>
     </body>
