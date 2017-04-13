@@ -4,7 +4,6 @@ class HomeController < ApplicationController
  before_action :set_user
 
   def index
-    #@photos = Photo.all.order(created_at: :desc)
     @photos = Photo.take(4)#all.order(created_at: :desc).page(params[:page])
   end
 
@@ -20,7 +19,6 @@ class HomeController < ApplicationController
   def dashboard
 
   end
-
 
   def set_user
    if !request.subdomain.to_s.blank?

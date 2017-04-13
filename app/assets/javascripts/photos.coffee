@@ -16,10 +16,20 @@ $(document).on 'turbolinks:load', ->
 
 # $(document).on 'turbolinks:load', ->
 #   # Configure infinite table
-  $('#gallery').infinitePages
-    debug: true
-    navSelector: "a[rel=next]"
-    loading: ->
-      $(".pagination").html('Loading next page...')
-    error: ->
-      $(this).button('There was an error, please try again')
+  # $('#gallery').infinitePages
+  #   debug: true
+  #   navSelector: "a[rel=next]"
+  #   loading: ->
+  #     $(".pagination").html('Loading next page...')
+  #   error: ->
+  #     $(this).button('There was an error, please try again')
+
+  $("#gallery").infinitescroll
+    loading: {
+      img:     "http://www.mytreedb.com/uploads/mytreedb/loader/ajax_loader_blue_48.gif"
+      msgText: "loading..."
+      selector: ".loading-area"
+    }
+    navSelector: ".pagination" # selector for the paged navigation (it will be hidden)
+    nextSelector: ".pagination a[rel=next]" # selector for the NEXT link (to page 2)
+    itemSelector: "#gallery div.item" # selector for all items you'll retrieve

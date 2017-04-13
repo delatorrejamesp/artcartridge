@@ -15,6 +15,7 @@
 //= require unitegallery/dist/js/unitegallery.js
 //= require unitegallery/dist/themes/tiles/ug-theme-tiles.js
 //= require justified-gallery/dist/js/jquery.justifiedGallery.js
+//= require jquery.infinitescroll
 //= require dropzone
 //= require jquery_ujs
 //= require turbolinks

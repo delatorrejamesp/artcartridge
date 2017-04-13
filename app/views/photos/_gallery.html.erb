@@ -1,6 +1,11 @@
 <div id="gallery" class="masonry wrapper">
     <%= render @photos%>
 </div>
-  <div class="pagination col-md-12">
-    <%= link_to_next_page(@photos, 'Load More', :remote => true, class: "load-more") %>
-  </div>
+<div class="row">
+    <div class="col-md-12 loading-area" align="center">
+        <!--loading area here-->
+    </div>
+    <div class="pagination col-md-12">
+        <%= link_to_next_page(@photos, 'Load More', :remote => true, class: "load-more") %>
+    </div>
+</div>
