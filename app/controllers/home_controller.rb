@@ -12,6 +12,8 @@ class HomeController < ApplicationController
     #@photos = Photo.all.order(created_at: :desc)
     if @user
       @photos = @user.photos.order(created_at: :desc).page(params[:page])
+    else
+      @photos = Photo.all.order(created_at: :desc)
     end
   end
 
