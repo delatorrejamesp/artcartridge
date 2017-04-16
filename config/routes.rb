@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
     mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-    root to: 'home#feeds', as: :unauthenticated_root
+
 
     get 'p/about' => 'pages#about', as: :about
 
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     end
 
     constraints(subdomain: /.+/) do
+        root to: 'home#index'
         match '/' => 'profiles#pro', via: [:get], as: :professional_page
         match '/profile' => 'profiles#com', via: [:get], as: :community_page
         match '/portfolio' => 'profiles#portfolio', via: [:get], as: :professional_page_portfolio
@@ -21,6 +22,8 @@ Rails.application.routes.draw do
         match '/shop' => 'profiles#shop', via: [:get], as: :professional_page_shop
         match '/about' => 'profiles#pro', via: [:get], as: :professional_page_about
     end
+
+    root to: 'home#feeds', as: :unauthenticated_root
 
     resources :categories
 
