@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get 'p/blog' => 'pages#blog', as: :blog
 
     constraints(subdomain: /www/) do
-        root to: 'home#index'
+        root to: 'home#feeds'
     end
 
     constraints(subdomain: /.+/) do
