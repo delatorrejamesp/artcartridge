@@ -11,10 +11,10 @@
     </head>
     <body>
         <header>
-        <%if request.subdomain.empty? || request.subdomain == "www" %>
-            <%= render 'layouts/navigation' %>
-        <%elsif request.subdomain != "www"%>
+        <%if session[:page_type] == 1 %>
           <%= render 'layouts/navigation_subdomain' %>
+        <%else%>
+          <%= render 'layouts/navigation' %>
         <%end%>
         </header>
         <main role="main" id="main">
@@ -24,20 +24,20 @@
                <%= render 'layouts/modal'%>
             </div>
         </main>
-        <%if request.subdomain.empty? || request.subdomain == "www" %>
-            <footer class="footer">
-                <%= render 'layouts/footer' %>
-            </footer>
+        <%if session[:page_type] == 1 %>
+          <footer>
+              <div class="container">
+                  <hr>
+                  <div class="pull-right">
+                     [ LOGO HERE ]
+                  </div>
+              </div>
+              <br>
+          </footer>
         <%elsif request.subdomain != "www"%>
-            <footer>
-                <div class="container">
-                    <hr>
-                    <div class="pull-right">
-                       [ LOGO HERE ]
-                    </div>
-                </div>
-                <br>
-            </footer>
+          <footer class="footer">
+              <%= render 'layouts/footer' %>
+          </footer>
         <%end%>
         <%#=request.subdomain%>
     </body>

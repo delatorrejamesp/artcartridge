@@ -14,13 +14,16 @@ Rails.application.routes.draw do
     end
 
     constraints(subdomain: /.+/) do
-        root to: 'home#index'
-        match '/' => 'profiles#pro', via: [:get], as: :professional_page
-        match '/profile' => 'profiles#com', via: [:get], as: :community_page
-        match '/portfolio' => 'profiles#portfolio', via: [:get], as: :professional_page_portfolio
-        match '/contact' => 'profiles#contact', via: [:get], as: :professional_page_contact
-        match '/shop' => 'profiles#shop', via: [:get], as: :professional_page_shop
-        match '/about' => 'profiles#pro', via: [:get], as: :professional_page_about
+        #root to: 'home#index'
+        # professional pages
+        match '/' => 'professional_pages#index', via: [:get], as: :professional_page
+        match '/portfolio' => 'professional_pages#portfolio', via: [:get], as: :professional_page_portfolio
+        match '/contact' => 'professional_pages#contact', via: [:get], as: :professional_page_contact
+        match '/shop' => 'professional_pages#shop', via: [:get], as: :professional_page_shop
+        match '/about' => 'professional_pages#pro', via: [:get], as: :professional_page_about
+        # community pages
+
+        match '/profile' => 'community_pages#com', via: [:get], as: :community_page
     end
 
     root to: 'home#feeds', as: :unauthenticated_root
