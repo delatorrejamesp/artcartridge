@@ -15,7 +15,7 @@
                 <%if Rails.env.production?%>
                   <% url = "http://www.artcartridge.com" %>
                 <%else%>
-                  <% url = authenticated_root_url(subdomain: false)%>
+                  <% url = authenticated_root_url%>
                 <%end%>
                 <% url = "http://#{url}" unless url=~/^https?:\/\//%>
                 <%=link_to "#{url}", class: "navbar-brand" do %>

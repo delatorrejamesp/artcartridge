@@ -25,7 +25,7 @@
             <%=link_to "@#{@user.username}", community_page_url(subdomain: "#{@user.slug}"), class: "navbar-brand"%>
             <%end%>
             <%else%>
-            <%=link_to  unauthenticated_root_url(subdomain: false), class: "navbar-brand" do %>
+            <%=link_to  unauthenticated_root_url, class: "navbar-brand" do %>
             <%#=link_to "@#{@user.username}", community_page_url(subdomain: "#{@user.slug}"), class: "navbar-brand"%>
             <%=@user.full_name%>
             <%end%>
