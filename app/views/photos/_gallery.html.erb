@@ -1,5 +1,6 @@
 <div id="gallery" class="masonry wrapper">
-    <%= render @photos%>
+    <%option ||= 0%>
+    <%= render partial: "photos/photo", collection: @photos, locals: { option:  option }%>
 </div>
 <div class="row">
     <div class="col-md-12 loading-area" align="center">

@@ -1,13 +1,22 @@
 <div class="row clearfix">
-   <div class=" col-md-3 ">
+    <div class=" col-md-3 ">
         <ul class="nav nav-pills nav-stacked">
-          <li class="active"><a href="#">Basic Information</a></li>
-          <li><a href="#">Avatar & Banner Photo</a></li>
-          <li><a href="#">Professional Setting</a></li>
-          <li><a href="#">Community Setting</a></li>
+            <li class="active"><a href="#form1" data-toggle="pill">Basic Information</a></li>
+            <li><a href="#form2" data-toggle="pill">Avatar & Banner Photo</a></li>
+            <li><a href="#form3" data-toggle="pill">Social Links</a></li>
+            <li><a href="#" data-toggle="pill">Professional Setting</a></li>
+            <li><a href="#" data-toggle="pill">Community Setting</a></li>
         </ul>
-   </div>
-   <div class="col-md-9 column">
-     <%=render partial: "users/form"%>
-  </div>
+    </div>
+    <div class="col-md-9 column tab-content">
+        <div id="form1" class="tab-pane fade in active">
+            <%=render partial: "users/form", locals: { form_number: 1}%>
+        </div>
+        <div id="form2" class=" tab-pane fade">
+            <%=render partial: "users/form", locals: { form_number: 2} %>
+        </div>
+        <div id="form3" class=" tab-pane fade">
+            <%=render partial: "users/form", locals: { form_number: 3} %>
+        </div>
+    </div>
 </div>

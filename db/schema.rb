@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327130812) do
+ActiveRecord::Schema.define(version: 20170418083911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,18 +59,18 @@ ActiveRecord::Schema.define(version: 20170327130812) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",           null: false
-    t.string   "encrypted_password",     default: "",           null: false
+    t.string   "email",                  default: "",                                                                              null: false
+    t.string   "encrypted_password",     default: "",                                                                              null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,            null: false
+    t.integer  "sign_in_count",          default: 0,                                                                               null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.datetime "created_at",                                                                                                       null: false
+    t.datetime "updated_at",                                                                                                       null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -83,6 +83,11 @@ ActiveRecord::Schema.define(version: 20170327130812) do
     t.date     "birthday",               default: '1999-03-05'
     t.string   "slug"
     t.boolean  "admin",                  default: false
+    t.string   "fb_link",                default: "https://www.facebook.com/",                                                     null: false
+    t.string   "ig_link",                default: "https://www.instagram.com",                                                     null: false
+    t.string   "twitter_link",           default: "https://twitter.com/",                                                          null: false
+    t.string   "tumblr_link",            default: "https://www.tumblr.com/",                                                       null: false
+    t.text     "banner",                 default: "https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=11700&h=200", null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
     t.index ["slug"], name: "index_users_on_slug", using: :btree

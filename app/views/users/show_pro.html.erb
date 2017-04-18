@@ -2,27 +2,28 @@
      <%#=render partial: "users/user"%>
     <div class="row">
          <div class="col-md-4">
-            <ul class="list-unstyled text-center">
+            <ul class="list-unstyled">
                 <li><%=image_tag @user.avatar.url(:medium)%></li>
                 <li>
                     <br>
-                    <i class="fa fa-map-marker" aria-hidden="true"></i> <%=@user.address%>
-                    <i class="fa fa-globe" aria-hidden="true"></i> wwww.arcartridge.com<br>
-                    <i class="fa fa-envelope" aria-hidden="true"> <%=@user.email%></i>
+                    <%unless @user.address.blank?%><i class="fa fa-map-marker lead" aria-hidden="true"></i> <%=@user.address%><br><%end%>
+                    <i class="fa fa-globe lead" aria-hidden="true"></i> <%=professional_page_url(@user)%><br>
+                    <i class="fa fa-envelope lead" aria-hidden="true"> <%=@user.email%></i>
                 </li>
                 <li class="social-icons">
-                  <i class="fa fa-facebook"></i>
-                  <i class="fa fa-twitter"></i>
-                  <i class="fa fa-instagram"></i>
-                  <i class="fa fa-google-plus"></i>
-                  <i class="fa fa-envelope"></i>
+                  <ul class="list-unstyle list-inline lead">
+                      <li><%=link_to @user.fb_link do %><i class="fa fa-facebook"></i><%end%></li>
+                      <li><%=link_to @user.twitter_link do %><i class="fa fa-twitter"></i><%end%></li>
+                      <li><%=link_to @user.ig_link do %><i class="fa fa-instagram"></i><%end%></li>
+                      <li><%=link_to @user.tumblr_link do %><i class="fa fa-tumblr"></i><%end%></li>
+                  </ul>
                 </li>
           </ul>
 
          </div>
          <div class="col-md-8">
            <blockquote>
-             <p><%=@user.about_me%></p>
+             <p class="lead"><%=@user.about_me%></p>
             </blockquote>
          </div>
    </div>

@@ -1,5 +1,21 @@
 <div class="photo item">
-    <%=link_to photo_url(photo), remote: true, data: { target: "preview" }  do%>
-    <%=image_tag photo.image.url(:medium), style: "width: 100%;" %>
+    <%option ||= 0%>
+    <%if option == 1%>
+      <%#=link_to photo_url(photo), remote: true  do%>
+        <%#=image_tag photo.image.url(:medium), style: "width: 100%;" %>
+      <!-- <img src="http://placehold.it/160x100" class="img-responsive img-radio"> -->
+          <!-- <button type="button" class="btn btn-primary btn-radio">Right</button>
+          <input type="checkbox" id="right-item" class="hidden"> -->
+          <label align="center">
+            <%=image_tag photo.image.url(:medium), style: "width: 100%;" %>
+
+              <%= radio_button_tag("user[banner]", photo.id) %>
+          </label>
+      <%#end%>
+
+    <%else%>
+      <%=link_to photo_url(photo), remote: true, data: { target: "preview" }  do%>
+      <%=image_tag photo.image.url(:medium), style: "width: 100%;" %>
+      <%end%>
     <%end%>
 </div>

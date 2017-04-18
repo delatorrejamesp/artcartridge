@@ -1,50 +1,114 @@
-<h3 class="text-center">Edit Profile</h3>
-<hr>
-<%= form_for(@user, url: user_path(@user),  authenticity_token: true, remote: true , html: { method: :patch, class: "form-horizontal" }) do |f| %>
-<div class="form-group">
-  <%=f.label :avatar, class: "col-sm-3"%>
- <div class="col-sm-9"><%= f.file_field :avatar, class: "form-control"%></div>
-</div>
-<div class="form-group">
-    <%=f.label :username, class: "col-sm-3"%>
-    <div class="col-sm-9">
-        <%=f.text_field :username, placeholder: "Username", class: "form-control"%>
+<%form_number ||= 1%>
+  <hr>
+<%if form_number == 1%>
+
+  <%= form_for(@user, url: user_path(@user),  authenticity_token: true, remote: true , html: { method: :patch, class: "form-horizontal" }) do |f| %>
+  <div class="form-group">
+      <%=f.label :username, class: "col-sm-3"%>
+      <div class="col-sm-9">
+          <%=f.text_field :username, placeholder: "Username", class: "form-control"%>
+      </div>
+  </div>
+    <div class="form-group">
+        <%=f.label :first_name, class: "col-sm-3"%>
+        <div class="col-sm-9">
+            <%=f.text_field :first_name, placeholder: "First Name", class: "form-control"%>
+        </div>
     </div>
-</div>
-  <div class="form-group">
-      <%=f.label :first_name, class: "col-sm-3"%>
-      <div class="col-sm-9">
-          <%=f.text_field :first_name, placeholder: "First Name", class: "form-control"%>
-      </div>
-  </div>
-  <div class="form-group">
-      <%=f.label :last_name, class: "col-sm-3"%>
-      <div class="col-sm-9">
-          <%=f.text_field :last_name, placeholder: "First Name", class: "form-control"%>
-      </div>
-  </div>
-  <div class="form-group">
-      <%=f.label :birthday, class: "col-sm-3"%>
-      <div class="col-sm-9">
-          <%= date_select :user, :birthday, end_year: Date.today.year-60, start_year: Date.today.year, order: [ :month, :day, :year ], selected: current_user.birthday, with_css_classes: { month: "date_select col-sm-3", day: "date_select col-sm-4",
-          year:"date_select col-sm-4" } %>
-      </div>
-  </div>
-  <div class="form-group">
-      <%=f.label :address, class: "col-sm-3"%>
-      <div class="col-sm-9">
-          <%= f.country_select :address,  { include_blank: 'Select a country' }, { class: 'form-control' } %>
-      </div>
-  </div>
-  <div class="form-group">
-      <%=f.label :about_me, class: "col-sm-3"%>
-      <div class="col-sm-12">
-          <%=f.text_area :about_me, class: "form-control", rows: 5%>
-      </div>
-  </div>
-  <div class="form-group">
-      <div class="pull-right">
-          <%=f.submit class: "btn btn-primary"%>
-      </div>
-  </div>
+    <div class="form-group">
+        <%=f.label :last_name, class: "col-sm-3"%>
+        <div class="col-sm-9">
+            <%=f.text_field :last_name, placeholder: "First Name", class: "form-control"%>
+        </div>
+    </div>
+    <div class="form-group">
+        <%=f.label :birthday, class: "col-sm-3"%>
+        <div class="col-sm-9">
+            <%= date_select :user, :birthday, end_year: Date.today.year-60, start_year: Date.today.year, order: [ :month, :day, :year ], selected: current_user.birthday, with_css_classes: { month: "date_select form-control", day: "date_select form-control",
+            year:"date_select form-control" } %>
+        </div>
+    </div>
+    <div class="form-group">
+        <%=f.label :address, class: "col-sm-3"%>
+        <div class="col-sm-9">
+            <%= f.country_select :address,  { include_blank: 'Select a country' }, { class: 'form-control' } %>
+        </div>
+    </div>
+    <div class="form-group">
+        <%=f.label :about_me, class: "col-sm-3"%>
+        <div class="col-sm-12">
+            <%=f.text_area :about_me, class: "form-control", rows: 5%>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="pull-right">
+            <%=f.submit class: "btn btn-primary"%>
+        </div>
+    </div>
+  <%end%>
 <%end%>
+<%if form_number == 2%>
+  <%= form_for(@user, url: user_path(@user),  authenticity_token: true, remote: true , html: { method: :patch, class: "form-horizontal" }) do |f| %>
+
+    <div class="form-group">
+      <%=f.label :avatar, class: "col-sm-3"%>
+       <div class="col-sm-9"><%= f.file_field :avatar, class: "form-control"%></div>
+    </div>
+    <div class="form-group">
+      <%=f.label :banner, class: "col-sm-12"%>
+       <div class="col-sm-12" style="max-height:300px;overflow-y: scroll;">
+           <%#=@photos = @user.photos%>
+           <%=render partial: "photos/gallery", locals: { option: 1 } %>
+       </div>
+    </div>
+    <div class="form-group">
+        <div class="pull-right">
+            <%=f.submit class: "btn btn-primary"%>
+        </div>
+    </div>
+
+  <%end%>
+<%end%>
+<%if form_number == 3%>
+  <%= form_for(@user, url: user_path(@user),  authenticity_token: true, remote: true , html: { method: :patch, class: "form-horizontal" }) do |f| %>
+    <div class="form-group">
+      <%=f.label :fb_link, class: "col-sm-1 lead text-right" do %>
+          <i class="fa fa-facebook"></i>
+      <%end%>
+      <div class="col-sm-11">
+          <%=f.text_field :fb_link, placeholder: "facebook", class: "form-control"%>
+      </div>
+    </div>
+    <div class="form-group">
+      <%=f.label :ig_link, class: "col-sm-1 lead text-right" do %>
+          <i class="fa fa-instagram"></i>
+      <%end%>
+      <div class="col-sm-11">
+          <%=f.text_field :ig_link, placeholder: "instagram", class: "form-control"%>
+      </div>
+    </div>
+    <div class="form-group">
+      <%=f.label :twitter_link, class: "col-sm-1 lead text-right" do %>
+          <i class="fa fa-twitter"></i>
+      <%end%>
+      <div class="col-sm-11">
+          <%=f.text_field :twitter_link, placeholder: "twiiter", class: "form-control"%>
+      </div>
+    </div>
+    <div class="form-group">
+      <%=f.label :tumblr_link, class: "col-sm-1 lead text-right" do %>
+          <i class="fa fa-tumblr"></i>
+      <%end%>
+      <div class="col-sm-11">
+          <%=f.text_field :tumblr_link, placeholder: "twiiter", class: "form-control"%>
+      </div>
+    </div>
+    <div class="form-group">
+        <div class="pull-right">
+            <%=f.submit class: "btn btn-primary"%>
+        </div>
+    </div>
+
+  <%end%>
+<%end%>
+  <hr>
