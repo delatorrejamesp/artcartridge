@@ -48,6 +48,6 @@ class ProfessionalPagesController < ApplicationController
     end
 
     def set_session
-        session[:page_type] = 1 # community_page
+        session[:page_type] = 1
     end
 end

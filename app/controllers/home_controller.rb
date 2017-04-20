@@ -2,6 +2,7 @@ class HomeController < ApplicationController
 
  #, only: [ :dashboard ]
  before_action :set_user
+ before_action :set_session
 
   def index
     @photos = Photo.take(4)#all.order(created_at: :desc).page(params[:page])
@@ -26,7 +27,9 @@ class HomeController < ApplicationController
      logger.info "subdomain : #{subdomain}"
      @user=User.friendly.find(subdomain) if request.subdomain != "www"
    end
-
  end
+   def set_session
+     session[:page_type] = 0 # community_page
+   end
 
 end

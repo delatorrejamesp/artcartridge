@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource_or_scope)
       logger.info "params: #{params[:page_type]}"
       return unauthenticated_root_url(subdomain: "www") if params[:page_type] == "0" && Rails.env.production?
-      return unauthenticated_root_url if params[:page_type] == "0" && !Rails.env.production?
+      return unauthenticated_root_url(subdomain: false) if params[:page_type] == "0" && !Rails.env.production?
       return professional_page_url if params[:page_type]== "1"
   end
 

@@ -29,9 +29,11 @@
     <%= f.submit "Sign in", :class => "btn btn-primary form-control" %>
 
 </li>
+<% end %>
+<ul class="list-unstyled">
 <li>
 
-    <%=link_to "Sign up", new_user_registration_url(subdomain: false), method: :get, :class => "btn btn-primary form-control",style: "margin-top: 10px;" %>
+    <%=button_to "Sign up", new_user_registration_url(subdomain: false), method: :get, :class => "btn btn-primary form-control",style: "margin-top: 10px;" %>
 
 </li>
-<% end %>
+</ul>

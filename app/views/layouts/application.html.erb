@@ -12,9 +12,9 @@
     <body>
         <header>
         <%if session[:page_type] == 1 %>
-          <%= render 'layouts/navigation_subdomain' %>
+          <%= render 'layouts/navigation_professional_pages' %>
         <%else%>
-          <%= render 'layouts/navigation' %>
+          <%= render 'layouts/navigation_community_pages' %>
         <%end%>
         </header>
         <main role="main" id="main">
