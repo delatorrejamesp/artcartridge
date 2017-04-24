@@ -16,7 +16,7 @@ class CommunityPagesController < ApplicationController
   end
 
   def com
-      logger.info " session[:page_type] : #{session[:page_type]}"
+      logger.info " session[:page_type] : #{session[:page_type]} #{@user.inspect}"
       get_photos
       render 'users/show'
   end
