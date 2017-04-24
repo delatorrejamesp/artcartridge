@@ -10,9 +10,9 @@
             <%if user_signed_in? || @user%>
                 <%url = authenticated_root_url(subdomain: "www") if Rails.env.production?%>
                 <%url = authenticated_root_url(subdomain: false) if !Rails.env.production?%>
-                <%=link_to url, class: "navbar-brand" do %>
-                  <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-               <%end%>
+                <%#=link_to url, class: "navbar-brand" do %>
+                  <!-- <span class="glyphicon glyphicon-home" aria-hidden="true"></span> -->
+               <%#end%>
                <%=link_to "#{@user.full_name}", community_page_url(subdomain: "#{@user.slug}"), class: "navbar-brand"%>
 
             <%else%>
