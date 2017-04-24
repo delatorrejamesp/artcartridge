@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <%if user_signed_in?%>
+            <%if user_signed_in? && current_page?(community_page_url(subdomain: "#{current_user.slug}"))%>
                   <%url = authenticated_root_url(subdomain: "www") if Rails.env.production?%>
                   <%url = authenticated_root_url(subdomain: false) if !Rails.env.production?%>
                   <%=link_to url, class: "navbar-brand" do %>
@@ -15,20 +15,21 @@
                   <%end%>
                   <%=link_to "@#{current_user.username}", community_page_url(subdomain: "#{current_user.slug}"), class: "navbar-brand"%>
             <%else%>
-                <%=link_to  unauthenticated_root_url, class: "navbar-brand" do %>
+                <%url = unauthenticated_root_url(subdomain: "www") if Rails.env.production?%>
+                <%url = unauthenticated_root_url(subdomain: false) if !Rails.env.production?%>
+                <%=link_to url, class: "navbar-brand" do %>
                     ArtCartridge
                 <%end%>
             <%end%>
         </div>
         <div class="collapse navbar-collapse" id="navbar">
-            <!-- <ul class="nav navbar-nav navbar-left">
-                <li class="dropdown"></li>
-                <%#if !user_signed_in?%>
+            <%#if !user_signed_in?%>
+            <ul class="nav navbar-nav navbar-left">
                 <li class="active"><%=link_to "About", about_url%></li>
                 <li class="active"><%=link_to "Contact", contact_url%></li>
                 <li class="active"><%=link_to "Blog", blog_url%></li>
-                <%#end%>
-            </ul> -->
+            </ul>
+            <%#end%>
             <ul class="nav navbar-nav navbar-right">
               <%if user_signed_in?%>
                       <li class="active"><%=link_to "Upload", new_photo_path, remote: true, data: { target: "uploaded" }%></li>
