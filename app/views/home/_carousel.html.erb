@@ -7,7 +7,7 @@
   </ol>
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
-    <%@photos.each_with_index do |photo,index|%>
+    <%@photos.where(on_slide: true).each_with_index do |photo,index|%>
       <div class="item <%='active' if index == 0 %>">
         <!-- <img src="img_chania.jpg" alt="Chania"> -->
         <%=image_tag photo.image.url, width: "100%;"%>

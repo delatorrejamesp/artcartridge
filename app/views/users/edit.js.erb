@@ -1,0 +1,4 @@
+<%#if path_to_next_page @photos%>
+$("#gallery").append("<%=j render partial: '/photos/photo/with_checkboxes', collection: @photos, as: :photo%>")
+$(".pagination").html("<%=j link_to_next_page @photos, 'Load More', remote: true, class: 'load-more'%>")
+<%#end%>

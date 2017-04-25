@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418083911) do
+ActiveRecord::Schema.define(version: 20170425064021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 20170418083911) do
   end
 
   create_table "photos", force: :cascade do |t|
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20170418083911) do
     t.integer  "user_id"
     t.text     "description"
     t.string   "title"
+    t.boolean  "on_slide",           default: false, null: false
     t.index ["user_id"], name: "index_photos_on_user_id", using: :btree
   end
 
@@ -84,10 +85,12 @@ ActiveRecord::Schema.define(version: 20170418083911) do
     t.string   "slug"
     t.boolean  "admin",                  default: false
     t.string   "fb_link",                default: "https://www.facebook.com/",                                                     null: false
-    t.string   "ig_link",                default: "https://www.instagram.com",                                                     null: false
+    t.string   "ig_link",                default: "https://www.instagram.com/",                                                    null: false
     t.string   "twitter_link",           default: "https://twitter.com/",                                                          null: false
     t.string   "tumblr_link",            default: "https://www.tumblr.com/",                                                       null: false
     t.text     "banner",                 default: "https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=11700&h=200", null: false
+    t.text     "shop_cover",             default: "http://placehold.it/350x250",                                                   null: false
+    t.text     "portfolio_cover",        default: "http://placehold.it/350x250",                                                   null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
     t.index ["slug"], name: "index_users_on_slug", using: :btree

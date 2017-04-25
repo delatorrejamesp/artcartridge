@@ -33,3 +33,27 @@ $(document).on 'turbolinks:load', ->
     navSelector: ".pagination" # selector for the paged navigation (it will be hidden)
     nextSelector: ".pagination a[rel=next]" # selector for the NEXT link (to page 2)
     itemSelector: "#gallery div.item" # selector for all items you'll retrieve
+
+$(document).on "shown.bs.modal", "#bannerModal", ->
+   console.log("shown.bs.modal")
+  $("#gallery").infinitescroll
+    loading: {
+      img:     "http://www.mytreedb.com/uploads/mytreedb/loader/ajax_loader_blue_48.gif"
+      msgText: "loading..."
+      selector: ".loading-area"
+    }
+    navSelector: ".pagination" # selector for the paged navigation (it will be hidden)
+    nextSelector: ".pagination a[rel=next]" # selector for the NEXT link (to page 2)
+    itemSelector: "#gallery div.item" # selector for all items you'll retrieve
+
+$(document).on "show.bs.modal", "#bannerModal", ->
+  console.log("show.bs.modal")
+  $("#gallery").infinitescroll
+    loading: {
+      img:     "http://www.mytreedb.com/uploads/mytreedb/loader/ajax_loader_blue_48.gif"
+      msgText: "loading..."
+      selector: ".loading-area"
+    }
+    navSelector: ".pagination" # selector for the paged navigation (it will be hidden)
+    nextSelector: ".pagination a[rel=next]" # selector for the NEXT link (to page 2)
+    itemSelector: "#gallery div.item" # selector for all items you'll retrieve

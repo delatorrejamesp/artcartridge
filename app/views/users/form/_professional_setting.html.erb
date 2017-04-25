@@ -1,0 +1,104 @@
+<%= form_for(@user, url: user_path(@user),  authenticity_token: true, remote: true , html: { method: :patch, class: "form-horizontal" }) do |f| %>
+
+    <div class="form-group">
+        <%=f.label "Slideshow", class: "col-sm-3"%>
+        <div class="col-sm-9">
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#onslideModal">Choose Photo</button>
+            <div id="onslideModal" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Choose Slide  Show Photos</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div id="gallery" class="masonry wrapper">
+                                <%= render partial: "photos/photo/with_checkboxes", collection: @photos, as: :photo %>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 loading-area" align="center">
+                                </div>
+                                <div class="col-md-12 pagination" style="padding-left: 15px;">
+                                    <%= link_to_next_page(@photos, 'Load More', :remote => true, class: "load-more") %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <%=f.label :shop_cover, class: "col-sm-3"%>
+        <div class="col-sm-9">
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#shopCoverModal">Choose Photo</button>
+            <div id="shopCoverModal" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Choose shop cover</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div id="gallery" class="masonry wrapper">
+                                <%= render partial: "photos/photo/with_radio_buttons", collection: @photos, as: :photo, locals: { object_name: "user[shop_cover]"} %>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 loading-area" align="center">
+                                </div>
+                                <div class="col-md-12 pagination" style="padding-left: 15px;">
+                                    <%= link_to_next_page(@photos, 'Load More', :remote => true, class: "load-more") %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <%=f.label :portfolio_cover, class: "col-sm-3"%>
+        <div class="col-sm-9">
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#portfolioCoverModal">Choose Photo</button>
+            <div id="portfolioCoverModal" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Choose Portfolio Cover</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div id="gallery" class="masonry wrapper">
+                                <%= render partial: "photos/photo/with_radio_buttons", collection: @photos, as: :photo,  locals: { object_name: "user[portfolio_cover]"} %>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 loading-area" align="center">
+                                </div>
+                                <div class="col-md-12 pagination" style="padding-left: 15px;">
+                                    <%= link_to_next_page(@photos, 'Load More', :remote => true, class: "load-more") %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="pull-right">
+            <%=f.submit class: "btn btn-primary"%>
+        </div>
+    </div>
+<%end%>

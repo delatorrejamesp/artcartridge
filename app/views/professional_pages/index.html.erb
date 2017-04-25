@@ -5,11 +5,12 @@
     </div>
     <div class="col-md-4">
         <h3 class="text-center"> Portfolio </h3>
-        <%=image_tag "http://placehold.it/350x250"%>
+        <%=image_tag @user.get_portfolio_cover.image.url, size: "350x250"%>
+
     </div>
     <div class="col-md-4">
         <h3 class="text-center"> Shop Picture </h3>
-        <%=image_tag "http://placehold.it/350x250"%>
+        <%=image_tag @user.get_shop_cover.image.url, size: "350x250"%>
     </div>
     <div class="col-md-4">
         <h3 class="text-center"> Free Box </h3>

@@ -76,16 +76,14 @@ class User < ApplicationRecord
     end
 
     def random_picked_photo
-
-        # if self.banner_changed?
-        #     logger.info "banner  #{self.banner}"
-        #     Photo.find(self.banner)
-        # else
-        #   offset = rand(photos.count)
-        #   # Rails 4
-        #   Photo.offset(offset).first
-        # end
           Photo.find_or_initialize_by(id:self.banner)
+    end
+    def get_shop_cover
+          Photo.find_or_initialize_by(id:self.shop_cover)
+    end
+
+    def get_portfolio_cover
+          Photo.find_or_initialize_by(id:self.portfolio_cover)
     end
 
     def set_username
