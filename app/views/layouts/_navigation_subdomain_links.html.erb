@@ -2,7 +2,8 @@
 <li><%=link_to "Professional Page", professional_page_url(current_user, subdomain: "#{current_user.slug}")%></li>
 <li class="divider"></li>
 <%if user_signed_in?%>
-  <li><%=link_to "Edit Profile", user_profile_path(current_user)%></li>
+  <li>
+      <%if can? :manage, @user%><%=link_to "Edit Profile", user_profile_path(current_user)%><%end%></li>
   <li><a href="#">Change Password</a></li>
   <li class="divider"></li>
   <li><%=link_to "Logout", destroy_user_session_path(subdomain: false, host: request.domain,  page_type: 1), method: :get %></li>

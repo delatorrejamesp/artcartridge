@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  #load_and_authorize_resource
   before_action :set_user, only: [ :edit, :update, :destroy, :show, :portfolio, :photos, :show_pro ]
 
   before_action :get_photos, only: [ :edit ]
@@ -9,7 +9,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    logger.info(@photos.inspect)
+
+    #logger.info(@photos.inspect)
+    authorize! :manage, @user
   end
 
   def show
@@ -57,7 +59,6 @@ class UsersController < ApplicationController
   end
 
   def portfolio
-    #@photos = @user.photos.order(created_at: :desc).page(params[:page])
     @photos = Photo.where(user_id: @user.id).order(created_at: :desc).page(params[:page])
     render "photos/index"
   end

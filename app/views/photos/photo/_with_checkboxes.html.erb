@@ -2,6 +2,6 @@
       <label align="center">
         <%=image_tag photo.image.url(:medium), style: "width: 100%;" %>
         <%= hidden_field_tag "on_slide_ids[#{photo.id}]", false %>
-        <%= check_box_tag("on_slide_ids[#{photo.id}]", photo.id, photo.on_slide?) %>
+        <%= check_box_tag("on_slide_ids[#{photo.id}]", photo.id) %>
       </label>
 </div>

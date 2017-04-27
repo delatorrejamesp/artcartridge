@@ -3,14 +3,19 @@
     <div class="col-md-12">
         <%=render partial: "home/carousel"%>
     </div>
+</div>
+<div class="row">
     <div class="col-md-4">
-        <h3 class="text-center"> Portfolio </h3>
-        <%=image_tag @user.get_portfolio_cover.image.url, size: "350x250"%>
-
+        <%=link_to professional_page_portfolio_url(subdomain: "#{@user.slug}") do%>
+            <h3 class="text-center"> Portfolio </h3>
+            <%=image_tag @user.get_portfolio_cover.image.url, size: "340x250"%>
+        <%end%>
     </div>
     <div class="col-md-4">
-        <h3 class="text-center"> Shop Picture </h3>
-        <%=image_tag @user.get_shop_cover.image.url, size: "350x250"%>
+        <%=link_to professional_page_shop_url(subdomain: "#{@user.slug}") do%>
+            <h3 class="text-center"> Shop Picture </h3>
+            <%=image_tag @user.get_shop_cover.image.url, size: "340x250"%>
+        <%end%>
     </div>
     <div class="col-md-4">
         <h3 class="text-center"> Free Box </h3>
