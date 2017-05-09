@@ -82,3 +82,4 @@ gem 'rails_admin', '~> 1.1.1'
 gem "cancan"
 gem 'pg'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
+gem 'commontator', '~> 4.11.1'

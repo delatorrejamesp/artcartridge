@@ -1,13 +1,27 @@
 Rails.application.routes.draw do
-    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
+  mount Commontator::Engine => '/commontator'
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  namespace :admin do
+    resources :qoutes
+  end
 
     get 'p/about' => 'pages#about', as: :about
 
     get 'p/contact' => 'pages#contact', as: :contact
 
     get 'p/blog' => 'pages#blog', as: :blog
+
+
+
+    namespace :admin do
+
+      resources :settings
+
+    end
+
 
     constraints(subdomain: /www/) do
         root to: 'home#feeds'
@@ -37,6 +51,8 @@ Rails.application.routes.draw do
     end
 
     authenticate :user do
+
+        get 'p/feature' => 'pages#feature', as: :feature_artists
 
         resources :photos, only: [:new, :create, :edit, :update, :destroy] do
            collection do

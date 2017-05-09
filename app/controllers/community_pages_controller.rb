@@ -21,7 +21,6 @@ class CommunityPagesController < ApplicationController
       render 'users/show'
   end
 
-
   private
 
   def get_photos

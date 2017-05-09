@@ -18,7 +18,7 @@
                 <%url = unauthenticated_root_url(subdomain: "www") if Rails.env.production?%>
                 <%url = unauthenticated_root_url(subdomain: false) if !Rails.env.production?%>
                 <%=link_to url, class: "navbar-brand" do %>
-                    ArtCartridge
+                    <span><%=image_tag session[:setting].logo.url, size: "30x30"%></span> <%=session[:setting]["app_name"]%>
                 <%end%>
             <%end%>
         </div>
@@ -27,6 +27,7 @@
               <ul class="nav navbar-nav navbar-left">
                   <li class="active"><%=link_to "About", about_url%></li>
                   <li class="active"><%=link_to "Contact", contact_url%></li>
+                  <li class="active"><%=link_to "Featured Artists", feature_artists_url%></li>
                   <li class="active"><%=link_to "Blog", blog_url%></li>
               </ul>
             <%end%>

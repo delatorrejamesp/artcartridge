@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @admin_qoute.description %>
+</p>
+
+<p>
+  <strong>Enable:</strong>
+  <%= @admin_qoute.enable %>
+</p>
+
+<%= link_to 'Edit', edit_admin_qoute_path(@admin_qoute) %> |
+<%= link_to 'Back', admin_qoutes_path %>

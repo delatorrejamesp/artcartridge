@@ -17,6 +17,8 @@ class User < ApplicationRecord
     # def should_generate_new_friendly_id?
     #     new_record? || slug.nil? || slug.blank? # you can add more condition here
     # end
+    acts_as_commontator
+    acts_as_commontable
 
     acts_as_followable
     acts_as_follower
