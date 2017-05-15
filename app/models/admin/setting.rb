@@ -1,6 +1,6 @@
 class Admin::Setting < ApplicationRecord
 
-
+  has_many :qoutes
   has_attached_file :logo,
                     styles: {
                         medium: '300x300>',

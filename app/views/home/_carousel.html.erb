@@ -1,16 +1,17 @@
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-    <li data-target="#myCarousel" data-slide-to="3"></li>
+    <%@setting.qoutes.each_with_index do |qoute,index|%>
+    <li data-target="#myCarousel" data-slide-to="<%=index%>" class="<%='active' if index == 0 %>"></li>
+    <%end%>
   </ol>
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
-    <%@photos.where(on_slide: true).each_with_index do |photo,index|%>
+    <%@setting.qoutes.each_with_index do |qoute,index|%>
       <div class="item <%='active' if index == 0 %>">
-        <!-- <img src="img_chania.jpg" alt="Chania"> -->
-        <%=image_tag photo.image.url, width: "100%;"%>
+        <blockquote>
+          <p><%=qoute.description%></p>
+          <footer><%=qoute.author%></footer>
+        </blockquote>
       </div>
     <%end%>
   </div>

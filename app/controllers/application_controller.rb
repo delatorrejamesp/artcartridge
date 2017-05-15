@@ -35,6 +35,7 @@ class ApplicationController < ActionController::Base
 
   def get_setting
     session[:setting] = Admin::Setting.find(1)
+    @setting =  Admin::Setting.find(1)
   end
 
   # def get_qoutes
