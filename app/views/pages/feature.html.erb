@@ -21,7 +21,7 @@
               <dd style="margin-left:90px;">
                   <ul class="list-unstyled">
                         <li>
-                            <%=link_to community_page_url(subdomain: "#{current_user.slug}") do%>@<%=user.username%><%end%>
+                            <%=link_to community_page_url(subdomain: "#{user.slug}") do%>@<%=user.username%><%end%>
                         </li>
                   </ul>
               </dd>
