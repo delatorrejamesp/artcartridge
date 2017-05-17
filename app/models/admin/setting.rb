@@ -41,4 +41,8 @@ class Admin::Setting < ApplicationRecord
     #response# All headers are lowercase
   end
 
+  def qoutes_random
+      qoutes.limit(10).order("RANDOM()")
+  end
+
 end
