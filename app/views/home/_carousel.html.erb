@@ -1,6 +1,6 @@
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
-    <%@setting.qoutes.each_with_index do |qoute,index|%>
+    <%@setting.qoutes_random.each_with_index  do |qoute,index|%>
     <li data-target="#myCarousel" data-slide-to="<%=index%>" class="<%='active' if index == 0 %>"></li>
     <%end%>
   </ol>
