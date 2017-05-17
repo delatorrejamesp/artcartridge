@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
     get 'p/blog' => 'pages#blog', as: :blog
 
+    get 'p/feature' => 'pages#feature', as: :feature_artists
 
 
     namespace :admin do
@@ -52,7 +53,7 @@ Rails.application.routes.draw do
 
     authenticate :user do
 
-        get 'p/feature' => 'pages#feature', as: :feature_artists
+
 
         resources :photos, only: [:new, :create, :edit, :update, :destroy] do
            collection do
