@@ -17,8 +17,8 @@
             <%else%>
                 <%url = unauthenticated_root_url(subdomain: "www") if Rails.env.production?%>
                 <%url = unauthenticated_root_url(subdomain: false) if !Rails.env.production?%>
-                <%=link_to url, class: "navbar-brand" do %>
-                    <span><%=image_tag session[:setting].logo.url, size: "30x30"%></span> <%=session[:setting]["app_name"]%>
+                <%=link_to url, class: "navbar-brand",style: "padding: 5px 15px" do %>
+                    <span><%=image_tag session[:setting].logo.url, size: "170x40"%></span>
                 <%end%>
             <%end%>
         </div>

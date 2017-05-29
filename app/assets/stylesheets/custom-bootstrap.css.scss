@@ -31,3 +31,44 @@ nav.navbar-findcond span.badge.new { background: rgba(255, 0, 0, 0.8); color: #f
   width:100%;
   max-height: 300px !important;
 }
+
+blockquote {
+border:none;
+font-family:Georgia, "Times New Roman", Times, serif;
+margin-bottom:-30px;
+position: relative;
+max-width: 600px;
+margin: 0 auto;
+padding-left: 0.4em;
+}
+
+blockquote h3 {
+    font-size:21px;
+}
+
+blockquote h3:before {
+    content: "\201C";
+    font-weight: bold;
+    font-size:100px;
+    color:#889c0b;
+    position: absolute;
+    top: -0.2em;
+    left: -0.5em;
+    font-family: 'Georgia';
+}
+blockquote h3:after {
+    content: "\201D";
+    font-weight: bold;
+    font-size:100px;
+    color:#889c0b;
+    position: absolute;
+    bottom: -0.6em;
+    right: 0;
+    font-family: 'Georgia';
+}
+.carousel-control {
+  &.left, &.right {
+    background-image: none;
+    @include reset-filter();
+  }
+}

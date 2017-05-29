@@ -8,10 +8,12 @@
   <div class="carousel-inner" role="listbox">
     <%@setting.qoutes_random.each_with_index do |qoute,index|%>
       <div class="item <%='active' if index == 0 %>">
+        <center>
         <blockquote>
-          <p><%=qoute.description%></p>
-          <footer><%=qoute.author%></footer>
+        	<h3><%=qoute.description%></h3>
+            <footer><%=qoute.author%></footer>
         </blockquote>
+      </center>
       </div>
     <%end%>
   </div>
