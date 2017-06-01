@@ -1,7 +1,7 @@
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div id="carousel-qoutes" class="carousel slide carousel-fade" data-ride="carousel">
   <ol class="carousel-indicators">
     <%@setting.qoutes_random.each_with_index  do |qoute,index|%>
-    <li data-target="#myCarousel" data-slide-to="<%=index%>" class="<%='active' if index == 0 %>"></li>
+    <li data-target="#carousel-qoutes" data-slide-to="<%=index%>" class="<%='active' if index == 0 %>"></li>
     <%end%>
   </ol>
   <!-- Wrapper for slides -->
@@ -10,18 +10,19 @@
       <div class="item <%='active' if index == 0 %>">
         <center>
         <blockquote>
-        	<h3><%=qoute.description%></h3>
+        	<h3><%=qoute.description%>
             <footer><%=qoute.author%></footer>
+          </h3>
         </blockquote>
       </center>
       </div>
     <%end%>
   </div>
-  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+  <a class="left carousel-control" href="#carousel-qoutes" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+  <a class="right carousel-control" href="#carousel-qoutes" role="button" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
