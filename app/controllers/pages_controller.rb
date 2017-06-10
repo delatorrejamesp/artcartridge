@@ -16,8 +16,13 @@ class PagesController < ApplicationController
 
   def feature
     #@user = User.find(featured: true).first
-    #User.where(featured: true)
-    commontator_thread_show(@featured_artist)
+    #User.where(featured: true
+    @fa=@featured_artists.take(1).first
+    @photo = Photo.new
+    if @fa.photos.any?
+      @photo=@fa.photos.first
+      commontator_thread_show(@photo)
+    end
 
   end
 

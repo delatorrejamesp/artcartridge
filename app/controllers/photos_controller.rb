@@ -3,6 +3,8 @@ class PhotosController < ApplicationController
   before_action :set_photo, only: [ :show ]
   before_action :get_user, only: [ :take_three ]
 
+  after_action :add_views, only: [:show]
+
   def index
     @photos = Photo.all.order(created_at: :desc).page(params[:page])
   end
@@ -46,6 +48,13 @@ class PhotosController < ApplicationController
 
   def get_user
       @photos = Photo.where(user_id: params[:user_id]).take(3)
+  end
+
+  def add_views
+      if current_user.id != @photo.user_id
+        @photo.increment(:views)
+        @photo.save
+      end
   end
 
 end

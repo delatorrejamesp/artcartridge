@@ -2,6 +2,9 @@ class Photo < ApplicationRecord
 
   belongs_to :user
 
+  acts_as_commontator
+  acts_as_commontable
+
   has_attached_file :image,
     styles: {
        medium: "300x300>",

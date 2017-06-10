@@ -59,6 +59,9 @@ Rails.application.routes.draw do
            collection do
              get "/:user_id/take_three" => "photos#take_three", as: :take_three
            end
+           member do
+              patch :view
+           end
         end
 
         match 'users/:id/profile' => 'users#edit', as: 'user_profile', via: [:get]

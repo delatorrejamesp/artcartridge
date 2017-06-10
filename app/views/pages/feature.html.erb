@@ -1,49 +1,60 @@
-<%@fa=@featured_artists.take(1).first%>
+
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-9">
         <%#=@fa.inspect%>
+
         <%if @fa.photos.any?%>
-            <%=image_tag @fa.photos.first.image.url, size: "770x420" %>
+            <%=image_tag @photo.image.url, size: "860x420" %>
         <%else%>
             <img src="http://placehold.it/770x420">
         <%end%>
-        <p class="pull-right"><b>46</b> views</p>
+        <p class="pull-right"><b><%=@photo.views%></b> views</p>
         <h4>Featured Artist <%=link_to community_page_url(subdomain: "#{@fa.slug}") do%>@<%=@fa.username%>  <%end%></h4>
-        <p><b>Publish Date</b> : <%=@fa.photos.first.created_at.strftime("%e %b, %Y")%></p>
-    </div>
-    <div class="col-md-4">
-      <%if @advertisement%>
-          <%=link_to @advertisement.link, target: "_blank" do %>
-                <%=image_tag @advertisement.image.url(:medium), size: "390x229"%>
-          <%end%>
-      <%else%>
-          <%=link_to "#{rails_admin_url}/admin~advertisement", target: "_blank" do %>
-                <%=image_tag "http://placehold.it/390x229", size: "390x229"%>
-          <%end%>
-      <%end%>
-        <div id="comments" style="">
-            <%= commontator_thread(@featured_artist) %>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <h3 align="center">More Featured Artists</h3>
-    <div class="row grid">
-        <%@featured_artists.each do |user|%>
-            <div class="col-md-3 grid-item">
-                <dl  class="dl-horizontal text-left" style="width:100%">
-                    <dt style="width:80px;"><%=image_tag user.photos.first.image.url, size: "70x70" %></dt>
-                    <dd style="margin-left:90px;">
-                        <ul class="list-unstyled">
-                            <li>
-                                <%=link_to community_page_url(subdomain: "#{user.slug}") do%>@<%=user.username%><%end%>
-                                <p style="margin-bottom:2px;"><b>46</b> views <b>46</b> comments</p>
-                                <p style="margin-bottom:2px;"><b>Publish Date</b> : <%=user.photos.first.created_at.strftime("%e %b, %Y")%></p>
-                            </li>
-                        </ul>
-                    </dd>
-                </dl>
+        <p><b>Publish Date</b> : <%=@photo.created_at.strftime("%e %b, %Y")%></p>
+
+            <div class="row grid">
+                <h3 align="center">More Featured Artists</h3>
+                <%@featured_artists.each do |user|%>
+                    <div class="col-md-4 grid-item">
+                        <dl  class="dl-horizontal text-left" style="width:100%">
+                            <dt style="width:80px;">
+                                <%photo= user.photos.first || Photo.new %>
+                                <%if user.photos.any?%>
+                                    <%=image_tag photo.image.url, size: "70x70"%>
+                                <%else%>
+                                    <img src="http://placehold.it/70x70">
+                                <%end%>
+                            </dt>
+                            <dd style="margin-left:90px;">
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <%=link_to community_page_url(subdomain: "#{user.slug}") do%>@<%=user.username%><%end%>
+                                        <p style="margin-bottom:2px;"><b><%=photo.views%></b> views <b><%=photo.comments.count%></b> comments</p>
+                                        <%if user.photos.any?%>
+                                            <p style="margin-bottom:2px;"><b>Publish Date</b> : <%=photo.created_at.strftime("%e %b, %Y")%></p>
+                                        <%end%>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </div>
+                <%end%>
             </div>
+    </div>
+    <div class="col-md-3">
+        <%if @advertisement%>
+            <%=link_to @advertisement.link, target: "_blank" do %>
+                <%=image_tag @advertisement.image.url(:medium), size: "260x229"%>
+            <%end%>
+        <%else%>
+            <%=link_to "#{rails_admin_url}/admin~advertisement", target: "_blank" do %>
+                <%=image_tag "http://placehold.it/260x229", size: "260x229"%>
+            <%end%>
         <%end%>
+        <div id="comments" style="">
+            <%if @fa.photos.any?%>
+                <%= commontator_thread(@photo) %>
+            <%end%>
+        </div>
     </div>
 </div>
