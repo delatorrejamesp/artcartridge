@@ -51,9 +51,8 @@ class PhotosController < ApplicationController
   end
 
   def add_views
-      if current_user.id != @photo.user_id
-        @photo.increment(:views)
-        @photo.save
+      if current_user
+        @photo.increment(:views).save if current_user.id != @photo.user_id
       end
   end
 
