@@ -17,7 +17,7 @@ class PhotosController < ApplicationController
   end
 
   def show
-
+      commontator_thread_show(@photo)
   end
 
   def create
