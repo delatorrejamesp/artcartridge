@@ -10,9 +10,15 @@
         <h4>Featured Artist <%=link_to community_page_url(subdomain: "#{@fa.slug}") do%>@<%=@fa.username%>  <%end%></h4>
     </div>
     <div class="col-md-4">
-        <%=link_to @advertisement.link, target: "_blank" do %>
-              <%=image_tag @advertisement.image.url(:medium), size: "390x229"%>
-        <%end%>
+      <%if @advertisement%>
+          <%=link_to @advertisement.link, target: "_blank" do %>
+                <%=image_tag @advertisement.image.url(:medium), size: "390x229"%>
+          <%end%>
+      <%else%>
+          <%=link_to "#{rails_admin_url}/admin~advertisement", target: "_blank" do %>
+                <%=image_tag "http://placehold.it/390x229", size: "390x229"%>
+          <%end%>
+      <%end%>
         <div id="comments" style="">
             <%= commontator_thread(@featured_artist) %>
         </div>
