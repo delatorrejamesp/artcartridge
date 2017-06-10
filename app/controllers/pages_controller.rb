@@ -4,6 +4,8 @@ class PagesController < ApplicationController
 
   before_action :get_feature_artists
 
+  before_action :get_random_ad
+
   def about
 
   end
@@ -32,6 +34,10 @@ class PagesController < ApplicationController
   def get_feature_artists
     @featured_artists = User.where(featured: true)
     @featured_artist =  User.where(featured: true).first
+  end
+
+  def get_random_ad
+    @advertisement=Admin::Advertisement.order("RANDOM()").first
   end
 
 end

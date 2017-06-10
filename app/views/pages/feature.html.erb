@@ -1,37 +1,39 @@
 <%@fa=@featured_artists.take(1).first%>
 <div class="row">
-  <div class="col-md-8">
-    <h4>Featured Artist <%=link_to community_page_url(subdomain: "#{@fa.slug}") do%>@<%=@fa.username%>  <%end%></h4>
-    <%#=@fa.inspect%>
-    <%if @fa.photos.any?%>
-        <%image_tag @fa.photos.first.image.url size: "770x420" %>
-    <%else%>
-          <img src="http://placehold.it/770x420">
-    <%end%>
-    <h3>More Featured Artist</h3>
-      <div class="row grid">
-        <%@featured_artists.each do |user|%>
-          <div class="col-md-3 grid-item">
-              <dl  class="dl-horizontal text-left" style="width:100%">
-              <dt style="width:80px;"><%=image_tag user.avatar.url(:thumb), size: "70x70"%></dt>
-              <dd style="margin-left:90px;">
-                  <ul class="list-unstyled">
-                        <li>
-                            <%=link_to community_page_url(subdomain: "#{user.slug}") do%>@<%=user.username%><%end%>
-                        </li>
-                  </ul>
-              </dd>
-            </dl>
-          </div>
-          <%end%>
-      </div>
-  </div>
-  <div class="col-md-4">
-    <a href="http://placehold.it"><img src="http://placehold.it/390x229"></a>
-    <div id="comments" style="">
-    <%= commontator_thread(@featured_artist) %>
+    <div class="col-md-8">
+        <%#=@fa.inspect%>
+        <%if @fa.photos.any?%>
+            <%=image_tag @fa.photos.first.image.url, size: "770x420" %>
+        <%else%>
+            <img src="http://placehold.it/770x420">
+        <%end%>
+        <h4>Featured Artist <%=link_to community_page_url(subdomain: "#{@fa.slug}") do%>@<%=@fa.username%>  <%end%></h4>
     </div>
-  </div>
-
-  </div>
+    <div class="col-md-4">
+        <%=link_to @advertisement.link, target: "_blank" do %>
+              <%=image_tag @advertisement.image.url(:medium), size: "390x229"%>
+        <%end%>
+        <div id="comments" style="">
+            <%= commontator_thread(@featured_artist) %>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <h3 align="center">More Featured Artists</h3>
+    <div class="row grid">
+        <%@featured_artists.each do |user|%>
+            <div class="col-md-3 grid-item">
+                <dl  class="dl-horizontal text-left" style="width:100%">
+                    <dt style="width:80px;"><%=image_tag user.avatar.url(:thumb), size: "70x70"%></dt>
+                    <dd style="margin-left:90px;">
+                        <ul class="list-unstyled">
+                            <li>
+                                <%=link_to community_page_url(subdomain: "#{user.slug}") do%>@<%=user.username%><%end%>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+        <%end%>
+    </div>
 </div>
