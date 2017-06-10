@@ -13,7 +13,7 @@ module Commontator
         format.js
       end
     end
-    
+
     # PUT /threads/1/close
     def close
       security_transgression_unless @thread.can_be_edited_by?(@user)
@@ -28,7 +28,7 @@ module Commontator
         format.js { render :show }
       end
     end
-    
+
     # PUT /threads/1/reopen
     def reopen
       security_transgression_unless @thread.can_be_edited_by?(@user)

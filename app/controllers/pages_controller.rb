@@ -17,10 +17,10 @@ class PagesController < ApplicationController
   def feature
     #@user = User.find(featured: true).first
     #User.where(featured: true
-    @fa=@featured_artists.take(1).first
+    @fa=@featured_artists.order("RANDOM()").first
     @photo = Photo.new
     if @fa.photos.any?
-      @photo=@fa.photos.first
+      @photo=@fa.photos.order("RANDOM()").first
       commontator_thread_show(@photo)
     end
 
