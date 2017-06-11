@@ -31,9 +31,9 @@
                                 <ul class="list-unstyled">
                                     <li>
                                         <%=link_to community_page_url(subdomain: "#{user.slug}") do%>@<%=user.username%><%end%>
-                                        <p style="margin-bottom:2px;"><b><%=photo.views%></b> views <b><%=photo.thread.comments.count%></b> comments</p>
+                                        <p style="margin-bottom:2px;font-size: 12px;"><b><%=photo.views%></b> views <b><%=photo.thread.comments.count%></b> comments</p>
                                         <%if user.photos.any?%>
-                                            <p style="margin-bottom:2px;"><b>Publish Date</b> : <%=photo.created_at.strftime("%e %b, %Y")%></p>
+                                            <p style="margin-bottom:2px;font-size: 12px;"><b>Publish Date</b> : <%=photo.created_at.strftime("%e %b, %Y")%></p>
                                         <%end%>
                                     </li>
                                 </ul>
