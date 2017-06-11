@@ -43,10 +43,10 @@
                     <a href="#tab3" data-toggle="tab">References</a>
                 </li>
                 <li>
-                    <a href="#tab4" data-toggle="tab">Inspiring</a>
+                    <a href="#tab4" data-toggle="tab">Followers</a>
                 </li>
                 <li>
-                    <a href="#tab5" data-toggle="tab">Inspired by</a>
+                    <a href="#tab5" data-toggle="tab">People you follow</a>
                 </li>
                 <li>
                     <a href="#tab6" data-toggle="tab">Website</a>
@@ -63,8 +63,8 @@
                     <h3>References</h3>
                 </div>
                 <div class="tab-pane fade" id="tab4">
+                    <br>
                     <%if @user.all_following.any? %>
-                        <h3>Inspiring</h3>
                         <div class="row grid">
                             <%@user.all_following.each_with_index do |user,index| %>
                             <%=render partial: "users/small_profile", locals: { user: user, index: index } %>
@@ -73,8 +73,8 @@
                     <%end%>
                 </div>
                 <div class="tab-pane fade" id="tab5">
+                    <br>
                     <%if @user.all_follows.any? %>
-                        <h3>Inspired by</h3>
                         <div class="row grid">
                             <%@user.followers.each_with_index do |user, index| %>
                             <%=render partial: "users/small_profile", locals: { user: user, index: index  } %>
