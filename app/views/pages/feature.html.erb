@@ -13,7 +13,7 @@
         <%if !@photo.new_record?%>
           <p><b>Publish Date</b> : <%=@photo.created_at.strftime("%e %b, %Y") %></p>
         <%end%>
-
+<!-- 
             <div class="row grid">
                 <h3 align="center">More Featured Artists</h3>
                 <%@featured_artists.each do |user|%>
@@ -35,6 +35,35 @@
                                         <%if user.photos.any?%>
                                             <p style="margin-bottom:2px;font-size: 12px;"><b>Publish Date</b> : <%=photo.created_at.strftime("%e %b, %Y")%></p>
                                         <%end%>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </div>
+                <%end%>
+            </div> -->
+
+
+            <div class="row grid">
+                <h3 align="center">More Featured Artists</h3>
+                <%@setting.instagram_photos.each do |item|%>
+                    <div class="col-md-4 grid-item">
+                        <dl  class="dl-horizontal text-left" style="width:100%">
+                            <dt style="width:80px;">
+                                <%=link_to item["link"], target: "_blank" do%><%=image_tag item["images"]["thumbnail"]["url"], size: "70x70"%><%end%>
+                            </dt>
+                            <dd style="margin-left:90px;">
+                                <ul class="list-unstyled">
+                                    <li>
+                                          <%=link_to item["link"], target: "_blank" do%>@<%=item["users_in_photo"][0]["user"]["username"]%><%end%>
+                                        <!-- <%#=link_to community_page_url(subdomain: "#{user.slug}") do%>@<%#=user.username%><%#end%>
+
+                                        <p style="margin-bottom:2px;font-size: 12px;"><b><%#=photo.views%></b> views <b><%#=photo.thread.comments.count%></b> comments</p>
+                                        <%#if user.photos.any?%>
+                                            <p style="margin-bottom:2px;font-size: 12px;"><b>Publish Date</b> : <%#=photo.created_at.strftime("%e %b, %Y")%></p>
+                                        <%#end%> -->
+                                      <%#=item["users_in_photo"][0]["username"]%>
+                                      <%#=item%>
                                     </li>
                                 </ul>
                             </dd>
