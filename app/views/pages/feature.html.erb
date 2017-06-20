@@ -1,14 +1,15 @@
 
 <div class="row">
     <div class="col-md-9">
-        <%#=@setting.instagram_photos%>
-        <%if params[:ig_id] %>
+
+        <%media_id =  params[:ig_id]  || @setting.instagram_photos.sample["id"]%>
+        <%if media_id %>
               <%user_ig = @setting.instagram_photos.find { |x|
-                    #x["users_in_photo"].find{ |y| y["id"]==params[:ig_id] }
-                    x["id"] ==params[:ig_id]
+                    #x["users_in_photo"].find{ |y| y["id"]==media_id }
+                    x["id"] == media_id
                  } %>
             <div class="row">
-              <%=link_to feature_artists_url(ig_id: user_ig["id"]) do%>
+              <%=link_to user_ig["link"], target: "_blank" do%>
                 <center><%=image_tag  user_ig["images"]["standard_resolution"]["url"], class: "responsive text-center" %></cener>
               <%end%>
             </div>
@@ -70,12 +71,12 @@
                     <div class="col-md-4 grid-item">
                         <dl  class="dl-horizontal text-left" style="width:100%">
                             <dt style="width:80px;">
-                                <%=link_to feature_artists_url(ig_id: item["id"]) do%><%=image_tag item["images"]["thumbnail"]["url"], size: "70x70"%><%end%>
+                                <%=link_to item["link"], target: "_blank" do%><%=image_tag item["images"]["thumbnail"]["url"], size: "70x70"%><%end%>
                             </dt>
                             <dd style="margin-left:90px;">
                                 <ul class="list-unstyled">
                                     <li>
-                                          <%=link_to item["link"], target: "_blank" do%>
+                                          <%=link_to feature_artists_url(ig_id: item["id"])  do%>
                                             <%item["users_in_photo"].each do |u| %>
                                                 @<%=u["user"]["username"]%>
                                             <%end%>
@@ -102,6 +103,8 @@
             <%if @fa.photos.any?%>
                 <%= commontator_thread(@photo) %>
             <%end%>
+              <%#= commontator_thread(@photo) %>
+            <%#=@setting.media_comments(media_id)%>
         </div>
     </div>
 </div>
