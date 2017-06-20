@@ -7,8 +7,18 @@
                     #x["users_in_photo"].find{ |y| y["id"]==params[:ig_id] }
                     x["id"] ==params[:ig_id]
                  } %>
-              <%#= user_ig%>
-              <%=image_tag  user_ig["images"]["standard_resolution"]["url"], size: "860x420" %>
+              <%= user_ig["comments"]["count"]%>
+              <%=link_to user_ig["link"], target: "_blank" do%>
+                <%=image_tag  user_ig["images"]["standard_resolution"]["url"], size: "860x420" %>
+              <%end%>
+
+              <p class="pull-right"><b><%= user_ig["comments"]["count"]%></b> comments</p>
+                <h4>Featured Artist
+                <%user_ig["users_in_photo"].each do |u| %>
+                    <%=link_to "@#{u["user"]["username"]}", "https://www.instagram.com/#{u["user"]["username"]}" %>
+                <%end%>
+              </h4>
+
         <%else%>
 
             <%if @fa.photos.any?%>
