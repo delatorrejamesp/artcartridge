@@ -36,7 +36,7 @@ margin-bottom:-30px;
 position: relative;
 max-width: 900px;
     margin: 0 auto;
-    padding-left: 0.4em;
+    // padding-left: 0.4em;
 max-height: 300px !important
 }
 
@@ -47,21 +47,21 @@ blockquote h3 {
 blockquote h3:before {
     content: "\201C";
     font-weight: bold;
-    font-size:50px;
+    font-size:25px;
     color:#889c0b;
-    position: absolute;
-    top: -0.2em;
-    left: -0.5em;
+    // position: absolute;
+    // top: -0.2em;
+    // left: -0.5em;
     font-family: 'Georgia';
 }
 blockquote h3:after {
     content: "\201D";
     font-weight: bold;
-    font-size:50px;
+    font-size:25px;
     color:#889c0b;
-    position: absolute;
-    bottom: -0.6em;
-    right: 0;
+    // position: absolute;
+    // bottom: -0.6em;
+    // right: 0;
     font-family: 'Georgia';
 }
 
