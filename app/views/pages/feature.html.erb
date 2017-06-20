@@ -1,19 +1,29 @@
 
 <div class="row">
     <div class="col-md-9">
-        <%#=@fa.inspect%>
-
-        <%if @fa.photos.any?%>
-            <%=image_tag @photo.image.url, size: "860x420" %>
+        <%#=@setting.instagram_photos%>
+        <%if params[:ig_id] %>
+              <%user_ig = @setting.instagram_photos.find { |x|
+                    #x["users_in_photo"].find{ |y| y["id"]==params[:ig_id] }
+                    x["id"] ==params[:ig_id]
+                 } %>
+              <%#= user_ig%>
+              <%=image_tag  user_ig["images"]["standard_resolution"]["url"], size: "860x420" %>
         <%else%>
-            <img src="http://placehold.it/860x420">
+
+            <%if @fa.photos.any?%>
+                <%=image_tag @photo.image.url, size: "860x420" %>
+            <%else%>
+                <img src="http://placehold.it/860x420">
+            <%end%>
+            <p class="pull-right"><b><%=@photo.views%></b> views</p>
+            <h4>Featured Artist <%=link_to community_page_url(subdomain: "#{@fa.slug}") do%>@<%=@fa.username%>  <%end%></h4>
+            <%if !@photo.new_record?%>
+              <p><b>Publish Date</b> : <%=@photo.created_at.strftime("%e %b, %Y") %></p>
+            <%end%>
+
         <%end%>
-        <p class="pull-right"><b><%=@photo.views%></b> views</p>
-        <h4>Featured Artist <%=link_to community_page_url(subdomain: "#{@fa.slug}") do%>@<%=@fa.username%>  <%end%></h4>
-        <%if !@photo.new_record?%>
-          <p><b>Publish Date</b> : <%=@photo.created_at.strftime("%e %b, %Y") %></p>
-        <%end%>
-<!-- 
+<!--
             <div class="row grid">
                 <h3 align="center">More Featured Artists</h3>
                 <%@featured_artists.each do |user|%>
@@ -55,15 +65,11 @@
                             <dd style="margin-left:90px;">
                                 <ul class="list-unstyled">
                                     <li>
-                                          <%=link_to item["link"], target: "_blank" do%>@<%=item["users_in_photo"][0]["user"]["username"]%><%end%>
-                                        <!-- <%#=link_to community_page_url(subdomain: "#{user.slug}") do%>@<%#=user.username%><%#end%>
-
-                                        <p style="margin-bottom:2px;font-size: 12px;"><b><%#=photo.views%></b> views <b><%#=photo.thread.comments.count%></b> comments</p>
-                                        <%#if user.photos.any?%>
-                                            <p style="margin-bottom:2px;font-size: 12px;"><b>Publish Date</b> : <%#=photo.created_at.strftime("%e %b, %Y")%></p>
-                                        <%#end%> -->
-                                      <%#=item["users_in_photo"][0]["username"]%>
-                                      <%#=item%>
+                                          <%=link_to item["link"], target: "_blank" do%>
+                                            <%item["users_in_photo"].each do |u| %>
+                                                @<%=u["user"]["username"]%>
+                                            <%end%>
+                                          <%end%>
                                     </li>
                                 </ul>
                             </dd>

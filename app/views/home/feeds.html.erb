@@ -2,7 +2,8 @@
   <div class="col-md-12">
       <ul class="list-inline list-unstyled">
       <%@setting.instagram_photos.each do |item|%>
-          <li><%=link_to item["link"], target: "_blank" do%><%=image_tag item["images"]["thumbnail"]["url"]%><%end%></li>
+      <%#=item.inspect%>
+          <li><%=link_to feature_artists_url(ig_id: item["id"]), target: "_blank" do%><%=image_tag item["images"]["thumbnail"]["url"]%><%end%></li>
       <%end%>
     </ul>
         <%#=@setting.inspect%>
