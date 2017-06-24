@@ -9,7 +9,7 @@
                     x["id"] == media_id
                  } %>
             <div class="row">
-              <%=link_to user_ig["link"], target: "_blank" do%>
+              <%=link_to feature_artists_url(ig_id: user_ig["id"]) do%>
                 <center><%=image_tag  user_ig["images"]["standard_resolution"]["url"], class: "responsive text-center" %></cener>
               <%end%>
             </div>
@@ -71,7 +71,7 @@
                     <div class="col-md-4 grid-item">
                         <dl  class="dl-horizontal text-left" style="width:100%">
                             <dt style="width:80px;">
-                                <%=link_to item["link"], target: "_blank" do%><%=image_tag item["images"]["thumbnail"]["url"], size: "70x70"%><%end%>
+                                <%=link_to feature_artists_url(ig_id: item["id"])  do%><%=image_tag item["images"]["thumbnail"]["url"], size: "70x70"%><%end%>
                             </dt>
                             <dd style="margin-left:90px;">
                                 <ul class="list-unstyled">

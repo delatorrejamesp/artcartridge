@@ -20,7 +20,7 @@
 <span id="thread_<%= thread.id %>_span" class="thread_span">
   <span id="thread_<%= thread.id.to_s %>_actions_span" class="thread_actions">
     <span id="thread_<%= thread.id.to_s %>_hide_span" class="thread_hide commontator_hidden">
-      <%= link_to t('commontator.thread.actions.hide'),
+      <%#= link_to t('commontator.thread.actions.hide'),
                   '#',
                   id: "thread_#{thread.id.to_s}_hide_link",
                   class: "thread_hide_link" %>
@@ -64,14 +64,11 @@
   </span>
 
   <span id="thread_<%= thread.id.to_s %>_header_span" class="thread_header">
-    <%= t "commontator.thread.status.#{thread.is_closed? ? 'closed' : 'open'}",
+    <%#= t "commontator.thread.status.#{thread.is_closed? ? 'closed' : 'open'}",
           :closer_name => (thread.is_closed? ? Commontator.commontator_name(thread.closer) : '') %>
   </span>
 
-  <% if thread.config.comment_order == :l %>
-    <%= render :partial => 'commontator/threads/reply',
-               :locals => { :thread => thread, :user => user, :per_page => per_page } %>
-  <% end %>
+
 
   <div id="thread_<%= thread.id.to_s %>_comment_list_div" class="thread_comment_list">
     <% comments = show_all ? thread.ordered_comments(true) : \
@@ -111,7 +108,10 @@
                :locals => { :thread => thread, :user => user, :per_page => per_page } %>
   <% end %>
 </span>
-
+<% if thread.config.comment_order == :l %>
+  <%= render :partial => 'commontator/threads/reply',
+             :locals => { :thread => thread, :user => user, :per_page => per_page } %>
+<% end %>
 <script type="text/javascript">
   <%= render partial: 'commontator/threads/hide_show_links.js',
              locals: { thread: thread } %>
