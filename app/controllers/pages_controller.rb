@@ -24,6 +24,7 @@ class PagesController < ApplicationController
       commontator_thread_show(@photo)
     end
 
+
   end
 
   private
