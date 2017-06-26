@@ -1,22 +1,23 @@
-<%count_ig_photos=20%>
+<%sample_ig_count=20%>
 <div class="row">
     <div class="col-md-9">
 
-        <%media_id =  params[:ig_id]  || @setting.instagram_photos(count_ig_photos).sample["id"]%>
+        <%media_id =  params[:ig_id]  || @setting.instagram_photos(sample_ig_count).sample["id"]%>
         <%if media_id %>
-              <%user_ig = @setting.instagram_photos(count_ig_photos).find { |x|
+              <%user_ig = @setting.instagram_photos(sample_ig_count).find { |x|
                     #x["users_in_photo"].find{ |y| y["id"]==media_id }
                     x["id"] == media_id
                  } %>
             <div class="row">
-              <%=link_to feature_artists_url(ig_id: user_ig["id"]) do%>
+              <%=link_to user_ig["link"], target: "_blank" do%>
                 <center><%=image_tag  user_ig["images"]["standard_resolution"]["url"], class: "responsive text-center" %></cener>
               <%end%>
             </div>
-              <p class="pull-right"><b><%= user_ig["comments"]["count"]%></b> comments</p>
+              <p class="pull-right"></p>
                 <h4>Featured Artist
                 <%user_ig["users_in_photo"].each do |u| %>
-                    <%=link_to "@#{u["user"]["username"]}", "https://www.instagram.com/#{u["user"]["username"]}" %>
+                    <%=link_to "@#{u["user"]["username"]}", feature_artists_url(ig_id: user_ig["id"]) %>
+                    <%#=link_to "@#{u["user"]["username"]}", "https://www.instagram.com/#{u["user"]["username"]}" %>
                 <%end%>
               </h4>
 
@@ -32,7 +33,6 @@
             <%if !@photo.new_record?%>
               <p><b>Publish Date</b> : <%=@photo.created_at.strftime("%e %b, %Y") %></p>
             <%end%>
-
         <%end%>
 <!--
             <div class="row grid">
@@ -67,7 +67,7 @@
 
             <div class="row grid">
                 <h3 align="center">More Featured Artists</h3>
-                <%@setting.instagram_photos(count_ig_photos).each do |item|%>
+                <%@setting.instagram_photos(sample_ig_count).each do |item|%>
                     <div class="col-md-4 grid-item">
                         <dl  class="dl-horizontal text-left" style="width:100%">
                             <dt style="width:80px;">
