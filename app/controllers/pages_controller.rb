@@ -24,6 +24,8 @@ class PagesController < ApplicationController
       commontator_thread_show(@photo)
     end
 
+    @ig_photos=IgPhoto.instagram_photos(20)
+
 
   end
 

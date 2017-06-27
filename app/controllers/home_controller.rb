@@ -15,6 +15,7 @@ class HomeController < ApplicationController
     else
       @photos = Photo.all.order(created_at: :desc).page(params[:page])
     end
+    @ig_photos=IgPhoto.instagram_photos
   end
 
   def dashboard
