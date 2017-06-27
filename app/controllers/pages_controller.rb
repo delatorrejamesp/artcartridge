@@ -6,6 +6,8 @@ class PagesController < ApplicationController
 
   before_action :get_random_ad
 
+
+
   def about
 
   end
@@ -21,11 +23,16 @@ class PagesController < ApplicationController
     @photo = Photo.new
     if @fa.photos.any?
       @photo=@fa.photos.order("RANDOM()").first
-      commontator_thread_show(@photo)
+      #commontator_thread_show(@photo)
     end
 
     @ig_photos=IgPhoto.instagram_photos(20)
 
+    @ig_photos_sample=@ig_photos.sample
+    @media_id =  params[:ig_id]  || @ig_photos_sample["id"]
+    #commontator_thread_show(@ig_photos_sample)
+    logger.info "#{@ig_photos_sample}"
+    @comments = IgPhoto.media_comments( @media_id )
 
   end
 
@@ -47,5 +54,7 @@ class PagesController < ApplicationController
   def get_random_ad
     @advertisement=Admin::Advertisement.order("RANDOM()").first
   end
+
+
 
 end

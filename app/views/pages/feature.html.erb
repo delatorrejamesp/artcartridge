@@ -13,15 +13,15 @@
     </div>
     <div class="col-md-6">
 
-        <%media_id =  params[:ig_id]  || @ig_photos.sample["id"]%>
-        <%if media_id %>
+
+        <%if @media_id %>
               <%user_ig = @ig_photos.find { |x|
-                    #x["users_in_photo"].find{ |y| y["id"]==media_id }
-                    x["id"] == media_id
+                    #x["users_in_photo"].find{ |y| y["id"]==@media_id }
+                    x["id"] == @media_id
                  } %>
             <div class="row">
               <%=link_to user_ig["link"], target: "_blank" do%>
-                <center><%=image_tag  user_ig["images"]["standard_resolution"]["url"], class: "responsive text-center" %></cener>
+                <center><%=image_tag  user_ig["images"]["standard_resolution"]["url"], class: "responsive text-center", width: "90%", heigth: "90%" %></cener>
               <%end%>
             </div>
               <p class="pull-right"></p>
@@ -49,11 +49,42 @@
     <div class="col-md-3">
 
         <div id="comments" style="">
-            <%if @fa.photos.any?%>
-                <%= commontator_thread(@photo) %>
-            <%end%>
+
+            <%#= commontator_thread(@@ig_photos_sample) %>
               <%#= commontator_thread(@photo) %>
-            <%#=@setting.media_comments(media_id)%>
+            <%#=@setting.media_comments(@media_id)%>
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="glyphicon glyphicon-comment"></span> 
+                        Recent Comments
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="media-list">
+                        <%@comments.each do |comment|%>
+
+                            <%#=comment%>
+                            <li class="media">
+                                <div class="media-left">
+                                    <%=image_tag comment["from"]["profile_picture"], class: "img-circle", size: "60x60"%>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <%=comment["from"]["username"]%>
+                                    </h4>
+                                    <p>
+                                        <%=comment["text"]%>
+                                    </p>
+                                </div>
+                            </li>
+                        <%end%>
+                    </ul>
+                    <!-- <a href="#" class="btn btn-default btn-block">More Events »</a> -->
+                </div>
+            </div>
         </div>
     </div>
 
@@ -74,8 +105,10 @@
                                   <%=link_to feature_artists_url(ig_id: item["id"])  do%>
                                     <%item["users_in_photo"].each do |u| %>
                                         @<%=u["user"]["username"]%>
+
                                     <%end%>
                                   <%end%>
+                                  <br><%=pluralize(item["comments"]["count"], 'comment', 'comments') if item["comments"]["count"].to_i != 0%>
                             </li>
                         </ul>
                     </dd>
