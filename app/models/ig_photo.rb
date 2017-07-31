@@ -1,4 +1,4 @@
-class IgPhoto < ApplicationRecord
+class IgPhoto #< ApplicationRecord
 
 #
 
