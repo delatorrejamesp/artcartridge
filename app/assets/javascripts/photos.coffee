@@ -57,3 +57,10 @@ $(document).on "show.bs.modal", "#bannerModal", ->
     navSelector: ".pagination" # selector for the paged navigation (it will be hidden)
     nextSelector: ".pagination a[rel=next]" # selector for the NEXT link (to page 2)
     itemSelector: "#gallery div.item" # selector for all items you'll retrieve
+
+$(document).on "click", "[data-show]", ->
+
+  if $(@).is(":checked")
+    $($(@).attr("data-show")).show(100)
+  else
+    $($(@).attr("data-show")).hide(100)

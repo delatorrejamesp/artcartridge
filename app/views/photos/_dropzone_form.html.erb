@@ -1,3 +1,63 @@
-<%= form_for @photo, url: photos_path, html: { multipart: true, class: "dropzone" } do |f| %>
-<div class="fallback"><%= f.file_field :image%> </div></div>
- <%end%>
+<div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+        <%= form_for @photo, url: photos_path, data: { form: "photo"},  html: { multipart: true, class: "form-horizontal" } do |f| %>
+            <div class="form-group col-md-12 ">
+                <div class="dropzone-photo " data-preview=photo data-thumbnail=photo style="cursor: pointer;min-height: 150px;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    background: white;">
+                    <div class="dz-message" style=" text-align: center;
+    margin: 2em 0;">
+                        <i class="fa fa-picture-o fa-5x" aria-hidden="true"></i>
+                    </div>
+                    <div class="fallback">
+                        <label style="display:none;">  <%= f.file_field :image %></label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <%=f.label :social_description %>
+                <%=f.text_area :social_description, class: "form-control", rows: 5%>
+            </div>
+            <div class="form-group">
+                <%=f.label :on_professional_page, class: "col-md-3" %>
+                <div class="col-md-9">
+                    <%=javascript_tag do%>
+                        function showWhen(checkbox){
+                        alert("hey")
+                        if($(checkbox).is(:checked)){
+                        $("[data-show-when=on_professional_page]").show()
+                        }else{
+                        $("[data-show-when=on_professional_page]").hide()
+                        }
+                        }
+                    <%end%>
+                    <%=f.check_box :on_professional_page, { data: { show: ".div_on_professional_page" } }%>
+                </div>
+            </div>
+            <div class="div_on_professional_page" style="display:none">
+                <div class="form-group">
+                    <%=f.label :same_description_on_professional_page, class: "col-md-3" %>
+                    <div class="col-md-9">
+                        <%=f.check_box :same_description_on_professional_page %>
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <%=f.label :professional_description %>
+                    <%=f.text_area :professional_description, class: "form-control", rows: 5%>
+                </div>
+            </div>
+            <div class="form-group">
+                <%=f.label :mature_content, class: "col-md-3" %>
+                <div class="col-md-9">
+                    <%=f.check_box :mature_content %>
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <div class="pull-right">
+                    <button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Cancel</button>
+                    <%=f.submit class: "btn btn-primary" %>
+                </div>
+            </div>
+        <%end%>
+    </div>
+</div>

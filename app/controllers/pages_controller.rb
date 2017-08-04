@@ -34,6 +34,9 @@ class PagesController < ApplicationController
     logger.info "#{@ig_photos_sample}"
     @comments = IgPhoto.media_comments( @media_id )
 
+    logger.info "#{@comments}"
+      @auth = IgPhoto.auth
+      logger.info "#{@auth}"
   end
 
   private

@@ -23,10 +23,10 @@ class PhotosController < ApplicationController
   def create
       @photo = Photo.new(photo_params)
       @photo.user_id = current_user.id
-      @photo.save
+      #@photo.save
       if @photo.save!
           respond_to do |format|
-            format.json{ render :json => @photo }
+            format.json { render :json => @photo }
           end
       end
   end
@@ -42,8 +42,14 @@ class PhotosController < ApplicationController
   end
 
   def photo_params
-    params.require(:photo).permit( :image, :title, :description)
-
+    params.require(:photo).permit( :image,
+                        :title,
+                        :description,
+                        :social_description,
+                        :professional_description,
+                        :on_professional_page,
+                        :same_description_on_professional_page,
+                        :mature_content )
   end
 
   def get_user
