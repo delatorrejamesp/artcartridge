@@ -24,10 +24,16 @@ class PhotosController < ApplicationController
       @photo = Photo.new(photo_params)
       @photo.user_id = current_user.id
       #@photo.save
-      if @photo.save!
+
+      if @photo.save
           respond_to do |format|
             format.json { render :json => @photo }
           end
+      else
+        respond_to do |format|
+          format.json { render :errors => @photo.errors }
+          #format.js { render :errors => @photo.errors }
+        end
       end
   end
 
@@ -49,7 +55,10 @@ class PhotosController < ApplicationController
                         :professional_description,
                         :on_professional_page,
                         :same_description_on_professional_page,
-                        :mature_content )
+                        :mature_content,
+                        :medium,
+                        :gene,
+                        :subject_matter )
   end
 
   def get_user

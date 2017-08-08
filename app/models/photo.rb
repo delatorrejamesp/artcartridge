@@ -5,7 +5,11 @@ class Photo < ApplicationRecord
   acts_as_commontator
   acts_as_commontable
 
-  
+
+  validates :image, presence: true, allow_blank: false
+  validates :title, presence: true, allow_blank: false
+
+
   has_attached_file :image,
     styles: {
        medium: "300x300>",
