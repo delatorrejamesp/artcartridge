@@ -30,10 +30,11 @@ class PhotosController < ApplicationController
             format.json { render :json => @photo }
           end
       else
-        respond_to do |format|
-          format.json { render :errors => @photo.errors }
-          #format.js { render :errors => @photo.errors }
-        end
+          respond_to do |format|
+            format.json { redirect_to photos_url, flash: { :error => @photo.errors.full_messages.join(', ') } }
+            format.js { redirect_to  photos_url, flash: { :error => @photo.errors.full_messages.join(', ') } }
+            format.html { redirect_to photos_url, flash: { :error => @photo.errors.full_messages.join(', ') } }
+          end
       end
   end
 

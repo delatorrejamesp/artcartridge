@@ -1,6 +1,7 @@
 <div class="photo item">
       <%#=link_to photo_url(photo), remote: true, data: { target: "preview" }  do%>
       <%=link_to photo_url(photo) do%>
-        <%=image_tag photo.image.url(:medium), style: "width: 100%;", class: "#{'blur' if photo.mature_content}" %>
+        <%blur = "blur" if photo.mature_content==true%>
+        <%=image_tag photo.image.url(:medium), style: "width: 100%;", class: blur %>
       <%end%>
 </div>

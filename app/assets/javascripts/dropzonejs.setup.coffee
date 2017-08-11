@@ -30,9 +30,15 @@ App.initialize_dropzone = ->
           # $.getScript '/photos'
           return
         @on 'sending', (data, xhr, formData) ->
-          $(form).find(':input:not(:file)').each ->
-           if $(@).is("[name]")
-             formData.append $(@).attr('name'), $(@).val()
+          $(form).find(":text").each ->
+            formData.append $(@).attr('name'), $(@).val()
+          $(form).find(":hidden").each ->
+            formData.append $(@).attr('name'), $(@).val()
+          $(form).find(":checkbox").each ->
+              if $(@).is(":checked")
+                formData.append $(@).attr('name'), $(@).val()
+              else
+                formData.append $(@).closest('input[type=hidden]').attr("name"), $(@).closest('input[type=hidden]').attr("name")
        previewTemplate: '<div style="display:none"></div>'
        thumbnail: (file, dataUrl)->
          $('.dz-message').hide()
