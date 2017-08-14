@@ -27,13 +27,13 @@ class PhotosController < ApplicationController
 
       if @photo.save
           respond_to do |format|
-            format.json { render :json => @photo }
+            format.json
           end
       else
           respond_to do |format|
             format.json { redirect_to photos_url, flash: { :error => @photo.errors.full_messages.join(', ') } }
             format.js { redirect_to  photos_url, flash: { :error => @photo.errors.full_messages.join(', ') } }
-            format.html { redirect_to photos_url, flash: { :error => @photo.errors.full_messages.join(', ') } }
+            format.html { redirect_to root_url, flash: { :error => @photo.errors.full_messages.join(', ') } }
           end
       end
   end

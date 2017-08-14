@@ -61,6 +61,13 @@ $(document).on "show.bs.modal", "#bannerModal", ->
 $(document).on "click", "[data-disabled]", ->
 
   if $(@).is(":checked")
-    $($(@).attr("data-disabled")).prop("disabled", false)
+    $($(@).attr("data-disabled")).prop("disabled", true)
   else
-    $($(@).attr("data-disabled")).attr("disabled", true)
+    $($(@).attr("data-disabled")).attr("disabled", false)
+
+$(document).on "click", "[data-show]", ->
+
+  if $(@).is(":checked")
+    $($(@).attr("data-show")).show()
+  else
+    $($(@).attr("data-show")).hide()

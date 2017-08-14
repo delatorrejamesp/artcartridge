@@ -24,10 +24,21 @@ App.initialize_dropzone = ->
             e.stopPropagation()
             dzClosure.processQueue()
           return
-        @on 'success', (file) ->
+        @on 'success', (status, data, xhr) ->
           #@removeFile file
-          #console.log(file)
-          # $.getScript '/photos'
+          console.log("data : #{JSON.stringify(data)}")
+          console.log("xhr : #{JSON.stringify(xhr)}")
+          console.log("status : #{JSON.stringify(status)}")
+          photo = data["photo"]
+          str = """
+          <div class="photo item">
+            <a href="#{photo['url']}">
+                <img style="width: 100%;" src="#{photo['medium']}" alt="#{photo['title']}">
+            </a>
+            </div>
+          """
+          $("#gallery").prepend(str)
+          $(".modal").modal('hide');
           return
         @on 'sending', (data, xhr, formData) ->
           $(form).find(":text").each ->
