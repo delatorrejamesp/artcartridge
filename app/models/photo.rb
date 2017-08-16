@@ -18,7 +18,7 @@ class Photo < ApplicationRecord
     :storage => :s3,
     :s3_credentials => Proc.new{|a| a.instance.s3_credentials },
     :s3_protocol => :https,
-    default_url: "http://lorempixel.com/100/100/people/9/",
+    default_url: "http://www.mesitiko-athens.gr/images/no_photo_large.png",
     url: "/photos/:attachment/:id/:style/:filename"
     validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
