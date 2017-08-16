@@ -10,36 +10,47 @@
         <script src="https://unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.min.js"></script>
     </head>
     <body>
-        <header>
-        <%#=session[:setting]%>
-        <%if session[:page_type] == 1 %>
-          <%= render 'layouts/navigation_professional_pages' %>
-        <%else%>
-          <%= render 'layouts/navigation_community_pages' %>
-        <%end%>
-        </header>
-        <main role="main" id="main">
-            <div class="container">
-               <%= render 'layouts/messages' %>
-               <%= yield %>
-               <%= render 'layouts/modal'%>
-            </div>
-        </main>
-        <%if session[:page_type] == 1 %>
-          <footer>
-              <div class="container">
-                  <hr>
-                  <div class="pull-right">
-                     [ LOGO HERE ]
+      <%if !params[:modal_mode]%>
+
+            <header>
+            <%#=session[:setting]%>
+            <%if session[:page_type] == 1 %>
+              <%= render 'layouts/navigation_professional_pages' %>
+            <%else%>
+              <%= render 'layouts/navigation_community_pages' %>
+            <%end%>
+            </header>
+
+            <main role="main" id="main">
+                <div class="container">
+                   <%= render 'layouts/messages' %>
+                   <%= yield %>
+                   <%#= render 'layouts/modal'%>
+                </div>
+            </main>
+
+            <%if session[:page_type] == 1 %>
+              <footer>
+                  <div class="container">
+                      <hr>
+                      <div class="pull-right">
+                         [ LOGO HERE ]
+                      </div>
                   </div>
-              </div>
-              <br>
-          </footer>
-        <%elsif request.subdomain != "www"%>
-          <footer class="footer">
-              <%= render 'layouts/footer' %>
-          </footer>
-        <%end%>
+                  <br>
+              </footer>
+            <%elsif request.subdomain != "www"%>
+              <footer class="footer">
+                  <%= render 'layouts/footer' %>
+              </footer>
+            <%end%>
+      <%else%>
+          <%#= render 'layouts/messages' %>
+          <div class="container">
+            <%= yield %>
+          </div>
+      <%end%>
+        <%=render partial: "modals/modal"%>
         <%#=request.subdomain%>
     </body>
 </html>

@@ -53,14 +53,14 @@ Rails.application.routes.draw do
 
     authenticate :user do
 
-
-
         resources :photos, only: [:new, :create, :edit, :update, :destroy] do
            collection do
              get "/:user_id/take_three" => "photos#take_three", as: :take_three
+
            end
            member do
               patch :view
+               get :comments
            end
         end
 
@@ -73,6 +73,8 @@ Rails.application.routes.draw do
             end
             resources :follows, :only => [:create, :destroy]
         end
+
+        match 'modals/:moda_type' => 'modals#show', as: :modal, via: [:get]
     end
 
     resources :photos, only: [:index, :show]

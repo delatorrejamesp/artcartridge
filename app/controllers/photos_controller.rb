@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
 
-  before_action :set_photo, only: [ :show ]
+  before_action :set_photo, only: [ :show, :comments ]
   before_action :get_user, only: [ :take_three ]
 
   after_action :add_views, only: [:show]
@@ -17,6 +17,10 @@ class PhotosController < ApplicationController
   end
 
   def show
+      commontator_thread_show(@photo)
+  end
+
+  def comments
       commontator_thread_show(@photo)
   end
 

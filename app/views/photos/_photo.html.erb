@@ -1,7 +1,10 @@
 <div class="photo item">
-      <%#=link_to photo_url(photo), remote: true, data: { target: "preview" }  do%>
-      <%=link_to photo_url(photo) do%>
+      <%modal_target = session[:page_type] == 1 ? "#modal_for_professional_preview" : "#modal_for_community_preview"%>
+      <%=button_to photo_url(photo),
+        remote: true, data: { target: modal_target, toggle: :modal }, method: :get, class: "btn-link"  do%>
+      <%#=link_to photo_url(photo) do%>
         <%blur = "blur" if photo.mature_content==true%>
         <%=image_tag photo.image.url(:medium), style: "width: 100%;", class: blur %>
       <%end%>
+
 </div>
