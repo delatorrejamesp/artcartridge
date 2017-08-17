@@ -35,7 +35,7 @@ http://www.strangerstudios.com/sandbox/pagination/diggstyle.php */
 	padding: 2px 5px 2px 5px;
 	margin-right: 4px;
 	border: 1px solid #999;
-	
+
 	text-decoration: none;
 	color: #666;
 }
@@ -68,4 +68,11 @@ http://www.strangerstudios.com/sandbox/pagination/diggstyle.php */
 .thread .mentions-input-box .mentions {
   left: -2px !important;
   top: -2px !important;
+}
+
+.thread_comment_list{
+  overflow-x: hidden;
+  max-height: 300px;
+  margin-right: 0 !important;
+  padding-right: 0 !important;
 }

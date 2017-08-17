@@ -8,10 +8,10 @@ $(document).on 'turbolinks:load', ->
     url = $(this).attr("data-url")
     url_med = $(this).attr("data-url-med")
     if col == "col-md-6"
-      $(this).attr("class", "col-md-12")
-      $(this).find("img").attr("src",url )
+      $(this).attr("class", "col-md-12").next().attr("class","").addClass("col-md-12")
+      $(this).find("img").attr("src",url)
     else
-      $(this).attr("class", "col-md-6")
+      $(this).attr("class", "col-md-6").next().attr("class","").addClass("col-md-6")
       $(this).find("img").attr("src",url_med )
 
 # $(document).on 'turbolinks:load', ->

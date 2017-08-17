@@ -11,9 +11,9 @@
 
 <div id="comment_<%= comment.id.to_s %>_div" class="comment">
   <div id="comment_<%= comment.id.to_s %>_top_div" class="comment_div">
-    <span id="comment_<%= comment.id.to_s %>_commontator_span" class="comment_commontator">
-      <%= link.blank? ? name : link_to(name, link) %>
-    </span>
+    <!-- <span id="comment_<%#= comment.id.to_s %>_commontator_span" class="comment_commontator">
+      <%#= link.blank? ? name : link_to(name, link) %>
+    </span> -->
     <span id="comment_<%= comment.id.to_s %>_actions_span" class="comment_actions">
       <%= render :partial => 'commontator/comments/actions',
                  :locals => { :comment => comment,
@@ -23,6 +23,9 @@
   <div id="comment_<%= comment.id.to_s %>_middle_div" class="comment_div">
     <span id="comment_<%= comment.id.to_s %>_avatar_span" class="comment_avatar">
       <%= avatar %>
+    </span>
+    <span id="comment_<%= comment.id.to_s %>_commontator_span" class="comment_commontator">
+      <%= link.blank? ? name : link_to(name, link) %>
     </span>
     <span id="comment_<%= comment.id.to_s %>_votes_span" class="comment_votes">
       <%= render :partial => 'commontator/comments/votes',
@@ -35,13 +38,14 @@
     </div>
   </div>
   <div id="comment_<%= comment.id.to_s %>_bottom_div" class="comment_div">
-    <span id="comment_<%= comment.id.to_s %>_created_timestamp_span" class="comment_timestamp">
-      <%= comment.created_timestamp %>
+    <span id="comment_<%= comment.id.to_s %>_created_timestamp_span" class="comment_timestamp  pull-right">
+      <%#= comment.created_timestamp %>
+      posted <%=time_ago_in_words(comment.created_timestamp , include_seconds: true)  %> ago
     </span>
-    <br/>
-    <span id="comment_<%= comment.id.to_s %>_updated_timestamp_span" class="comment_timestamp">
+    <span id="comment_<%= comment.id.to_s %>_updated_timestamp_span" class="comment_timestamp pull-left">
     <% if comment.is_modified? %>
-      <%= comment.updated_timestamp %>
+      <%#= comment.updated_timestamp %>
+      edited <%=time_ago_in_words(comment.updated_timestamp , include_seconds: true)  %> ago
     <% end %>
     </span>
   </div>

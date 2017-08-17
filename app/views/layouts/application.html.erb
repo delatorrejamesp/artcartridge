@@ -9,7 +9,7 @@
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
         <script src="https://unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.min.js"></script>
     </head>
-    <body>
+    <body class="<%="modal-mode" if params[:modal_mode]%>">
       <%if !params[:modal_mode]%>
 
             <header>
@@ -46,7 +46,7 @@
             <%end%>
       <%else%>
           <%#= render 'layouts/messages' %>
-          <div class="container">
+          <div class="">
             <%= yield %>
           </div>
       <%end%>
