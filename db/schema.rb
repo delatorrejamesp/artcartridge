@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170807141627) do
+ActiveRecord::Schema.define(version: 20170818054938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -137,6 +137,22 @@ ActiveRecord::Schema.define(version: 20170807141627) do
     t.string   "gene"
     t.string   "subject_matter"
     t.index ["user_id"], name: "index_photos_on_user_id", using: :btree
+  end
+
+  create_table "photos_tools", id: false, force: :cascade do |t|
+    t.integer "photo_id", null: false
+    t.integer "tool_id",  null: false
+    t.index ["photo_id"], name: "index_photos_tools_on_photo_id", using: :btree
+    t.index ["tool_id"], name: "index_photos_tools_on_tool_id", using: :btree
+  end
+
+  create_table "photos_tools_tables", force: :cascade do |t|
+  end
+
+  create_table "tools", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

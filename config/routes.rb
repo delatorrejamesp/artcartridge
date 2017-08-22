@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+
+    resources :settings
+    resources :qoutes
+    resources :tools
+
+  end
+
+
   mount Commontator::Engine => '/commontator'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  namespace :admin do
-    resources :qoutes
-  end
 
     get 'p/about' => 'pages#about', as: :about
 
@@ -17,11 +23,6 @@ Rails.application.routes.draw do
     get 'p/feature' => 'pages#feature', as: :feature_artists
 
 
-    namespace :admin do
-
-      resources :settings
-
-    end
 
 
     constraints(subdomain: /www/) do

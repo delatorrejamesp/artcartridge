@@ -3,7 +3,11 @@ class PhotosController < ApplicationController
   before_action :set_photo, only: [ :show, :comments ]
   before_action :get_user, only: [ :take_three ]
 
+
+
   after_action :add_views, only: [:show]
+
+  after_action :create_tools_ids, only: [ :create ]
 
   def index
     @photos = Photo.all.order(created_at: :desc).page(params[:page])
@@ -25,9 +29,10 @@ class PhotosController < ApplicationController
   end
 
   def create
-      @photo = Photo.new(photo_params)
+      @photo = Photo.new(photo_params.except(:tools_ids))
       @photo.user_id = current_user.id
       #@photo.save
+
 
       if @photo.save
           respond_to do |format|
@@ -63,7 +68,8 @@ class PhotosController < ApplicationController
                         :mature_content,
                         :medium,
                         :gene,
-                        :subject_matter )
+                        :subject_matter,
+                        :tools_ids )
   end
 
   def get_user
@@ -73,6 +79,12 @@ class PhotosController < ApplicationController
   def add_views
       if current_user
         @photo.increment(:views).save if current_user.id != @photo.user_id
+      end
+  end
+
+  def create_tools_ids
+      photo_params[:tools_ids].split(",").each do |tool|
+        @photo.tools << Tool.find(tool)
       end
   end
 

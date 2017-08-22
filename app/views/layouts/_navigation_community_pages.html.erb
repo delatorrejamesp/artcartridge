@@ -33,7 +33,7 @@
             <%end%>
             <ul class="nav navbar-nav navbar-right">
               <%if user_signed_in?%>
-                      <li class="active"><%=link_to "Upload", new_photo_path, remote: true, data: { target: "uploaded" }%></li>
+                      <li class="active" style="padding: 7px;"><%=button_to "Upload", new_photo_path, method: :get, remote: true, data: { target: "#modal_for_upload_photo", toggle: :modal  }, class: "btn btn-link", form_class: "form-horizontal" %></li>
                        <li style="padding: 0px!important;">
                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding: 10px 0px 10px 0px;">
                                <%=image_tag current_user.avatar.url(:thumb), class: "img-circle", size: "30x30"%>

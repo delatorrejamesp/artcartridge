@@ -2,6 +2,8 @@ class Photo < ApplicationRecord
 
   belongs_to :user
 
+   has_and_belongs_to_many :tools
+
   acts_as_commontator
   acts_as_commontable
 

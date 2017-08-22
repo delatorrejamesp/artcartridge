@@ -31,7 +31,7 @@
                 <%end%>
                   <%if current_page?(community_page_url(subdomain: "#{@user.slug}"))%>
                   <%if user_signed_in?%>
-                    <li class="active"><%=link_to "Upload", new_photo_path, remote: true, data: { target: "uploaded" }%></li>
+                    <li class="active"  style="padding: 7px;"><%=button_to "Upload", new_photo_path, method: :get, remote: true, data: { target: "#modal_for_upload_photo", toggle: :modal  }, class: "btn btn-link", form_class: "form-horizontal"%></li>
                   <%end%>
                   <li style="padding: 0px!important;">
                       <%if user_signed_in?%>

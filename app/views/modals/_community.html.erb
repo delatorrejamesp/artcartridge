@@ -1,4 +1,3 @@
-
 <div class="col-md-6" data-target="expandable" data-url="<%=@photo.image.url%>", data-url-med="<%=@photo.image.url(:medium)%>">
       <center>
       <%=image_tag @photo.image.url(:medium), style: "width:100%; hieght:100%;"%>
@@ -33,32 +32,38 @@
             <i class="fa fa-tumblr" aria-hidden="true"></i>
       </div>
   </div>
-  <div class="art-analysis-area">
-  <h3>Art Analysis</h3>
-      <dl class="dl-horizontal">
-        <%if !@photo.medium.blank?%>
-          <dt>Medium</dt>
-          <dd><%=@photo.medium%></dd>
-        <%end%>
-        <%if !@photo.gene.blank?%>
-          <dt>Gene</dt>
-          <dd><%=@photo.gene%></dd>
-        <%end%>
-        <%if !@photo.subject_matter.blank?%>
-          <dt>Subject</dt>
-          <dd><%=@photo.subject_matter%></dd>
-        <%end%>
-      </dl>
-
-  </div>
+  <%if !@photo.medium.blank? || !@photo.gene.blank? || !@photo.subject_matter.blank?%>
+    <div class="art-analysis-area">
+    <h3>Art Analysis</h3>
+        <dl class="dl-horizontal">
+          <%if !@photo.medium.blank?%>
+            <dt>Medium</dt>
+            <dd><%=@photo.medium%></dd>
+          <%end%>
+          <%if !@photo.gene.blank?%>
+            <dt>Gene</dt>
+            <dd><%=@photo.gene%></dd>
+          <%end%>
+          <%if !@photo.subject_matter.blank?%>
+            <dt>Subject</dt>
+            <dd><%=@photo.subject_matter%></dd>
+          <%end%>
+        </dl>
+    </div>
+  <%end%>
+  <%if @photo.tools.any?%>
   <div class="art-analysis-area">
     <h3>Tools</h3>
+    <p> <%=@photo.tools.pluck(:name).to_sentence%></p>
   </div>
+  <%end%>
   <div class="comments-area">
     <center>
+    <%if user_signed_in?%>
     <iframe src="<%=comments_photo_url(@photo, modal_mode: true)%>" style="width:100%;overflow:hidden;min-height:200px; max-height:600px;" frameBorder="0" height="600">
-
     </iframe>
+    <%else%>
+    <%end%>
   </center>
   </div>
 
