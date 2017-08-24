@@ -14,9 +14,9 @@
       on
       <%=@photo.created_at.strftime("%B %-d, %Y")%>
   </div>
-  <div class="title-description-area" style="">
+  <div class="title-description-area">
     <h3><%=@photo.title%></h3>
-    <p><%=@photo.description%></p>
+    <p><%=@photo.social_description%></p>
   </div>
   <div class="social-icons-area row">
       <div class="col-sm-3 text-center">
@@ -38,15 +38,15 @@
         <dl class="dl-horizontal">
           <%if !@photo.medium.blank?%>
             <dt>Medium</dt>
-            <dd><%=@photo.medium%></dd>
+            <dd>#<%=@photo.medium%></dd>
           <%end%>
           <%if !@photo.gene.blank?%>
             <dt>Gene</dt>
-            <dd><%=@photo.gene%></dd>
+            <dd>#<%=@photo.gene%></dd>
           <%end%>
           <%if !@photo.subject_matter.blank?%>
             <dt>Subject</dt>
-            <dd><%=@photo.subject_matter%></dd>
+            <dd>#<%=@photo.subject_matter%></dd>
           <%end%>
         </dl>
     </div>

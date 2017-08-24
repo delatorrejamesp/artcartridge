@@ -83,8 +83,10 @@ class PhotosController < ApplicationController
   end
 
   def create_tools_ids
-      photo_params[:tools_ids].split(",").each do |tool|
-        @photo.tools << Tool.find(tool)
+      if !photo_params[:tools_ids].blank?
+        photo_params[:tools_ids].split(",").each do |tool|
+          @photo.tools << Tool.find(tool)
+        end
       end
   end
 

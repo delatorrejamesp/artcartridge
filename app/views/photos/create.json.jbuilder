@@ -4,4 +4,5 @@ json.photo do
   json.medium @photo.image.url(:medium)
   json.image_url_thumb @photo.image.url(:thumb)
   json.url url_for(@photo)
+  json.link_to authenticated_root_url
 end

@@ -33,16 +33,21 @@ App.initialize_dropzone = ->
           photo = data["photo"]
           str = """
           <div class="photo item">
-            <a href="#{photo['url']}">
+            <form class="button_to" method="get" action="#{photo['url']}" data-remote="true">
+              <button data-target="#modal_for_community_preview" data-toggle="modal" class="btn-link" type="submit">
                 <img style="width: 100%;" src="#{photo['medium']}" alt="#{photo['title']}">
-            </a>
-            </div>
+              </button>
+            </form>
+          </div>
           """
           $("#gallery").prepend(str)
           $(".modal").modal('hide');
+          #window.location = photo['link_to']
           return
         @on 'sending', (data, xhr, formData) ->
           $(form).find(":text").each ->
+            formData.append $(@).attr('name'), $(@).val()
+          $(form).find("textarea").each ->
             formData.append $(@).attr('name'), $(@).val()
           $(form).find(":hidden").each ->
             formData.append $(@).attr('name'), $(@).val()

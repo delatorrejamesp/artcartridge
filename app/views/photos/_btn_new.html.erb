@@ -1,0 +1,4 @@
+<%#=button_to "Upload", new_photo_path, method: :get, data: { target: "#modal_for_upload_photo", toggle: :modal  }, class: "btn btn-link", form_class: "form-horizontal"%>
+<%=link_to new_photo_path, class: "btn-link btn", remote: true do %>
+ <span class="fa fa-cloud-upload"></span> Upload
+<%end%>

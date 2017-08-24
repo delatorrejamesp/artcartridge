@@ -1,3 +1,4 @@
-$(".modal-body").html("<%=escape_javascript(render(:partial => 'photos/dropzone_form')).html_safe %>");
-$(".js-example-basic-multiple").select2( { theme: "bootstrap" })
-//App.initialize_dropzone();
+$("#modal_for_upload_photo").find(".modal-body").html("<%=j render partial: 'photos/dropzone_form' %>");
+$("#modal_for_upload_photo").find(".js-example-basic-multiple").select2( { theme: "bootstrap" })
+$('#modal_for_upload_photo').modal()
+App.initialize_dropzone();
