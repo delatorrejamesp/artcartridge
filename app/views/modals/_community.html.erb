@@ -1,13 +1,15 @@
-<div class="col-md-6" data-target="expandable" data-url="<%=@photo.image.url%>", data-url-med="<%=@photo.image.url(:medium)%>">
-      <center>
-      <%=image_tag @photo.image.url(:medium), style: "width:100%; hieght:100%;"%>
+<div class="col-md-6 expandable-image" style="position: relative;margin: 0px !important;padding: 0px !important;" align="center">
+      <%=image_tag @photo.image.url(:medium), style: "width:100%; hieght:100%;", class: "expandable-image"%>
+      <div class="topright" style="position: absolute; top: 8px; left: 8px;">
+        	<button  class="btn btn-xs btn-default expand-icon-tool"  data-photo-full="<%=@photo.image.url%>", data-photo-preview="<%=@photo.image.url(:medium)%>"><span class="fa fa-expand"></span></button>
+      </div>
+      <br><br>
       <ul class="list-unstyled list-inline">
       <li><span class="fa fa-thumbs-o-up"></span> 2k likes</li>
       <li><span class="fa fa-eye"></span> 1k views</li>
     </ul>
-    </center>
 </div>
-<div class="col-md-6">
+<div class="col-md-6" style="padding-left: 40px;padding-right: 40px">
   <div class="author-area">
       <%=image_tag @photo.user.avatar.url(:medium), size: "25x25", class: "img-circle" %>
       <%=link_to @photo.user.full_name,  community_page_url(subdomain: "#{@photo.user.slug}") %>
@@ -16,9 +18,14 @@
   </div>
   <div class="title-description-area">
     <h3><%=@photo.title%></h3>
-    <p><%=@photo.social_description%></p>
+    <p  style=" max-height:150px;overflow-y: scroll;"><%=@photo.social_description%></p>
   </div>
+  <br>
   <div class="social-icons-area row">
+    <center>
+    <%= social_share_button_tag(@photo.title, :allow_sites => %w(facebook google_plus twitter tumblr)) %></center>
+  </div>
+  <!-- <div class="social-icons-area row">
       <div class="col-sm-3 text-center">
             <i class="fa fa-facebook" aria-hidden="true"></i>
       </div>
@@ -31,7 +38,7 @@
       <div class="col-sm-3 text-center">
             <i class="fa fa-tumblr" aria-hidden="true"></i>
       </div>
-  </div>
+  </div> -->
   <%if !@photo.medium.blank? || !@photo.gene.blank? || !@photo.subject_matter.blank?%>
     <div class="art-analysis-area">
     <h3>Art Analysis</h3>

@@ -8,7 +8,7 @@ class Photo < ApplicationRecord
   acts_as_commontable
 
 
-  validates :image, presence: true, allow_blank: false
+  #validates :image, presence: true, allow_blank: false
   validates :title, presence: true, allow_blank: false
 
 

@@ -17,6 +17,7 @@
 //= require justified-gallery/dist/js/jquery.justifiedGallery.js
 //= require jquery.infinitescroll
 //= require dropzone
+//= require social-share-button
 //= require jquery_ujs
 //= require turbolinks
 //= require select2
