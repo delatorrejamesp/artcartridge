@@ -1,3 +1,5 @@
-$(".modal-body").html("<%=escape_javascript(render(:partial => 'photos/photo_modal')).html_safe %>");
-$("[data-target~=photo][data-target~=user]").html("<img class='img-circle' src='<%=@photo.user.avatar.url(:thumb)%>' width='30' height='30'>");
-$("[data-target~=photo][data-target~=user][data-target~=name]").html("<%=@photo.user.full_name%>");
+<%if session[:page_type] == 1 %>
+  $("#modal_for_professional_preview").find(".modal-body").html("<%=escape_javascript(render(:partial => 'photos/photo_modal')).html_safe %>");
+<%else%>
+  $("#modal_for_community_preview").find(".modal-body").html("<%=escape_javascript(render(:partial => 'photos/photo_modal')).html_safe %>");
+<%end%>

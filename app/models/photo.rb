@@ -7,6 +7,8 @@ class Photo < ApplicationRecord
   acts_as_commontator
   acts_as_commontable
 
+  acts_as_votable
+
 
   #validates :image, presence: true, allow_blank: false
   validates :title, presence: true, allow_blank: false

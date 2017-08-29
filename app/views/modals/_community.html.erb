@@ -5,9 +5,15 @@
       </div>
       <br><br>
       <ul class="list-unstyled list-inline">
-      <li><span class="fa fa-thumbs-o-up"></span> 2k likes</li>
-      <li><span class="fa fa-eye"></span> 1k views</li>
+      <li>
+        <div data-render="photos btn-votable">
+          <%=render partial: "photos/btn_upvote"%>
+        </div>
+      </li>
+      <li><span class="fa fa-eye"></span> <%=pluralize(@photo.views,"view", "views")%></li>
     </ul>
+
+
 </div>
 <div class="col-md-6" style="padding-left: 40px;padding-right: 40px">
   <div class="author-area">

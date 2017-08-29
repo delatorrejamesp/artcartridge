@@ -1,11 +1,9 @@
 class PhotosController < ApplicationController
 
-  before_action :set_photo, only: [ :show, :comments ]
+  before_action :set_photo, only: [ :show, :comments, :upvote, :downvote ]
   before_action :get_user, only: [ :take_three ]
 
-
-
-  after_action :add_views, only: [:show]
+  before_action :update_views, only: [ :show ]
 
   after_action :create_tools_ids, only: [ :create ]
 
@@ -51,6 +49,15 @@ class PhotosController < ApplicationController
 
   end
 
+  def upvote
+   @photo.upvote_by current_user
+   #redirect_to @photo
+  end
+
+  def downvote
+   @photo.downvote_by current_user
+  end
+
   private
 
   def set_photo
@@ -88,6 +95,10 @@ class PhotosController < ApplicationController
           @photo.tools << Tool.find(tool)
         end
       end
+  end
+
+  def update_views
+    @photo.increment!(:views)
   end
 
 end

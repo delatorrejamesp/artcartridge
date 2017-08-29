@@ -85,3 +85,4 @@ gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem 'commontator', '~> 4.11.1'
 gem 'instagram'
 gem "select2-rails"
+gem 'acts_as_votable', '~> 0.10.0'

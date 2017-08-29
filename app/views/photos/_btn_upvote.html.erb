@@ -1,0 +1,9 @@
+<%if user_signed_in?%>
+<%hightlight_vote = current_user.voted_up_on?(@photo) ? "hightlighted_vote" : "unhightlighted_vote"%>
+<%end%>
+
+
+<%=link_to like_photo_path(@photo), method: :put, class: 'btn btn-link btn-sm', remote: true do %>
+   <span class="fa fa-thumbs-o-up <%=hightlight_vote%>"></span>
+<% end %>
+<%=pluralize(@photo.get_upvotes.size, "like", "likes") if @photo.get_upvotes.size > 0%>

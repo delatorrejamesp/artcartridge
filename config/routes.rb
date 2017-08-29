@@ -60,8 +60,10 @@ Rails.application.routes.draw do
 
            end
            member do
-              patch :view
+               patch :view
                get :comments
+               put "like", to: "photos#upvote"
+               put "dislike", to: "photos#downvote"
            end
         end
 

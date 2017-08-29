@@ -23,6 +23,8 @@ class User < ApplicationRecord
     acts_as_followable
     acts_as_follower
 
+     acts_as_voter
+
     validates :username,
         length: {  in: 0..24, allow_blank: false,
         allow_nil: false, message: "can't be blank" },  on: [:update]
