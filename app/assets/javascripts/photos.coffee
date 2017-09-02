@@ -34,8 +34,26 @@ $(document).on "click", ".expand-icon-tool", (e) ->
   next_div = $(@).closest(".expandable-image").next("div")
   image = $(@).closest(".expandable-image").find("img")
   console.log($(image).attr("class"))
+          # $(file_selector).attr("src","#{data['banner']}")
+          # imageBanner = $(file_selector)
+          # downloadingImageBanner = new Image
+          # downloadingImageBanner.onload = ->
+          #   imageBanner.src = @src
+          #   $(file_selector).attr("style","width:100%;padding:0;margin:0;opacity:0.5;position:absolute;top:-100%;left:0;right:0;bottom:-100%;margin:auto;")
+          #   return
+          # downloadingImageBanner.src = data['banner']
   if $(@).find("span").hasClass("fa-expand")
+
+
     $(@).find("span").removeClass("fa-expand").addClass("fa-compress")
+    #$(image).attr("src", 'https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif') #$(@).attr("data-photo-full"))
+    # imageBanner = $(image)
+    # downloadingImageBanner = new Image
+    # downloadingImageBanner.onload = ->
+    #   imageBanner.src = @src
+    #   #$(image).attr("src", $(@).attr("data-photo-full"))
+    #   return
+    # downloadingImageBanner.src = $(@).attr("data-photo-full")
     $(image).attr("src", $(@).attr("data-photo-full"))
     if $(@).attr("data-for") == "prof-page"
       $(full_div).closest(".modal-dialog").addClass("custom-class-70")

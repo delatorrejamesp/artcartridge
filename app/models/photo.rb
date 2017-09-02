@@ -16,7 +16,7 @@ class Photo < ApplicationRecord
 
   has_attached_file :image,
     styles: {
-       medium: "300x300>",
+       medium: "400x400>",
        thumb: "100x100>"
      },
     :storage => :s3,

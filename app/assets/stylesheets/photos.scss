@@ -35,3 +35,14 @@
 .unhightlighted_vote{
   color: black;
 }
+img.expandable-image {
+  background: url('https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif') no-repeat;
+}
+
+.art-analysis-area{
+  dl{
+  font-size: 15px;
+  }
+  dd{  border-bottom: thick dotted #ff0000; }
+  dt{  border-bottom: thick dotted #ff0000; }
+}
