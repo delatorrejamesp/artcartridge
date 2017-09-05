@@ -1,5 +1,5 @@
 <%if session[:page_type] == 1 %>
   $("#modal_for_professional_preview").find(".modal-body").html("<%=escape_javascript(render(:partial => 'photos/photo_modal')).html_safe %>");
 <%else%>
-  $("#modal_for_community_preview").find(".modal-body").html("<%=escape_javascript(render(:partial => 'photos/photo_modal')).html_safe %>");
+  $("#modal_for_community_preview").find(".modal-body").html("<%=escape_javascript(render(:partial => 'modals/community')).html_safe %>");
 <%end%>
