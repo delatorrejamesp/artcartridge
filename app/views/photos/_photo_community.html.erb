@@ -29,7 +29,7 @@
   <br>
   <div class="social-icons-area row">
     <center>
-    <%= social_share_button_tag(@photo.title, :allow_sites => %w(facebook google_plus twitter tumblr)) %></center>
+    <%= social_share_button_tag(@photo.title, url: "#{photo_url(@photo)}", image: @photo.image.url, :allow_sites => %w(facebook google_plus twitter tumblr)) %></center>
   </div>
   <%if !@photo.medium.blank? || !@photo.gene.blank? || !@photo.subject_matter.blank?%>
     <div class="art-analysis-area">
