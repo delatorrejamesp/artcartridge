@@ -314,6 +314,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-infinite-pages!
   jquery-rails
+  jquery-ui-rails
   kaminari
   listen (~> 3.0.5)
   paperclip (~> 5.0.0)

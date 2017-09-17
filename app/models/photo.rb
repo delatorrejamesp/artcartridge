@@ -16,7 +16,7 @@ class Photo < ApplicationRecord
 
   has_attached_file :image,
     styles: {
-       medium: "600x600>",
+       medium: "400x400>",
        thumb: "100x100>"
      },
     :storage => :s3,
@@ -34,6 +34,14 @@ class Photo < ApplicationRecord
         :s3_region => "#{ENV.fetch("AWS_REGION")}",
         :endpoint => "#{ENV.fetch("AWS_S3_ENDPOINT")}",
       }
+    end
+
+    def next
+     Photo.where("id > ?", id).order("id ASC").first || Photo.first
+    end
+
+    def previous
+      Photo.where("id < ?", id).order("id DESC").first || Photo.last
     end
 
 end

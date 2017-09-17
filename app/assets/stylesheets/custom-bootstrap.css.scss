@@ -156,3 +156,9 @@ blockquote h3:after {
   content:"*";
   color:red;
 }
+#accordion {
+  position:absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
 
-  mount Commontator::Engine => '/commontator'
+  mount Commontator::Engine => '/commontator', as: :commontator
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 

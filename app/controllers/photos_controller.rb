@@ -31,7 +31,6 @@ class PhotosController < ApplicationController
       @photo.user_id = current_user.id
       #@photo.save
 
-
       if @photo.save
           respond_to do |format|
             format.json

@@ -46,3 +46,12 @@ img.expandable-image {
   dd{  border-bottom: thick dotted #ff0000; }
   dt{  border-bottom: thick dotted #ff0000; }
 }
+
+.left-photo-preview-panel{
+  margin-top: 10px;
+  li, span, a {
+    font-size: 20px;
+    // line-height: 15px;
+    // height: 30px;
+  }
+}

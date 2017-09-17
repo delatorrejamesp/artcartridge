@@ -5,4 +5,4 @@
 <%=link_to dislike_photo_path(@photo), method: :put, class: 'btn btn-link btn-sm', remote: true do %>
  <span class="fa fa-thumbs-o-up"></span>
 <%end%>
-<%=pluralize(@photo.get_upvotes.size, "like", "likes") if @photo.get_upvotes.size > 0%>
+<span><%=pluralize(@photo.get_upvotes.size, "like", "likes") if @photo.get_upvotes.size > 0%></span>

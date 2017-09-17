@@ -1,12 +1,11 @@
-$size: 30px;
+$size: 23px;
 
 .social-share-button {
-
+  height: 30px;
   .ssb-icon {
     background-size: $size $size;
     height: $size;
     width: $size;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 10px;
   }
 }

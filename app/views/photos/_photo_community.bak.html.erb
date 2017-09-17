@@ -1,0 +1,75 @@
+<div class="col-md-6 expandable-image" style="position: relative;margin: 0px !important;padding: 0px !important;" align="center">
+      <%=image_tag @photo.image.url(:medium), style: "width:100%; hieght:100%;", class: "expandable-image"%>
+      <div class="topright" style="position: absolute; top: 8px; left: 8px;">
+        	<button  class="btn btn-xs btn-default expand-icon-tool"  data-photo-full="<%=@photo.image.url%>", data-photo-preview="<%=@photo.image.url(:medium)%>"><span class="fa fa-expand"></span></button>
+      </div>
+      <br><br>
+      <ul class="list-unstyled list-inline">
+      <li>
+        <div data-render="photos btn-votable">
+          <%=render partial: "photos/btn_upvote"%>
+        </div>
+      </li>
+      <li><span class="fa fa-eye"></span> <%=pluralize(@photo.views,"view", "views")%></li>
+    </ul>
+
+
+</div>
+<div class="col-md-6" style="padding-left: 40px;padding-right: 40px">
+  <div class="author-area">
+      <%=image_tag @photo.user.avatar.url(:medium), size: "25x25", class: "img-circle" %>
+      <%=link_to @photo.user.full_name,  community_page_url(subdomain: "#{@photo.user.slug}") %>
+      on
+      <%=@photo.created_at.strftime("%B %-d, %Y")%>
+  </div>
+  <div class="title-description-area">
+    <h3><%=@photo.title%></h3>
+    <p  style=" max-height:150px;overflow-y: scroll;"><%=@photo.social_description%></p>
+  </div>
+  <br>
+  <div class="social-icons-area row">
+    <center>
+    <%= social_share_button_tag(@photo.title, url: "#{photo_url(@photo)}", image: @photo.image.url, :allow_sites => %w(facebook google_plus twitter tumblr)) %></center>
+  </div>
+  <%if !@photo.medium.blank? || !@photo.gene.blank? || !@photo.subject_matter.blank?%>
+    <div class="art-analysis-area">
+    <h3>Art Analysis</h3>
+        <table class="table text-center">
+          <tbody>
+            <%if !@photo.medium.blank?%>
+              <tr>
+                <td><b>Medium :</b>#<%=@photo.medium%></td>
+              </tr>
+            <%end%>
+            <%if !@photo.gene.blank?%>
+              <tr>
+                <td><b>Gene : </b>#<%=@photo.gene%> </td>
+              </tr>
+            <%end%>
+            <%if !@photo.subject_matter.blank?%>
+              <tr>
+                <td><b>Subject : #</b><%=@photo.subject_matter%></td>
+              </tr>
+            <%end%>
+          </tbody>
+        </table>
+    </div>
+  <%end%>
+  <%if @photo.tools.any?%>
+  <div class="art-analysis-area">
+    <h3>Tools</h3>
+    <p> <%=@photo.tools.pluck(:name).to_sentence%></p>
+  </div>
+  <%end%>
+  <div class="comments-area">
+
+    <%if user_signed_in?%>
+    <!-- <iframe src="<%#=comments_photo_url(@photo, modal_mode: true)%>" style="width:100%;overflow:hidden;min-height:200px; max-height:600px;" frameBorder="0" height="600">
+    </iframe> -->
+    <%= commontator_thread(@photo) %>
+
+    <%end%>
+
+  </div>
+
+</div>

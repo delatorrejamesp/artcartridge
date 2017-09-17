@@ -9,14 +9,14 @@
 
 <% can_subscribe = thread.can_subscribe?(user)
    can_edit = thread.can_be_edited_by?(user) %>
-   
+
 <% if thread.config.comment_order == :l %>
- <%= render :partial => 'commontator/threads/reply',
+ <%#= render :partial => 'commontator/threads/reply',
             :locals => { :thread => thread, :user => user, :per_page => per_page } %>
 <% end %>
 
 <span id="thread_<%= thread.id.to_s %>_show_span" class="thread_show commontator_hidden">
-  <%= link_to t('commontator.thread.actions.show'),
+  <%#= link_to t('commontator.thread.actions.show'),
               '#',
               id: "thread_#{thread.id.to_s}_show_link",
               class: "thread_show_link" %>
