@@ -5,7 +5,10 @@
     <%=@photo.created_at.strftime("%B %-d, %Y")%>
 </div>
 <div class="col-md-12" style="padding-left:12%;padding-right:12%;position:relative;">
-  <%=image_tag @photo.image.url(:medium), style: "width:100%;height:100%;"%>
+  <div><%=image_tag @photo.image.url(:medium), style: "max-width:100%;
+  max-height:100%;
+  margin:auto;
+  display:block;"%></div>
   <div id="accordion" class="col-md-12">
       <h3 class="text-center"><a href="javascript: void(0)"> </a></h3>
       <div class="col-md-12">
@@ -91,14 +94,22 @@
 
 </div>
 
-   <%modal_target = session[:page_type] == 1 ? "#modal_for_professional_preview" : "#modal_for_community_preview"%>
+  <%modal_target = session[:page_type] == 1 ? "#modal_for_professional_preview" : "#modal_for_community_preview"%>
+  <div style="position:absolute; left: 0; margin-left:-40px;top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);">
   <%=button_to photo_url(@photo.previous),
-    remote: true, method: :get, class: "btn-link"  do%>
-    Prev
+    remote: true, method: :get, class: "btn"  do%>
+    &#8249;
   <%end%>
-
-
+  </div>
+    <div style="position:absolute; right: 0;margin-right:-40px;top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);">
   <%=button_to photo_url(@photo.next),
-    remote: true, method: :get, class: "btn-link"  do%>
-    Next
+    remote: true, method: :get, class: "btn"  do%>
+    &#8250;
   <%end%>
+  </div>
