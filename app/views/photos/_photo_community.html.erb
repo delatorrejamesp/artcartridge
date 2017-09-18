@@ -4,15 +4,15 @@
     on
     <%=@photo.created_at.strftime("%B %-d, %Y")%>
 </div>
-<div class="col-md-12" style="padding-left:12%;padding-right:12%;position:relative;">
+<div class="col-md-12" style="padding-left:12%;padding-right:12%;position:relative;background-color: black;">
   <div><%=image_tag @photo.image.url(:medium), style: "max-width:100%;
   max-height:100%;
   margin:auto;
   display:block;"%></div>
   <div id="accordion" class="col-md-12">
-      <h3 class="text-center"><a href="javascript: void(0)"> </a></h3>
-      <div class="col-md-12">
-          <div class="col-md-6">
+      <h3 class="text-center" style="margin-top:0px;margin-bottom:0px;cursor:pointer;"><a href="javascript: void(0)" style="cursor:pointer;"></a></h3>
+      <div class="row" class="accordion-content-wrapper" style="margin-bottom: 5px;margin-left:20px; margin-right: 20px;">
+          <div class="col-md-6" style="margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
             <%if !@photo.medium.blank? || !@photo.gene.blank? || !@photo.subject_matter.blank?%>
                 <div class="art-analysis-area">
                 <h3>Art Analysis</h3>
@@ -44,7 +44,7 @@
             </div>
             <%end%>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6" style="border-left: 1px solid #dcdcdc;margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
             <%if user_signed_in?%>
                 <div class="comments-area" id="thread_<%= @photo.thread.id %>_div">
                 <%= render :partial => 'commontator/threads/show',
@@ -62,11 +62,14 @@
   $("#accordion").accordion({
                    autoHeight: false,
                    collapsible: true,
-                   active: false
+                   active: false,
+                   icons: {
+                     "header": "glyphicon  glyphicon-chevron-up", "activeHeader": "glyphicon glyphicon-chevron-down"
+                   }
                });
   <%end%>
 </div>
-<div class="col-md-12" >
+<div class="col-md-12">
 
     <div class="col-md-6 left-photo-preview-panel">
 
@@ -100,8 +103,8 @@
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);">
   <%=button_to photo_url(@photo.previous),
-    remote: true, method: :get, class: "btn"  do%>
-    &#8249;
+    remote: true, method: :get, class: "btn-link"  do%>
+      <span class="glyphicon glyphicon-chevron-left" style="font-size: 30px;color:white;"></span>
   <%end%>
   </div>
     <div style="position:absolute; right: 0;margin-right:-40px;top: 50%;
@@ -109,7 +112,7 @@
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);">
   <%=button_to photo_url(@photo.next),
-    remote: true, method: :get, class: "btn"  do%>
-    &#8250;
+    remote: true, method: :get, class: "btn-link"  do%>
+    <span class="glyphicon glyphicon-chevron-right" style="font-size: 30px;color:white;"></span>
   <%end%>
   </div>
