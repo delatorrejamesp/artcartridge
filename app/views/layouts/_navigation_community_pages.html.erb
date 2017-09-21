@@ -26,9 +26,8 @@
             <%if !current_page?(community_page_url(subdomain: "#{@user.slug if @user}"))%>
               <ul class="nav navbar-nav navbar-left">
                   <li class="active"><%=link_to "About", about_url%></li>
-                  <li class="active"><%=link_to "Contact", contact_url%></li>
                   <li class="active"><%=link_to "Featured Artists", feature_artists_url%></li>
-                  <li class="active"><%=link_to "Blog", blog_url%></li>
+                  <li class="active"><%=link_to "References", blog_url%></li>
               </ul>
             <%end%>
             <ul class="nav navbar-nav navbar-right">
@@ -45,6 +44,9 @@
                            </ul>
                        </li>
               <%else%>
+                    <li>
+                      <%=link_to "Join", new_user_registration_path%>  </li>
+                    <li clas><a href="#"> |</a> </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login<span class="caret"></span>
                         </a>

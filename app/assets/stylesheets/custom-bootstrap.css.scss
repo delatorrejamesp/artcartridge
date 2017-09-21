@@ -161,10 +161,22 @@ blockquote h3:after {
   bottom: 0;
   left: 50%;
   width: 80%;
-  background-color: #424040;
+  // background-color: #424040;
   transform: translate(-50%);
   span {
     color: white;
   }
 
+}
+
+.modal-horizontal-center{
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 1500px;
+  width: 1300px;
+}
+.modal-vertical-center {
+        //  top: 50%;
+        //  left: 50%;
+        //  transform: translate(-50%, -50%) !important;
 }
