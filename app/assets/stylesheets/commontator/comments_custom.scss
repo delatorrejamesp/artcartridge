@@ -6,9 +6,20 @@
     // background-color: #424040;
   }
   .comment_body{
-    color: #dcdcdc;
+
   }
+
 }
 .art-analysis-area{
   // color: white;
+}
+
+.comments-area-form{
+  [name="commit"]{
+      // width:1px;
+      // word-wrap: break-word;
+      // //font-family: monospace; /* this is just for good looks */
+      // white-space:pre-wrap; /* this is for displaying whitespaces including Moz-FF.*/
+    // color: black;
+  }
 }
