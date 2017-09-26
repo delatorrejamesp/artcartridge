@@ -12,7 +12,7 @@
   <div><%=image_tag @photo.image.url, style: "max-width:100%;
   max-height:100%;
   margin:auto;
-  display:block;"%></div>
+  display:block;margin-bottom:40px; margin-top:20px;" %></div>
   <div id="accordion" class="col-md-12">
       <h3 class="text-center" style="margin-top:0px;margin-bottom:0px;cursor:pointer;"><a href="javascript: void(0)" style="cursor:pointer;"> </a></h3>
       <div class="col-md-12" class="accordion-content-wrapper" style="">
@@ -70,32 +70,32 @@
                });
   <%end%>
 </div>
-<div class="col-md-12">
 
-    <div class="photo-small-preview-area">
+    <div class="photo-small-preview-area col-md-12">
         <center>
-        <ul class="list-unstyled list-inline" style="height: 100%;">
-          <li>
+        <ul class="list-unstyled list-inline" style="height: 100%;width:100%;">
+          <li style="width:20%">
             <div data-render="photos btn-votable">
               <%=render partial: "photos/btn_upvote"%>
             </div>
           </li>
-          <li><span><i class="fa fa-eye"></i> <%=pluralize(@photo.views,"view", "views")%></span></li>
-          <li><div class="social-icons-area" ><%= social_share_button_tag(@photo.title, url: "#{photo_url(@photo)}", image: @photo.image.url, :allow_sites => %w(facebook google_plus twitter tumblr)) %> </div></li>
-          <li>
-            <div class="comments-area-form">
-            <%if user_signed_in?%>
-              <%=form_for @new_comment, url: commontator.thread_comments_path(@new_comment.thread), remote: true do |f|%>
-              <div class="col-sm-9"><%=f.text_area :body, class: "form-control"%> </div><div class="col-sm-3" style="margin: 0px !important;padding: 0px !important;"><%=f.submit "comment", class: "btn btn-primary pull-left"%></div>
-              <%end%>
+          <li style="width:20%"><span><i class="fa fa-eye"></i> <%=pluralize(@photo.views,"view", "views")%></span></li>
+          <li style="width:20%"><div class="social-icons-area" ><%= social_share_button_tag(@photo.title, url: "#{photo_url(@photo)}", image: @photo.image.url, :allow_sites => %w(facebook google_plus twitter tumblr)) %> </div></li>
+          <%if user_signed_in?%>
+            <li style="width:35%">
+              <div class="comments-area-form">
+
+                <%=form_for @new_comment, url: commontator.thread_comments_path(@new_comment.thread), remote: true do |f|%>
+                <div class="col-sm-9"><%=f.text_area :body, class: "form-control"%> </div><div class="col-sm-3" style="margin: 0px !important;padding: 0px !important;"><%=f.submit "comment", class: "btn btn-primary pull-left"%></div>
+                <%end%>
+
+              </div>
+            </li>
             <%end%>
-            </div>
-          </li>
         </ul>
       </center>
     </div>
 
-</div>
 
   <%modal_target = session[:page_type] == 1 ? "#modal_for_professional_preview" : "#modal_for_community_preview"%>
   <div style="position:absolute; left: 0; margin-left:-40px;top: 50%;
