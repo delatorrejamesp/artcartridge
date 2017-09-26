@@ -1,4 +1,4 @@
-<div class="col-md-12 author-area" style="margin-bottom: 5px;margin-left: 5px;">
+<div class="col-md-12 author-area" style="margin-bottom: 10px;margin-left: 10px;">
   <div class="pull-left" style="position: absolute; left:0 ;"><%=image_tag @photo.user.avatar.url, size: "25x25", class: "img-circle" %>
   <%=link_to @photo.user.full_name,  community_page_url(subdomain: "#{@photo.user.slug}") %>
   on
@@ -49,7 +49,7 @@
             <%end%>
           </div>
           <div class="col-md-6" style="border-left: 1px solid #dcdcdc;margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
-            <%if user_signed_in?%>
+            <%#if user_signed_in?%>
                 <div class="comments-area" id="thread_<%= @photo.thread.id %>_div">
                 <%= render :partial => 'commontator/threads/show',
                                         :locals => { :thread => @photo.thread,
@@ -58,7 +58,7 @@
                                         :per_page => @commontator_per_page,
                                         :show_all => false } %>
                 </div>
-              <%end%>
+              <%#end%>
           </div>
       </div>
   </div>
