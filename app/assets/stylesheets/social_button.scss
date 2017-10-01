@@ -1,14 +1,14 @@
-$size: 28px;
+$size: 24px;
 
 .social-share-button {
-  height: 28px;
-  line-height: 28px;
+  height: 24px;
+  line-height: 24px;
   .ssb-icon {
     background-size: $size $size;
     height: $size;
     width: $size;
     margin-left: 5px;
     line-height: $size;
-    margin-top: 8px;
+    margin-top: 12px;
   }
 }

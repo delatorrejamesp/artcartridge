@@ -107,7 +107,15 @@
             <li style="width:35%" style="height: 30px;line-height: 30px;">
               <div class="comments-area-form">
                 <%=form_for @new_comment, url: commontator.thread_comments_path(@new_comment.thread), remote: true do |f|%>
-                <div class="col-sm-9"><%=f.text_area :body, class: "form-control"%> </div><div class="col-sm-3" style="margin: 0px !important;padding: 0px !important;"><%=f.submit "comment", class: "btn btn-primary pull-left"%></div>
+                      <div class="col-sm-push-2 col-sm-9" style="">
+                        <%=f.text_area :body, class: "form-control"%>
+                      </div>
+                      <div class="col-sm-push-1 col-sm-3" style="margin: 0px !important;padding: 0px !important;">
+                        <%#=f.submit "comment", class: "btn btn-primary pull-left"%>
+                        <%=button_tag class: "btn btn-primary btn-xs", style: "width: 30px; height: 54px"  do %>
+                              <span style="font-size:10px; display: inline-block;transform: rotate(-90deg);padding-bottom:25px;"> comment </span>
+                        <%end%>
+                      </div>
                 <%end%>
 
               </div>
