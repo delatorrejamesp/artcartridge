@@ -109,3 +109,9 @@ $(document).on "click", "[data-show]", ->
     $($(@).attr("data-show")).show()
   else
     $($(@).attr("data-show")).hide()
+
+$(document).on "click", ".image-backdrop", (e) ->
+  e.stopPropagation();
+  $(".modal").modal("hide");
+$(document).on "click", "#accordion", (e) ->
+  e.stopPropagation();
