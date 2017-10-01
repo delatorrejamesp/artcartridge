@@ -13,6 +13,6 @@ $(document).on 'ajax:error', ".button_to", (xhr, status, error) ->
 $(document).on 'ajax:success', ".button_to", (data, status, xhr) ->
     modal_target = $(@).find("button").attr("data-target")
     $(modal_target).find(".modal-content-wrapper").show()
-    $("#loading-div").find("img").show();
+    $("#loading-div").find("img").hide();
     return
 $(document).on 'ajax:complete', ".button_to", (xhr, status) ->
