@@ -9,20 +9,6 @@
 </div>
 <div class="col-md-12 image-backdrop"  style="clear:both;padding-left:12%;padding-right:12%;position:relative;background-color: black;">
   <div>
-    <%#=image_tag @photo.image.url(:medium), style: "max-width:600px;
-  max-height:600px;
-  margin:auto;
-  display:block;margin-bottom:40px; margin-top:20px;", data: { src: @photo.image.url } %>
-  <%#=image_tag @photo.image.url, class: "lazyload", data: {
-      sizes: "(min-width: 500px) 930px, 90vw",
-      srcset: "#{@photo.image.url} 220w,
-        #{@photo.image.url} 300w,
-        #{@photo.image.url} 600w,
-        #{@photo.image.url} 900w"
-    }  %>
-    <!-- <div class="responsively-lazy"> -->
-      <!-- <img alt="" src="<%=@photo.image.url(:thumb)%>" data-src="<%=@photo.image.url%>" /> -->
-  <!-- </div> -->
   <%=image_tag @photo.image.url(:medium),
         style: "max-width:600px;max-height:600px;margin:auto;display:block;margin-bottom:40px; margin-top:20px;",
         class: "lazyload",
