@@ -7,7 +7,7 @@
       <%=@photo.title || @photo.image.original_filename%>
     </center>
 </div>
-<div class="col-md-12 image-backdrop"  style="clear:both;padding-left:12%;padding-right:12%;position:relative;background-color: black;">
+<div class="col-md-12"  style="clear:both;padding-left:12%;padding-right:12%;position:relative;background-color: black;">
   <div>
   <%=image_tag @photo.image.url(:medium),
         style: "max-width:600px;max-height:600px;margin:auto;display:block;margin-bottom:40px; margin-top:20px;",
