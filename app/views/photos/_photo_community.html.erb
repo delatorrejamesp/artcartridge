@@ -8,69 +8,71 @@
     </center>
 </div>
 <div class="col-md-12"  style="clear:both;padding-left:12%;padding-right:12%;position:relative;background-color: black;">
-  <div>
+  <div id="accordion" style="height:auto;">
+      <h3 class="text-center" style="margin-top:0px;margin-bottom:0px;cursor:pointer;"><a href="javascript: void(0)" style="cursor:pointer;"> </a></h3>
+      <div >
+          <div class="row" style="min-height: 200px;">
+            <div class="col-md-6" style="min-height: 200px;margin: 0px 0px 0px 0px !important;padding: 0px 10px 0px 0px !important;">
+              <%if !@photo.medium.blank? || !@photo.gene.blank? || !@photo.subject_matter.blank?%>
+                  <div class="art-analysis-area">
+                  <h3>Art Analysis</h3>
+                      <table class="table text-center">
+                        <tbody>
+                          <%if !@photo.medium.blank?%>
+                            <tr>
+                              <td><b>Medium :</b>#<%=@photo.medium%></td>
+                            </tr>
+                          <%end%>
+                          <%if !@photo.gene.blank?%>
+                            <tr>
+                              <td><b>Gene : </b>#<%=@photo.gene%> </td>
+                            </tr>
+                          <%end%>
+                          <%if !@photo.subject_matter.blank?%>
+                            <tr>
+                              <td><b>Subject : #</b><%=@photo.subject_matter%></td>
+                            </tr>
+                          <%end%>
+                        </tbody>
+                      </table>
+                  </div>
+              <%end%>
+              <%if @photo.tools.any?%>
+              <div class="art-analysis-area">
+                <h3>Tools</h3>
+                <p> <%=@photo.tools.pluck(:name).to_sentence%></p>
+              </div>
+              <%end%>
+            </div>
+            <div class="col-md-6" style="min-height: 200px;border-left: 1px solid #dcdcdc;margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
+              <%#if user_signed_in?%>
+                  <div class="comments-area" id="thread_<%= @photo.thread.id %>_div">
+                  <%= render :partial => 'commontator/threads/show',
+                                          :locals => { :thread => @photo.thread,
+                                          :user => current_user,
+                                          :page => @commontator_page,
+                                          :per_page => @commontator_per_page,
+                                          :show_all => false } %>
+                  </div>
+                <%#end%>
+            </div>
+         </div>
+      </div>
+  </div>
+  <%=javascript_tag do %>
+  $("#accordion").accordion({
+                   autoHeight: true,
+                   heightStyle: "content",
+                   collapsible: true,
+                   active: false
+               });
+  <%end%>
   <%=image_tag @photo.image.url(:medium),
         style: "max-width:600px;max-height:600px;margin:auto;display:block;margin-bottom:40px; margin-top:20px;",
         class: "lazyload",
         data: {
           src: @photo.image.url} %>
-</div>
-  <div id="accordion" class="col-md-12">
-      <h3 class="text-center" style="margin-top:0px;margin-bottom:0px;cursor:pointer;"><a href="javascript: void(0)" style="cursor:pointer;"> </a></h3>
-      <div class="col-md-12" class="accordion-content-wrapper" style="">
-          <div class="col-md-6" style="margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
-            <%if !@photo.medium.blank? || !@photo.gene.blank? || !@photo.subject_matter.blank?%>
-                <div class="art-analysis-area">
-                <h3>Art Analysis</h3>
-                    <table class="table text-center">
-                      <tbody>
-                        <%if !@photo.medium.blank?%>
-                          <tr>
-                            <td><b>Medium :</b>#<%=@photo.medium%></td>
-                          </tr>
-                        <%end%>
-                        <%if !@photo.gene.blank?%>
-                          <tr>
-                            <td><b>Gene : </b>#<%=@photo.gene%> </td>
-                          </tr>
-                        <%end%>
-                        <%if !@photo.subject_matter.blank?%>
-                          <tr>
-                            <td><b>Subject : #</b><%=@photo.subject_matter%></td>
-                          </tr>
-                        <%end%>
-                      </tbody>
-                    </table>
-                </div>
-            <%end%>
-            <%if @photo.tools.any?%>
-            <div class="art-analysis-area">
-              <h3>Tools</h3>
-              <p> <%=@photo.tools.pluck(:name).to_sentence%></p>
-            </div>
-            <%end%>
-          </div>
-          <div class="col-md-6" style="border-left: 1px solid #dcdcdc;margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
-            <%#if user_signed_in?%>
-                <div class="comments-area" id="thread_<%= @photo.thread.id %>_div">
-                <%= render :partial => 'commontator/threads/show',
-                                        :locals => { :thread => @photo.thread,
-                                        :user => current_user,
-                                        :page => @commontator_page,
-                                        :per_page => @commontator_per_page,
-                                        :show_all => false } %>
-                </div>
-              <%#end%>
-          </div>
-      </div>
-  </div>
-  <%=javascript_tag do %>
-  $("#accordion").accordion({
-                   autoHeight: false,
-                   collapsible: true,
-                   active: false
-               });
-  <%end%>
+
 </div>
 
     <div class="photo-small-preview-area col-md-12">
