@@ -12,9 +12,12 @@
       <h3 class="text-center" style="margin-top:0px;margin-bottom:0px;cursor:pointer;"><a href="javascript: void(0)" style="cursor:pointer;"> </a></h3>
       <div >
           <div class="row" style="min-height: 200px;">
-            <div class="col-md-6" style="min-height: 200px;margin: 0px 0px 0px 0px !important;padding: 0px 10px 0px 0px !important;">
+            <div class="col-md-6 accordion-div" style="min-height: 300px;margin: 0px 0px 0px 0px !important;padding: 0px 10px 0px 0px !important;">
               <%if !@photo.medium.blank? || !@photo.gene.blank? || !@photo.subject_matter.blank?%>
                   <div class="art-analysis-area">
+                  <%if !@photo.social_description.blank?%>
+                    <p><%=@photo.social_description%></p>
+                  <%end%>
                   <h3>Art Analysis</h3>
                       <table class="table text-center">
                         <tbody>
@@ -44,7 +47,7 @@
               </div>
               <%end%>
             </div>
-            <div class="col-md-6" style="min-height: 200px;border-left: 1px solid #dcdcdc;margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
+            <div class="col-md-6 accordion-div" style="min-height: 300px;border-left: 1px solid #dcdcdc;margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
               <%#if user_signed_in?%>
                   <div class="comments-area" id="thread_<%= @photo.thread.id %>_div">
                   <%= render :partial => 'commontator/threads/show',
@@ -96,7 +99,7 @@
               <div class="comments-area-form">
                 <%=form_for @new_comment, url: commontator.thread_comments_path(@new_comment.thread), remote: true do |f|%>
                       <div class="col-sm-push-2 col-sm-9" style="">
-                        <%=f.text_area :body, class: "form-control", placeholder: "comment" %>
+                        <%=f.text_area :body, class: "form-control", placeholder: "comment here" %>
                       </div>
                       <div class="col-sm-push-1 col-sm-3" style="margin: 0px !important;padding: 0px !important;">
                         <%#=f.submit "comment", class: "btn btn-primary pull-left"%>

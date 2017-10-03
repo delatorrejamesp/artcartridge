@@ -69,10 +69,3 @@ http://www.strangerstudios.com/sandbox/pagination/diggstyle.php */
   left: -2px !important;
   top: -2px !important;
 }
-
-.thread_comment_list{
-  overflow-x: hidden;
-  max-height: 300px;
-  margin-right: 0 !important;
-  padding-right: 0 !important;
-}

@@ -184,3 +184,10 @@ blockquote h3:after {
 .ui-accordion-content{
   height: auto;
 }
+
+.accordion-div{
+  overflow-x: hidden;
+  max-height: 300px;
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+}
