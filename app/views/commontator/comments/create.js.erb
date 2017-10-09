@@ -11,7 +11,7 @@
 
   $("#thread_<%= @thread.id %>_new_comment_link_div").fadeIn();
 <% end %>
-
+$(".new_comment").find("textarea").val("");
 $("#comment_<%= @comment.id.to_s %>_div").hide().fadeIn()[0].scrollIntoView();
 
 <%= javascript_proc %>
