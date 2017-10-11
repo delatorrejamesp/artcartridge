@@ -13,12 +13,16 @@
       <%if !params[:modal_mode]%>
 
             <header>
-            <%#=session[:setting]%>
-            <%if session[:page_type] == 1 %>
-              <%= render 'layouts/navigation_professional_pages' %>
-            <%else%>
-              <%= render 'layouts/navigation_community_pages' %>
-            <%end%>
+                <%if remove_element_if_route_on_list? %>
+                      <center>
+                        <%=link_to unauthenticated_root_url do %>
+                          <%=image_tag session[:setting].logo.url(:medium), size: "200x38"%>
+                        <%end%>
+                      </center>
+                <%else%>
+                      <%= render 'layouts/navigation_professional_pages' if session[:page_type] == 1%>
+                      <%= render 'layouts/navigation_community_pages' if session[:page_type] == 0%>
+                <%end%>
             </header>
 
             <main role="main" id="main">
@@ -28,21 +32,24 @@
                    <%#= render 'layouts/modal'%>
                 </div>
             </main>
-
-            <%if session[:page_type] == 1 %>
-              <footer>
-                  <div class="container">
-                      <hr>
-                      <div class="pull-right">
-                         [ LOGO HERE ]
+            <%if remove_element_if_route_on_list? %>
+                <center> <a href=""> Terms of Service</a> </center>
+            <%else%>
+                <%if session[:page_type] == 1 %>
+                  <footer>
+                      <div class="container">
+                          <hr>
+                          <div class="pull-right">
+                             [ LOGO HERE ]
+                          </div>
                       </div>
-                  </div>
-                  <br>
-              </footer>
-            <%elsif request.subdomain != "www"%>
-              <footer class="footer">
-                  <%= render 'layouts/footer' %>
-              </footer>
+                      <br>
+                  </footer>
+                <%elsif request.subdomain != "www"%>
+                  <footer class="footer">
+                      <%= render 'layouts/footer' %>
+                  </footer>
+                <%end%>
             <%end%>
       <%else%>
           <%#= render 'layouts/messages' %>

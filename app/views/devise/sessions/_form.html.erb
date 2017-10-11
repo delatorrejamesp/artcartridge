@@ -25,15 +25,8 @@
         </div>
     </div>
 </li>
-<li>
-    <%= f.submit "Sign in", :class => "btn btn-primary form-control" %>
-
-</li>
 <% end %>
-<!-- <ul class="list-unstyled">
- <li>
 
-    <%#=button_to "Sign up", new_user_registration_url(subdomain: false), method: :get, :class => "btn btn-primary form-control",style: "margin-top: 10px;" %>
-
-</li>
-</ul> -->
+    <%=button_tag "Sign in", :class => "btn btn-primary form-control", onclick: "javascript: $(this).prevs('form').trigger('submit.rails')" %>
+    <hr style="margin-top: 7px; margin-bottom: 7px; ">
+    <%=button_tag "Login with Facebook", :class => "btn btn-primary form-control" %>

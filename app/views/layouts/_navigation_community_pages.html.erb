@@ -45,10 +45,10 @@
                        </li>
               <%else%>
                     <li>
-                      <%=link_to "Join", new_user_registration_path%>  </li>
+                      <%=link_to "Join", new_user_registration_path, class: "noborder"%>  </li>
                     <li><span style="position: relative;display: block;color:black;padding-top: 15px; padding-bottom: 15px" class="btn-link"> | </span> </li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login<span class="caret"></span>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login</span>
                         </a>
                         <ul id="dropdown-login" class="dropdown-menu" style="padding: 10px 15px 20px 15px; width: 300px;">
                             <%=render partial: "devise/sessions/form"%>

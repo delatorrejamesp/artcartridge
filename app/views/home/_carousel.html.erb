@@ -1,22 +1,15 @@
 <div id="carousel-qoutes" class="carousel slide carousel-fade" data-ride="carousel">
   <ol class="carousel-indicators">
     <%@setting.qoutes_random.each_with_index  do |qoute,index|%>
-    <li data-target="#carousel-qoutes" data-slide-to="<%=index%>" class="<%='active' if index == 0 %>"></li>
+            <li data-target="#carousel-qoutes" data-slide-to="<%=index%>" class="<%='active' if index == 0 %>"></li>
     <%end%>
   </ol>
   <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <%@setting.qoutes_random.each_with_index do |qoute,index|%>
-      <div class="item <%='active' if index == 0 %>">
-        <center>
-        <blockquote>
-        	<h3><%=qoute.description%></h3>
-            <footer><%=qoute.author%></footer>
+  <div class="carousel-inner" role="listbox"  data-render="home qoute">
+    <%#@setting.qoutes_random.each_with_index do |qoute,index|%>
+    <%=render partial: "home/qoute", collection: @setting.qoutes_random, as: :qoute %>
 
-        </blockquote>
-      </center>
-      </div>
-    <%end%>
+    <%#end%>
   </div>
   <a class="left carousel-control" href="#carousel-qoutes" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -30,7 +23,7 @@
 <%=javascript_tag do %>
 $('#carousel-qoutes').carousel(
   {
-   interval: 10000,
+   interval: 5000,
    pause: false }
    );
 <%end%>

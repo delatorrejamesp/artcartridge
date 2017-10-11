@@ -5,17 +5,21 @@ class HomeController < ApplicationController
  before_action :set_session
 
   def index
-    @photos = Photo.take(4)#all.order(created_at: :desc).page(params[:page])
+    @photos = Photo.take(4)
   end
 
   def feeds
-    #@photos = Photo.all.order(created_at: :desc)
     if @user
       @photos = @user.photos.order(created_at: :desc).page(params[:page])
     else
       @photos = Photo.all.order(created_at: :desc).page(params[:page])
     end
       @ig_photos=IgPhoto.instagram_photos
+  end
+
+  def get_random_qoutes
+      @admin = Admin.find(params[:id])
+      @qoutes = @admin.setting.qoutes_random
   end
 
   def dashboard

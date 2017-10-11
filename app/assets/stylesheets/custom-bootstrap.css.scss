@@ -3,12 +3,27 @@
 
 nav.navbar-findcond { background: #fff; border-color: #ccc; box-shadow: 0 0 2px 0 #ccc; }
 nav.navbar-findcond a { color: #f14444; }
-nav.navbar-findcond ul.navbar-nav a { color: #f14444; border-style: solid; border-width: 0 0 2px 0; border-color: #fff; }
+nav.navbar-findcond ul.navbar-nav a { color: #f14444; border-style: solid; border-width: 0 0 2px 0; border-color: #fff;}
 nav.navbar-findcond ul.navbar-nav a:hover,
 nav.navbar-findcond ul.navbar-nav a:visited,
 nav.navbar-findcond ul.navbar-nav a:focus,
-nav.navbar-findcond ul.navbar-nav a:active { background: #fff; }
-nav.navbar-findcond ul.navbar-nav a:hover { border-color: #f14444; }
+nav.navbar-findcond ul.navbar-nav a:active {
+  background: #fff;
+}
+nav.navbar-findcond ul.navbar-nav a:not(.noborder):hover {
+  border-color: #f14444;
+  // width: 90%;
+}
+// nav.navbar-findcond ul.navbar-nav a:after {
+//   position: absolute;
+//   content: '';
+//   border-bottom: 1px solid #d2d7da;
+//   width: 70%;
+//   transform: translateX(-50%);
+//   bottom: -15px;
+//   left: 50%;
+//
+// }
 nav.navbar-findcond li.divider { background: #ccc; }
 nav.navbar-findcond button.navbar-toggle { background: #f14444; border-radius: 2px; }
 nav.navbar-findcond button.navbar-toggle:hover { background: #999; }
@@ -110,8 +125,6 @@ blockquote h3:after {
   /*
   inspired from https://codepen.io/Rowno/pen/Afykb
   */
-
-
 
   .item {
     background: #FAFBFC;

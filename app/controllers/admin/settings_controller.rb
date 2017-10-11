@@ -1,5 +1,5 @@
 class Admin::SettingsController < ApplicationController
-  before_action :set_admin_setting, only: [:show, :edit, :update, :destroy]
+  before_action :set_admin_setting, only: [:show, :edit, :update, :destroy, :random_qoutes]
 
   # GET /admin/settings
   # GET /admin/settings.json

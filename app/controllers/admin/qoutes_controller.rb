@@ -61,6 +61,17 @@ class Admin::QoutesController < ApplicationController
     end
   end
 
+  # GET /admin/settings/:id/random
+  def random
+    @admin_qoutes = @setting.qoutes.limit(10).order("RANDOM()")
+    #render @qoutes
+    respond_to do |format|
+      format.html
+      format.json
+      format.js
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_qoute
@@ -69,6 +80,11 @@ class Admin::QoutesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_qoute_params
-      params.require(:admin_qoute).permit(:description, :enable)
+      params.require(:admin_qoute).permit(:description, :enable, :setting_id)
+    end
+
+    def get_setting_id
+      setting_id = admin_qoute_params[:setting_id] || params[:setting_id]
+      @setting =  Admin::Setting.find(setting_id)
     end
 end

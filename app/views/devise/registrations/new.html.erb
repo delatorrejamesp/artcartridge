@@ -17,8 +17,13 @@
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
-      <%= f.submit t('.sign_up', default: 'Sign up'), class: 'btn btn-primary' %>
+      <%#= f.submit t('.sign_up', default: 'Create your account'), class: 'btn btn-primary' %>
     <% end %>
+    <%=button_tag class: 'btn btn-info', onclick: "javascript: $(this).prev('form').trigger('submit.rails')" do %>
+          Create your account <span class="glyphicon glyphicon-chevron-right"> </span>
+    <%end%>
+    <%=button_tag "Login with facebook", class: "btn btn-primary"%>
   </div>
 </div>
-<%= render 'devise/shared/links' %>
+Alread a member? <%= link_to t('.sign_in', default: 'Sign Up'), new_session_path(resource_name, subdomain: false) %>
+<%#= render 'devise/shared/links' %>

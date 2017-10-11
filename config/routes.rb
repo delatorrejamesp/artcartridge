@@ -2,8 +2,14 @@ Rails.application.routes.draw do
 
   namespace :admin do
 
-    resources :settings
-    resources :qoutes
+    resources :settings do
+
+    end
+    resources :qoutes do
+      collection do
+          get :random
+      end
+    end
     resources :tools
 
   end
@@ -22,9 +28,9 @@ Rails.application.routes.draw do
 
     get 'p/feature' => 'pages#feature', as: :feature_artists
 
-
-
-
+    # namespace :admin do
+    #   get '/settings/:id/random_qoutes' => "settings#random_quotes", as: :get_random_qoutes
+    # end
     constraints(subdomain: /www/) do
         root to: 'home#feeds'
     end

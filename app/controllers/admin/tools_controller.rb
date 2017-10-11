@@ -7,6 +7,6 @@ class Admin::ToolsController < ApplicationController
   end
 
 
-  
+
 
 end
